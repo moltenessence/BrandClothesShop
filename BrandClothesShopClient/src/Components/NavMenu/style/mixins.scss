@@ -1,0 +1,55 @@
+@import "./../../Common/styles/appStyles.scss";
+
+//-------------
+//Antd menu mixins
+//-------------
+@mixin navMenu($textColor, $selectedTextColor) {
+    top: 150px;
+    min-width: 160px;
+    max-width: 20vw;
+    padding: 1vh 0;
+    position: fixed;
+    height: 50vh;
+
+    .ant-menu {
+        border: none !important ;
+        font-size: 1em;
+        font-family: $mainFontFamily;
+        
+        .ant-menu-item {
+            background: none !important;
+            transition: .3s ease;
+            margin: 0;
+            padding: 0;
+            height: 30px;
+           
+            a {
+                color: $textColor;
+                &.active{
+                    &::before{
+                            cursor: pointer;
+                    }
+                }
+            }
+
+            &:hover {
+                color: $textColor !important;
+                padding-left: 1.4vw;
+                transition: .3s ease;
+            }
+        }
+
+        .ant-menu-item-selected {
+            a {
+                color: $selectedTextColor !important;
+            }
+        }
+
+        background: none !important;
+    }
+
+    @media (max-width: 720px) {
+        display: none;
+    }
+
+}

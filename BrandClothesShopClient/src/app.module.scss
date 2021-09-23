@@ -1,0 +1,30 @@
+//-------------
+//App styles
+//-------------
+.appWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 0 5vw;
+}
+
+.contentWrapper {
+    margin-top: calc(2.5vw + 8vh);
+    width: 86%;
+    height: 1000px;
+    color: white;
+    background:cornsilk;
+
+    @media (max-width: 720px) {
+        width: 100%;
+    }
+}
+
+.navSection {
+    flex-basis: 16.66%;
+    min-width: 160px;
+
+    @media (max-width: 720px) {
+        display: none;
+    }
+}

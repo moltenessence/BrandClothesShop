@@ -1,0 +1,15 @@
+@import "./../../Common/styles/appStyles.scss";
+@import "./mixins.scss";
+
+
+//-------------
+//Antd menu styles redefinition
+//-------------
+
+.navMenuWrapperDark {
+    @include navMenu($commonDarkTextColor, rgba($color: $commonDarkTextColor, $alpha: .65));
+}
+
+.navMenuWrapperLight {
+    @include navMenu(white, $commonLightTextColor);
+}
