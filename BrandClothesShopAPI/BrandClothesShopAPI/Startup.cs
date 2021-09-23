@@ -28,12 +28,10 @@ namespace BrandClothesShopAPI
         {
             services.AddControllers();
 
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+            string connectionString = Configuration.GetConnectionString("ClothesShopContext");
 
-            var optionsBuilder = new DbContextOptionsBuilder<ClothesShopContext>();
-            var options = optionsBuilder
-                .UseSqlServer(connectionString)
-                .Options;
+            services.AddDbContext<ClothesShopContext>(options =>
+                 options.UseSqlServer(connectionString));
 
             services.AddControllersWithViews();
         }
