@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BrandClothesShopAPI.Models
 {
-    public class СlothesItem
+    public class СlothesItem : IСlothesItem
     {
         [Required]
         public string ModelName { get; set; }

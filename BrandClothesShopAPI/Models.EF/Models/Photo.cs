@@ -6,7 +6,7 @@ using System.Text;
 
 namespace BrandClothesShopAPI.Models
 {
-    public class Photo
+    public class Photo : IPhoto
     {
         [Required]
         public string URL { get; set; }

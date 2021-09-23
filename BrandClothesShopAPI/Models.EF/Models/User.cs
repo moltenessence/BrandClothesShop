@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BrandClothesShopAPI.Models
 {
-    public class User
+    public class User : IUser
     {
         [Key]
         public int UserId { get; set; }
