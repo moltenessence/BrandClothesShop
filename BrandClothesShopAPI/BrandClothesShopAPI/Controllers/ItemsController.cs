@@ -32,16 +32,21 @@ namespace BrandClothesShopAPI.Controllers
             var amountToSkip = page == 1 ? 0 : page * count;
             var amountToTake = totalCount - amountToSkip;
 
-            if (amountToSkip >= totalCount || amountToTake >= totalCount) 
+            if (amountToSkip >= totalCount) 
                 return BadRequest("The number of item need to take is out of range");
 
+            var photos = await _context.Photos.ToListAsync();
             var clothesItems = await _context.ClothesItems.Skip(amountToSkip)
                                                           .Take(amountToTake)
                                                           .ToListAsync();
+
             var responsesStatusCode = Response.StatusCode;
 
-            var result = new {
-                items = clothesItems, statusCode = responsesStatusCode, total = totalCount
+            var result = new
+            {
+                items = clothesItems,
+                total = totalCount,
+                statusCode = responsesStatusCode,
             };
 
             return new JsonResult(result);

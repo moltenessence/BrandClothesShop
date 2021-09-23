@@ -10,3 +10,6 @@ C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\DataStore\obj
 C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\DataStore\obj\Debug\netcoreapp3.1\DataStore.csproj.CopyComplete
 C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\DataStore\obj\Debug\netcoreapp3.1\DataStore.dll
 C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\DataStore\obj\Debug\netcoreapp3.1\DataStore.pdb
+C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\DataStore\bin\Debug\netcoreapp3.1\DataStore.runtimeconfig.json
+C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\DataStore\bin\Debug\netcoreapp3.1\DataStore.runtimeconfig.dev.json
+C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\DataStore\obj\Debug\netcoreapp3.1\DataStore.genruntimeconfig.cache

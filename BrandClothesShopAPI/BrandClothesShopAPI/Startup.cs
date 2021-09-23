@@ -27,6 +27,7 @@ namespace BrandClothesShopAPI
 
         public void ConfigureServices(IServiceCollection services)
         {
+  
             services.AddControllers();
 
             string connectionString = Configuration.GetConnectionString("ClothesShopContext");
@@ -35,6 +36,14 @@ namespace BrandClothesShopAPI
                  options.UseSqlServer(connectionString));
 
             services.AddControllersWithViews();
+            services.AddControllers()
+                    .AddNewtonsoftJson(options =>
+                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+            services.AddControllers()
+                .AddNewtonsoftJson(options =>
+                    options.SerializerSettings.Formatting = Formatting.Indented);
+
             //services.AddControllers().AddNewtonsoftJson();
         }
 

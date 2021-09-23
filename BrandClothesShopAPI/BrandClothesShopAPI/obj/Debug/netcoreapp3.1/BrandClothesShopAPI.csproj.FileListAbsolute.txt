@@ -71,3 +71,15 @@ C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\BrandClothesS
 C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\System.Web.WebPages.Razor.dll
 C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\System.Web.WebPages.dll
 C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\Microsoft.Web.Infrastructure.dll
+C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\EntityFramework.SqlServer.dll
+C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\EntityFramework.dll
+C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\System.CodeDom.dll
+C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll

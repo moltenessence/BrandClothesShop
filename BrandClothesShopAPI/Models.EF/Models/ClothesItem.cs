@@ -21,6 +21,12 @@ namespace BrandClothesShopAPI.Models
         [ClothesItem_EnsureThisClothesTypeExists]
         public string Type { get; set; }
         public virtual ICollection<Photo> Photos { get; set; }
+
+        public СlothesItem()
+        {
+            Photos = new List<Photo>();
+
+        }
     }
 
 }
