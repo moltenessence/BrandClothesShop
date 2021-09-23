@@ -1,0 +1,9 @@
+C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\Models.EF\bin\Debug\netcoreapp3.1\Core.deps.json
+C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\Models.EF\bin\Debug\netcoreapp3.1\Core.dll
+C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\Models.EF\bin\Debug\netcoreapp3.1\Core.pdb
+C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\Models.EF\obj\Debug\netcoreapp3.1\Core.csprojAssemblyReference.cache
+C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\Models.EF\obj\Debug\netcoreapp3.1\Core.AssemblyInfoInputs.cache
+C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\Models.EF\obj\Debug\netcoreapp3.1\Core.AssemblyInfo.cs
+C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\Models.EF\obj\Debug\netcoreapp3.1\Core.csproj.CoreCompileInputs.cache
+C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\Models.EF\obj\Debug\netcoreapp3.1\Core.dll
+C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\Models.EF\obj\Debug\netcoreapp3.1\Core.pdb

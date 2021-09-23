@@ -1,6 +1,7 @@
 ﻿using BrandClothesShopAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DataStore
 {
@@ -15,6 +16,10 @@ namespace DataStore
             : base(options)
         {
             Database.EnsureCreated();
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+           
         }
 
     }

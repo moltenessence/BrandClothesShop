@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DataStore;
+using Newtonsoft.Json;
 
 namespace BrandClothesShopAPI
 {
@@ -26,16 +27,24 @@ namespace BrandClothesShopAPI
 
         public void ConfigureServices(IServiceCollection services)
         {
+  
             services.AddControllers();
 
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+            string connectionString = Configuration.GetConnectionString("ClothesShopContext");
 
-            var optionsBuilder = new DbContextOptionsBuilder<ClothesShopContext>();
-            var options = optionsBuilder
-                .UseSqlServer(connectionString)
-                .Options;
+            services.AddDbContext<ClothesShopContext>(options =>
+                 options.UseSqlServer(connectionString));
 
             services.AddControllersWithViews();
+            services.AddControllers()
+                    .AddNewtonsoftJson(options =>
+                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+            services.AddControllers()
+                .AddNewtonsoftJson(options =>
+                    options.SerializerSettings.Formatting = Formatting.Indented);
+
+            //services.AddControllers().AddNewtonsoftJson();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -44,6 +53,11 @@ namespace BrandClothesShopAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(options =>
+            options.WithOrigins("http://localhost:3000")
+            .AllowAnyHeader()
+            .AllowAnyMethod());
 
             app.UseHttpsRedirection();
 
