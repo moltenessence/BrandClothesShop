@@ -22,8 +22,8 @@ namespace BrandClothesShopAPI.Controllers
             _context = context;
         }
 
-        [HttpGet]
-        public async Task<ActionResult> GetItems(int page, int count)
+        [HttpGet("{type}")]
+        public async Task<ActionResult> GetItems(int page, int count, string type)
         {
             if (page <= 0 || count <= 0) 
                 return BadRequest("The parameters are invalid!");
@@ -36,7 +36,8 @@ namespace BrandClothesShopAPI.Controllers
                 return BadRequest("The number of item need to take is out of range");
 
             var photos = await _context.Photos.ToListAsync();
-            var clothesItems = await _context.ClothesItems.Skip(amountToSkip)
+            var clothesItems = await _context.ClothesItems.Where(i=>i.Type == type)
+                                                          .Skip(amountToSkip)
                                                           .Take(amountToTake)
                                                           .ToListAsync();
 
