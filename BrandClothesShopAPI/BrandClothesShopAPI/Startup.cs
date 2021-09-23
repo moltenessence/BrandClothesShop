@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DataStore;
+using Newtonsoft.Json;
 
 namespace BrandClothesShopAPI
 {
@@ -34,6 +35,7 @@ namespace BrandClothesShopAPI
                  options.UseSqlServer(connectionString));
 
             services.AddControllersWithViews();
+            //services.AddControllers().AddNewtonsoftJson();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -42,6 +44,11 @@ namespace BrandClothesShopAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(options =>
+            options.WithOrigins("http://localhost:3000")
+            .AllowAnyHeader()
+            .AllowAnyMethod());
 
             app.UseHttpsRedirection();
 

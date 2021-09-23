@@ -18,7 +18,7 @@ namespace BrandClothesShopAPI.Models
         [Range(0.0, Double.MaxValue, ErrorMessage = "The price can't be negative.")]
         public double Price { get; set; }
         [Required]
-        //[ClothesItem_EnsureThisClothesTypeExists]
+        [ClothesItem_EnsureThisClothesTypeExists]
         public string Type { get; set; }
         public virtual ICollection<Photo> Photos { get; set; }
     }

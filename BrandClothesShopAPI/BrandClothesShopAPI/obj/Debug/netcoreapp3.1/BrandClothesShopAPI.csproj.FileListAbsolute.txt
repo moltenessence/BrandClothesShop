@@ -65,3 +65,9 @@ C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\BrandClothesS
 C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\BrandClothesShopAPI\obj\Debug\netcoreapp3.1\BrandClothesShopAPI.csproj.CopyComplete
 C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\Humanizer.dll
 C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\System.Web.Razor.dll
+C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\System.Web.Helpers.dll
+C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\System.Web.WebPages.Deployment.dll
+C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\System.Web.WebPages.Razor.dll
+C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\System.Web.WebPages.dll
+C:\Users\PC\moltenessence\BrandClothesShop.git\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\Microsoft.Web.Infrastructure.dll

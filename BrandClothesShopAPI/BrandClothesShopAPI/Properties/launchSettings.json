@@ -4,24 +4,24 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:1927",
-      "sslPort": 44301
+      "applicationUrl": "http://localhost:60671",
+      "sslPort": 0
     }
   },
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "clothesshop",
+      "launchUrl": "",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "BrandClothesShopAPI": {
+    "WebAPI": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "clothesshop",
-      "applicationUrl": "https://localhost:8080;http://localhost:8080",
+      "launchUrl": "",
+      "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
