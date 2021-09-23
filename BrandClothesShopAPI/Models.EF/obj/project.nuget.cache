@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bdzWNH7fsXvTsoTUWT2HhjnuHQzahajn1XeiMQ5aYTai0Ndj0RM9eKbp5abPEYoMfIqHk10DtlzcEnlGdJhD+Q==",
+  "dgSpecHash": "13yx5ArBdzZOm61HiEpdpP0hVpoVHF/TsgT+eJiXAlUGzDjdTJfTs/R3G6hvvh5OBw9BMG7+LOPBaX1ukGv59A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\PC\\moltenessence\\BrandClothesShop.git\\BrandClothesShopAPI\\BrandClothesShopAPI\\BrandClothesShopAPI.csproj",
+  "projectFilePath": "C:\\Users\\PC\\moltenessence\\BrandClothesShop.git\\BrandClothesShopAPI\\Models.EF\\Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
