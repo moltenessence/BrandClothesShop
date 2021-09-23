@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qbWZ6Ife4FLaovj4qW7ouVKnvOk7kK61FDwRgHPxSnFwpsoVyid45Vny+dHbfF6yWfwqsQ2m5hyuRlHW4w9csw==",
+  "dgSpecHash": "O+79UiXli2yC/jhje56xt3dplm+NUA8qo+IBS/j+KwOy3DsNeVEXzLXQJFh2dnkY4AoFFdWEc7nNywiLmdl0hA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\PC\\moltenessence\\BrandClothesShop.git\\BrandClothesShopAPI\\BrandClothesShopAPI\\BrandClothesShopAPI.csproj",
+  "projectFilePath": "C:\\Users\\PC\\moltenessence\\BrandClothesShop.git\\BrandClothesShopAPI\\Models.EF\\Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.10\\microsoft.entityframeworkcore.5.0.10.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.10\\microsoft.entityframeworkcore.abstractions.5.0.10.nupkg.sha512",
