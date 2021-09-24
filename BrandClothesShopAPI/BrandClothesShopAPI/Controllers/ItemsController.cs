@@ -28,15 +28,17 @@ namespace BrandClothesShopAPI.Controllers
             if (page <= 0 || count <= 0) 
                 return BadRequest("The parameters are invalid!");
 
-            var totalCount = _context.ClothesItems.Count();
-            var amountToSkip = page == 1 ? 0 : page * count;
-            var amountToTake = totalCount - amountToSkip;
+            //var totalCount = _context.ClothesItems.Count();
 
-            if (amountToSkip >= totalCount) 
+            var itemsCount = _context.ClothesItems.Where(i => i.Type == type).Count();
+            var amountToSkip = page == 1 ? 0 : page * count;
+            var amountToTake = count - amountToSkip;
+
+            if (amountToSkip >= itemsCount || count > amountToTake) 
                 return BadRequest("The number of item need to take is out of range");
 
             var photos = await _context.Photos.ToListAsync();
-            var clothesItems = await _context.ClothesItems.Where(i=>i.Type == type)
+            var clothesItems = await _context.ClothesItems.Where(i=> i.Type==type)
                                                           .Skip(amountToSkip)
                                                           .Take(amountToTake)
                                                           .ToListAsync();
@@ -46,7 +48,7 @@ namespace BrandClothesShopAPI.Controllers
             var result = new
             {
                 items = clothesItems,
-                total = totalCount,
+                total = itemsCount,
                 statusCode = responsesStatusCode,
             };
 
