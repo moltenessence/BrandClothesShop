@@ -25,7 +25,6 @@ namespace BrandClothesShopAPI.Models
         public СlothesItem()
         {
             Photos = new List<Photo>();
-
         }
     }
 
