@@ -28,14 +28,12 @@ namespace BrandClothesShopAPI.Controllers
             if (page <= 0 || count <= 0) 
                 return BadRequest("The parameters are invalid!");
 
-            //var totalCount = _context.ClothesItems.Count();
-
             var itemsCount = _context.ClothesItems.Where(i => i.Type == type).Count();
             var amountToSkip = page == 1 ? 0 : page * count;
             var amountToTake = count - amountToSkip;
 
             if (amountToSkip >= itemsCount || count > amountToTake) 
-                return BadRequest("The number of item need to take is out of range");
+                return BadRequest("The number of item need to take is out of range!");
 
             var photos = await _context.Photos.ToListAsync();
             var clothesItems = await _context.ClothesItems.Where(i=> i.Type==type)
@@ -55,5 +53,22 @@ namespace BrandClothesShopAPI.Controllers
             return new JsonResult(result);
         }
 
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult> GetItemById(int id)
+        {
+            var currentItem = await _context.ClothesItems.FindAsync(id);
+            var responsesStatusCode = Response.StatusCode;
+
+            if (currentItem == null)
+                return NotFound($"There is no item with id = {id}");
+
+            var result = new
+            {
+                item = currentItem,
+                statusCode = responsesStatusCode
+            };
+
+            return new JsonResult(result);
+        }
     }
 }
