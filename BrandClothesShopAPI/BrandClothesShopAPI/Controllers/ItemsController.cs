@@ -58,7 +58,7 @@ namespace BrandClothesShopAPI.Controllers
         {
             var photos = await _context.Photos.ToListAsync();
             var currentItem = await _context.ClothesItems.FindAsync(id);
-            var responsesStatusCode = Response.StatusCode;
+            var responseStatusCode = Response.StatusCode;
 
             if (currentItem == null)
                 return NotFound($"There is no item with id = {id}");
@@ -66,7 +66,7 @@ namespace BrandClothesShopAPI.Controllers
             var result = new
             {
                 item = currentItem,
-                statusCode = responsesStatusCode
+                statusCode = responseStatusCode
             };
 
             return new JsonResult(result);
