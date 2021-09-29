@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import 'antd/dist/antd.css';
 import styles from './style/styles.module.scss';
 import { useParams } from "react-router";
+import Item from "./Item/Item";
 
 const Showcase = (props) => {
 
@@ -16,14 +17,23 @@ const Showcase = (props) => {
         <>
             {
                 isVisible ? <div className={styles.wrapper}>
-                    <div className={styles.item}>I T E M</div>
-                    <div className={styles.item}>I T E M</div>
-                    <div className={styles.item}>I T E M</div>
-                    <div className={styles.item}>I T E M</div>
-                    <div className={styles.item}>I T E M</div>
-                    <div className={styles.item}>I T E M</div>
-                    <div className={styles.item}>I T E M</div>
-                    <div className={styles.item}>I T E M</div>
+                    <Item />
+                    <Item />
+                    <Item />
+                    <Item />
+                    <Item />
+                    <Item />
+                    <Item />
+                    <Item />
+                    <Item />
+                    <Item />
+                    <Item />
+                    <Item />
+                    <Item />
+                    <Item />
+                    <Item />
+                    <Item />
+                    <Item />
                 </div> : null
             }
         </>
