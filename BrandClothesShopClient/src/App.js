@@ -22,7 +22,9 @@ function App() {
           <NavMenu />
         </Route>
         <main className={styles.contentWrapper}>
-          <Showcase />
+          <Route path='/:params?'>
+            <Showcase />
+          </Route>
         </main>
       </div>
     </>
