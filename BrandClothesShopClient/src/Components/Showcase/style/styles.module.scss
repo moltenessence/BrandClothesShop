@@ -1,0 +1,17 @@
+//-------------
+//showcaseWrapper styles
+//-------------
+.wrapper {
+    widows: inherit;
+    height:fit-content;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    grid-gap: 10px 10px;
+}
+
+.item {
+    width: 250px;
+    height: 350px;
+    background-color: aquamarine;
+}
