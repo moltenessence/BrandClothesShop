@@ -5,6 +5,7 @@ import NavMenu from './Components/NavMenu/NavMenu';
 import HomePageBackground from './Components/PageBackgrounds/HomePageBackground/HomePageBackground';
 import { Route } from "react-router";
 import MainHeader from "./Components/Header/MainHeader";
+import Showcase from "./Components/Showcase/Showcase";
 
 function App() {
   return (
@@ -20,7 +21,11 @@ function App() {
         <Route path='/:params?'>
           <NavMenu />
         </Route>
-        <main className={styles.contentWrapper} />
+        <main className={styles.contentWrapper}>
+          <Route path='/:params?'>
+            <Showcase />
+          </Route>
+        </main>
       </div>
     </>
   );
