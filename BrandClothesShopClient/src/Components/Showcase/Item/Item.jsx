@@ -9,12 +9,12 @@ const Item = (props) => {
     return (
         <>
             <Card
-                style={{ width: 250, height: 400, border: 'none' }}
+                style={{ width: 270, height: 450, border: 'none' }}
                 hoverable={true}
                 cover={
                     <div style={{
-                        width: 250,
-                        height: 300,
+                        width: 'inherit',
+                        height: 320,
                         backgroundSize: 'cover',
                         backgroundImage: 'url(https://sun9-54.userapi.com/impg/47ebFoGgwl-t47Fb0IZcwK6SQCciJmmqL3Akfw/U7Hr7imAMTc.jpg?size=800x1200&quality=96&sign=ba772cac34c531233c7fdbca2621888c&type=album)',
                         backgroundRepeat: 'no-repeat',

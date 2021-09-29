@@ -5,9 +5,17 @@
     widows: inherit;
     height:fit-content;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    grid-gap: 20px 10px;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    grid-gap: 30px 10px;
+
+    @media (max-width: 720px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
+
+
 
 .item {
     width: 250px;
