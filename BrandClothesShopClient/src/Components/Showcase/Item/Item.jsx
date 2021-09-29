@@ -9,13 +9,17 @@ const Item = (props) => {
     return (
         <>
             <Card
-                style={{ width: 250, height: 350, border: 'none' }}
+                style={{ width: 250, height: 400, border: 'none' }}
                 hoverable={true}
                 cover={
-                    <img
-                        alt="example"
-                        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                    />
+                    <div style={{
+                        width: 250,
+                        height: 300,
+                        backgroundSize: 'cover',
+                        backgroundImage: 'url(https://sun9-54.userapi.com/impg/47ebFoGgwl-t47Fb0IZcwK6SQCciJmmqL3Akfw/U7Hr7imAMTc.jpg?size=800x1200&quality=96&sign=ba772cac34c531233c7fdbca2621888c&type=album)',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundPosition: 'top',
+                    }} />
                 }
             >
                 <Meta
