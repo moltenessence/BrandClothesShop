@@ -10,8 +10,8 @@
 
 .contentWrapper {
     margin-top: calc(2.5vw + 8vh);
+    min-width: 300px;
     width: 86%;
-    height: 1000px;
     color: white;
 
     @media (max-width: 720px) {
