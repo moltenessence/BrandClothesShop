@@ -9,7 +9,8 @@ const Item = (props) => {
     return (
         <>
             <Card
-            style={{width: 250}}
+                style={{ width: 250, height: 350, border: 'none' }}
+                hoverable={true}
                 cover={
                     <img
                         alt="example"
