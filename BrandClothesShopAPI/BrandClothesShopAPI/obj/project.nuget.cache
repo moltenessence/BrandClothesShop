@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2boaEdiLOEUj/c7FJE3mw1WEEU+BwGhh8cMeM3RCzPUrmrI87BCz98U/lrW+EHlux1doEtjWmV5y4pqySYllGw==",
+  "dgSpecHash": "BAfNvMK/ybSwofhNdJJv7DhDGRSfInbY8CUzJt9umoQ6VhdrSf+iv0a/H/0S9vrhUTwzr89bU5vzgO9hxnhPWQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\PC\\source\\repos\\BrandClothesShop\\BrandClothesShopAPI\\BrandClothesShopAPI\\BrandClothesShopAPI.csproj",
+  "projectFilePath": "C:\\Users\\PC\\Source\\Repos\\BrandClothesShop\\BrandClothesShopAPI\\BrandClothesShopAPI\\BrandClothesShopAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PC\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
