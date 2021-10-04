@@ -5,6 +5,7 @@ import { useParams } from "react-router";
 import Item from "./Item/Item";
 import { setItemsCollection } from "../../Store/Reducers/showcaseReducer/showcaseReducer";
 import { connect, useDispatch } from "react-redux";
+import Preloader from "../Common/Components/Preloader/Preloader";
 
 const Showcase = (props) => {
 
@@ -26,7 +27,7 @@ const Showcase = (props) => {
             {
                 isVisible ? <div className={styles.showcaseWrapper}>
                     {
-                        props.itemsCollection.map((item, index) => <Item
+                        props.isFetching ? <Preloader /> : props.itemsCollection.map((item, index) => <Item
                             modelName={item.modelName}
                             price={item.price}
                             photoUrl={item.photos[0].url}
@@ -42,6 +43,7 @@ const Showcase = (props) => {
 const mapStateToProps = (state) => {
     return {
         itemsCollection: state.showcase.itemsCollection,
+        isFetching: state.showcase.isFetching,
     }
 }
 
