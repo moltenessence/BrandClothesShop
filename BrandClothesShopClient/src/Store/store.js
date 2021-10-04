@@ -1,7 +1,7 @@
 import homePage from "./Reducers/homePageReducer/homePageReducer";
+import showcase from "./Reducers/showcaseReducer/showcaseReducer";
 import createSagaMiddleware from "@redux-saga/core";
 import ThunkMiddleware from "redux-thunk";
-import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 import saga from "./sagas";
 
@@ -14,6 +14,7 @@ const middleware = [
 
 const reducer = {
     homePage,
+    showcase,
 };
 
 let store = configureStore({

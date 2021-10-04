@@ -3,11 +3,18 @@ import 'antd/dist/antd.css';
 import styles from './style/styles.module.scss';
 import { useParams } from "react-router";
 import Item from "./Item/Item";
+import { setItemsCollection } from "../../Store/Reducers/showcaseReducer/showcaseReducer";
+import { connect, useDispatch } from "react-redux";
 
 const Showcase = (props) => {
 
+    const dispatch = useDispatch();
     const [isVisible, toggleVisibleMode] = useState(false);
     const params = useParams().params;
+
+    useEffect(() => {
+        dispatch(props.setItemsCollection());
+    }, []);
 
     useEffect(() => {
         params ? toggleVisibleMode(true) : toggleVisibleMode(false);
@@ -16,28 +23,25 @@ const Showcase = (props) => {
     return (
         <>
             {
-                isVisible ? <div className={styles.wrapper}>
-                    <Item />
-                    <Item />
-                    <Item />
-                    <Item />
-                    <Item />
-                    <Item />
-                    <Item />
-                    <Item />
-                    <Item />
-                    <Item />
-                    <Item />
-                    <Item />
-                    <Item />
-                    <Item />
-                    <Item />
-                    <Item />
-                    <Item />
+                isVisible ? <div className={styles.showcaseWrapper}>
+                    {
+                        props.itemsCollection.map((item, index) => <Item
+                            modelName={item.modelName}
+                            price={item.price}
+                            photoUrl={item.photos[0].url}
+                            key={index}
+                        />)
+                    }
                 </div> : null
             }
         </>
     );
 }
 
-export default Showcase;
+const mapStateToProps = (state) => {
+    return {
+        itemsCollection: state.showcase.itemsCollection,
+    }
+}
+
+export default connect(mapStateToProps, { setItemsCollection })(Showcase);
