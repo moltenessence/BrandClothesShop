@@ -13,12 +13,13 @@ const Showcase = (props) => {
     const params = useParams().params;
 
     useEffect(() => {
-        dispatch(props.setItemsCollection());
-    }, []);
-
-    useEffect(() => {
-        params ? toggleVisibleMode(true) : toggleVisibleMode(false);
-    });
+        if (params) {
+            dispatch(props.setItemsCollection({ itemType: params }));
+            toggleVisibleMode(true);
+        } else {
+            toggleVisibleMode(false);
+        }
+    }, [params]);
 
     return (
         <>

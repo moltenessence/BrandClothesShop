@@ -8,7 +8,6 @@ import Meta from "antd/lib/card/Meta";
 const Item = (props) => {
 
     const { photoUrl, modelName, price } = props;
-    console.log(props);
 
     return (
         <>

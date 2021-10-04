@@ -4,10 +4,11 @@ import { setItemsCollection } from "../../Store/Reducers/showcaseReducer/showcas
 
 function* setItemsCollectionWorker(action) {
     const { success, fulfill } = setItemsCollection;
+    const { itemType } = action.payload;
 
     try {
         const itemsCollection = yield call(() => {
-            return axios.get('http://localhost:60671/api/items/t-shirt/?page=1&count=10').then(response => response.data.items);
+            return axios.get(`http://localhost:60671/api/items/${itemType}/?page=1&count=10`).then(response => response.data.items);
         });
 
         yield put(success({ itemsCollection }));

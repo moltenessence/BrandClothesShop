@@ -1,5 +1,4 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { connect } from 'react-redux';
 import { createRoutine } from 'redux-saga-routines';
 
 export const setItemsCollection = createRoutine('showcase/SET_ITEMS_COLLECTION');
