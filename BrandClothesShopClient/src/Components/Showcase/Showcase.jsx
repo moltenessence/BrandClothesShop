@@ -9,12 +9,14 @@ import Preloader from "../Common/Components/Preloader/Preloader";
 
 const Showcase = (props) => {
 
+    const urlTriggers = ['t-shirt', 'hoodie'];
+
     const dispatch = useDispatch();
     const [isVisible, toggleVisibleMode] = useState(false);
     const params = useParams().params;
 
     useEffect(() => {
-        if (params) {
+        if (urlTriggers.some(item => item === params)) {
             dispatch(props.setItemsCollection({ itemType: params }));
             toggleVisibleMode(true);
         } else {
