@@ -25,5 +25,7 @@
         line-height: 1.2em;
     }
 
+    display: flex;
+    justify-content: center;
     font-family: $mainFontFamily !important;
 }

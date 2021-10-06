@@ -14,6 +14,7 @@ function* setItemsCollectionWorker(action) {
 
         yield put(setItemsCollection.success({ itemsCollection }));
         yield put(toggleIsFetching({ isFetching: false }));
+        
     } catch (error) {
         console.log(error);
     } finally {
