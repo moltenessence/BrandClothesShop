@@ -19,7 +19,33 @@ namespace DataStore
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-           
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<User>()
+                        .HasMany(o => o.Orders)
+                        .WithOne(o => o.User)
+                        .HasForeignKey(u => u.UserId)
+                        .IsRequired()
+                        .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Order>()
+                        .HasOne(o => o.User)
+                        .WithMany(u => u.Orders)
+                        .HasForeignKey(o => o.OrderId)
+                        .IsRequired()
+                        .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<User>()
+                      .HasMany(o => o.Orders)
+                      .WithOne(o => o.User)
+                      .HasForeignKey(u => u.UserId)
+                      .IsRequired();
+
+            modelBuilder.Entity<Order>()
+                       .HasOne(o => o.User)
+                       .WithMany(u => u.Orders)
+                       .HasForeignKey(o => o.OrderId);
+
         }
 
     }

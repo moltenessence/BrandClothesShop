@@ -10,6 +10,7 @@
         "dependencies": {
           "Core": "1.0.0",
           "EntityFramework": "6.4.4",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "3.1.19",
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "3.1.19",
           "Microsoft.EntityFrameworkCore": "5.0.10",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.10",
@@ -35,6 +36,17 @@
           "lib/netstandard2.1/EntityFramework.dll": {
             "assemblyVersion": "6.0.0.0",
             "fileVersion": "6.400.420.21404"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.JwtBearer/3.1.19": {
+        "dependencies": {
+          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "5.6.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
+            "assemblyVersion": "3.1.19.0",
+            "fileVersion": "3.100.1921.41713"
           }
         }
       },
@@ -1047,6 +1059,7 @@
       },
       "Core/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "3.1.19",
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "3.1.19",
           "Microsoft.EntityFrameworkCore": "5.0.10",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.10",
@@ -1070,6 +1083,13 @@
       "sha512": "sha512-yj1+/4tci7Panu3jKDHYizxwVm0Jvm7b7m057b5h4u8NUHGCR8WIWirBTw+8EptRffwftIWPBeIRGNKD1ewEMQ==",
       "path": "entityframework/6.4.4",
       "hashPath": "entityframework.6.4.4.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Authentication.JwtBearer/3.1.19": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cWE+aQgBLF3D899kenY9p7AuKlJJi60TPhoOB44A9/89eqxflTexbHWxK47cyMqR3Rmz0eAa2P43mPP+ThO03g==",
+      "path": "microsoft.aspnetcore.authentication.jwtbearer/3.1.19",
+      "hashPath": "microsoft.aspnetcore.authentication.jwtbearer.3.1.19.nupkg.sha512"
     },
     "Microsoft.AspNetCore.JsonPatch/3.1.19": {
       "type": "package",

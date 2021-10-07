@@ -13,6 +13,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using DataStore;
 using Newtonsoft.Json;
+using BrandClothesShopAPI.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace BrandClothesShopAPI
 {
@@ -33,7 +37,7 @@ namespace BrandClothesShopAPI
             string connectionString = Configuration.GetConnectionString("ClothesShopContext");
 
             services.AddDbContext<ClothesShopContext>(options =>
-                 options.UseSqlServer(connectionString));
+                 options.UseSqlServer(connectionString, b => b.MigrationsAssembly("BrandClothesShopAPI")));
 
             services.AddControllersWithViews();
             services.AddControllers()
@@ -44,7 +48,24 @@ namespace BrandClothesShopAPI
                 .AddNewtonsoftJson(options =>
                     options.SerializerSettings.Formatting = Formatting.Indented);
 
-            //services.AddControllers().AddNewtonsoftJson();
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                    .AddJwtBearer(options =>
+                    {
+                        options.RequireHttpsMetadata = false;
+                        options.TokenValidationParameters = new TokenValidationParameters
+                        {
+                            ValidateIssuer = true,
+                            ValidIssuer = AuthOptions.ISSUER,
+
+                            ValidateAudience = true,
+                            ValidAudience = AuthOptions.AUDIENCE,
+
+                            ValidateLifetime = true,
+
+                            IssuerSigningKey = AuthOptions.GetSymmetricSecurityKey(),
+                            ValidateIssuerSigningKey = true,
+                        };
+                    });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -64,6 +85,7 @@ namespace BrandClothesShopAPI
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

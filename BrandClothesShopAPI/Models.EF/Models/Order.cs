@@ -8,7 +8,7 @@ using System.Text;
 namespace BrandClothesShopAPI.Models
 {
     [Table("OrderList")]
-    public class Order : IOrder
+    public class Order
     {
         [Key]
         public int OrderId { get; set; }

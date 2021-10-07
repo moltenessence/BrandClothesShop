@@ -168,3 +168,4 @@ C:\Users\PC\Source\Repos\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAP
 C:\Users\PC\Source\Repos\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\obj\Debug\netcoreapp3.1\BrandClothesShopAPI.dll
 C:\Users\PC\Source\Repos\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\obj\Debug\netcoreapp3.1\BrandClothesShopAPI.pdb
 C:\Users\PC\Source\Repos\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\obj\Debug\netcoreapp3.1\BrandClothesShopAPI.genruntimeconfig.cache
+C:\Users\PC\Source\Repos\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll

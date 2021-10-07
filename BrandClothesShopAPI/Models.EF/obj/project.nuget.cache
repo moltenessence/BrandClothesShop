@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "MDfK5hUbh1NqARKEb+0G3fYNWjDQ1xTxupY0hVdqkKqB/UMI2apCcPRm6K5qnFS9Vh/S5a476ggQobp/ezMakA==",
+  "dgSpecHash": "UMj5wewTAdJJAVfEu7i+72+dfIqiajtNxpIO0v9ZRUlafIlzkJdbdjziC23xwq1ehbVU/l6vLphT1h/elYN/hQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\PC\\Source\\Repos\\BrandClothesShop\\BrandClothesShopAPI\\Models.EF\\Core.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.19\\microsoft.aspnetcore.authentication.jwtbearer.3.1.19.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.19\\microsoft.aspnetcore.jsonpatch.3.1.19.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.19\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.19.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -7,7 +8,6 @@ namespace BrandClothesShopAPI.Models
 {
     public class User : IUser
     {
-        [Key]
         public int UserId { get; set; }
         [Required]
         [DataType(DataType.EmailAddress)]
@@ -15,6 +15,7 @@ namespace BrandClothesShopAPI.Models
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+        public string Username { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
 
     }
