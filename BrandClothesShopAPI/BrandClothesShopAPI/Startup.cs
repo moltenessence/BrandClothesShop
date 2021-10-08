@@ -17,6 +17,9 @@ using BrandClothesShopAPI.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using BrandClothesShopAPI.Services;
+using AutoMapper;
+using Microsoft.AspNetCore.Http;
 
 namespace BrandClothesShopAPI
 {
@@ -38,6 +41,9 @@ namespace BrandClothesShopAPI
 
             services.AddDbContext<ClothesShopContext>(options =>
                  options.UseSqlServer(connectionString, b => b.MigrationsAssembly("BrandClothesShopAPI")));
+            services.AddScoped<IUserService, UserService>();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddControllersWithViews();
             services.AddControllers()
@@ -54,9 +60,8 @@ namespace BrandClothesShopAPI
                         options.RequireHttpsMetadata = false;
                         options.TokenValidationParameters = new TokenValidationParameters
                         {
-                            ValidateIssuer = true,
                             ValidIssuer = AuthOptions.ISSUER,
-
+                            ValidateIssuer = true,
                             ValidateAudience = true,
                             ValidAudience = AuthOptions.AUDIENCE,
 
@@ -66,6 +71,16 @@ namespace BrandClothesShopAPI
                             ValidateIssuerSigningKey = true,
                         };
                     });
+
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+            services.AddMvc();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

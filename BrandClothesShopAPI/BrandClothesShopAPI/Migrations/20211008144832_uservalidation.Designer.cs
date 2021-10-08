@@ -4,14 +4,16 @@ using DataStore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BrandClothesShopAPI.Migrations
 {
     [DbContext(typeof(ClothesShopContext))]
-    partial class ClothesShopContextModelSnapshot : ModelSnapshot
+    [Migration("20211008144832_uservalidation")]
+    partial class uservalidation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

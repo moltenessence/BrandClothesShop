@@ -14,7 +14,7 @@ namespace BrandClothesShopAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ItemsController : ControllerBase, IItemsController
+    public class ItemsController : ControllerBase
     {
         private readonly ClothesShopContext _context;
         public ItemsController(ClothesShopContext context)
