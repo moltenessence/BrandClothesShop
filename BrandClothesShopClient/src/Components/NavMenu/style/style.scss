@@ -13,3 +13,7 @@
 .navMenuWrapperLight {
     @include navMenu(white, $commonLightTextColor);
 }
+
+.loginItem {
+    margin-top: 2vh !important;
+}

@@ -23,7 +23,7 @@
             padding: 0;
             height: 30px;
            
-            a {
+            .navLink {
                 color: $textColor;
                 &.active{
                     &::before{
@@ -40,7 +40,7 @@
         }
 
         .ant-menu-item-selected {
-            a {
+            .navLink {
                 color: $selectedTextColor !important;
             }
         }
