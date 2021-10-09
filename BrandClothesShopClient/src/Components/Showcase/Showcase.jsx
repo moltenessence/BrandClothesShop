@@ -3,41 +3,50 @@ import 'antd/dist/antd.css';
 import styles from './style/styles.module.scss';
 import { useParams } from "react-router";
 import Item from "./Item/Item";
+import { setItemsCollection } from "../../Store/Reducers/showcaseReducer/showcaseReducer";
+import { connect, useDispatch } from "react-redux";
+import Preloader from "../Common/Components/Preloader/Preloader";
 
 const Showcase = (props) => {
 
+    const urlTriggers = ['t-shirt', 'hoodie'];
+
+    const dispatch = useDispatch();
     const [isVisible, toggleVisibleMode] = useState(false);
     const params = useParams().params;
 
     useEffect(() => {
-        params ? toggleVisibleMode(true) : toggleVisibleMode(false);
-    });
+        if (urlTriggers.some(item => item === params)) {
+            dispatch(props.setItemsCollection({ itemType: params }));
+            toggleVisibleMode(true);
+        } else {
+            toggleVisibleMode(false);
+        }
+    }, [params]);
 
     return (
         <>
             {
-                isVisible ? <div className={styles.wrapper}>
-                    <Item />
-                    <Item />
-                    <Item />
-                    <Item />
-                    <Item />
-                    <Item />
-                    <Item />
-                    <Item />
-                    <Item />
-                    <Item />
-                    <Item />
-                    <Item />
-                    <Item />
-                    <Item />
-                    <Item />
-                    <Item />
-                    <Item />
+                isVisible ? <div className={styles.showcaseWrapper}>
+                    {
+                        props.isFetching ? <Preloader /> : props.itemsCollection.map((item, index) => <Item
+                            modelName={item.modelName}
+                            price={item.price}
+                            photoUrl={item.photos[0].url}
+                            key={index}
+                        />)
+                    }
                 </div> : null
             }
         </>
     );
 }
 
-export default Showcase;
+const mapStateToProps = (state) => {
+    return {
+        itemsCollection: state.showcase.itemsCollection,
+        isFetching: state.showcase.isFetching,
+    }
+}
+
+export default connect(mapStateToProps, { setItemsCollection })(Showcase);
