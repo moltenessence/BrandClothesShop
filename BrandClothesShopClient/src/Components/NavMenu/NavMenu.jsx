@@ -3,6 +3,8 @@ import { Menu, Modal, Form, Input, Button } from "antd";
 import './style/style.scss';
 import { useParams } from "react-router";
 import { NavLink } from "react-router-dom";
+import LoginForm from "./LoginForm/LoginForm";
+// import useLoginModal from "./LoginForm/hooks/useLoginModal";
 
 const NavMenu = (props) => {
     const params = useParams();
@@ -13,6 +15,8 @@ const NavMenu = (props) => {
         params.params ? toggleMode(true) : toggleMode(false);
     });
 
+    // const [LoginModal, toggleVisibleMode] = useLoginModal();
+
     return (
         <>
             <Modal
@@ -22,66 +26,9 @@ const NavMenu = (props) => {
                 onCancel={() => setLoginVisible(false)}
                 footer={null}
             >
-                <Form
-                    name="basic"
-                    labelCol={{
-                        span: 8,
-                    }}
-                    wrapperCol={{
-                        span: 16,
-                    }}
-                    initialValues={{
-                        remember: true,
-                    }}
-                    onFinish={() => alert('fin')}
-                    onFinishFailed={() => alert('fail')}
-                    autoComplete="off"
-                >
-                    <Form.Item
-                        label="Username"
-                        name="username"
-                    >
-                        <Input />
-                    </Form.Item>
-
-                    <Form.Item
-                        label="E-mail"
-                        name="email"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please input your e-mail!',
-                            },
-                        ]}
-                    >
-                        <Input />
-                    </Form.Item>
-
-                    <Form.Item
-                        label="Password"
-                        name="password"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please input your password!',
-                            },
-                        ]}
-                    >
-                        <Input.Password />
-                    </Form.Item>
-
-                    <Form.Item
-                        wrapperCol={{
-                            offset: 8,
-                            span: 16,
-                        }}
-                    >
-                        <Button type="primary" htmlType="submit">
-                            Submit
-                        </Button>
-                    </Form.Item>
-                </Form>
+                <LoginForm />
             </Modal>
+            {/* <LoginModal /> */}
             <div className={darkMode ? 'navMenuWrapperDark' : 'navMenuWrapperLight'}>
                 <Menu mode={'vertical'}>
                     <Menu.Item key='none'>
