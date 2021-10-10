@@ -1,25 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { Menu, Modal, Form, Input, Button } from "antd";
+import { Menu, Modal } from "antd";
 import './style/style.scss';
 import { useParams } from "react-router";
 import { NavLink } from "react-router-dom";
+import useAuth from "../AuthMe/hooks/useAuth";
 import LoginForm from "../AuthMe/LoginForm/LoginForm";
 import RegForm from "../AuthMe/RegistrationForm/RegForm";
-import useAuth from "../AuthMe/hooks/useAuth";
-// import useLoginModal from "./LoginForm/hooks/useLoginModal";
 
 const NavMenu = (props) => {
+
     const params = useParams();
     const [darkMode, toggleMode] = useState(true);
-    // const [isAuthVisible, setAuthVisible] = useState(false);
-    // const [isRegistered, setIsRegistered] = useState(true);
-    const {isAuthVisible, setAuthVisible, isRegistered, setIsRegistered} = useAuth();
+    const { isAuthVisible, setAuthVisible, isRegistered, setIsRegistered } = useAuth();
 
     useEffect(() => {
         params.params ? toggleMode(true) : toggleMode(false);
-    });
-
-    // const [LoginModal, toggleVisibleMode] = useLoginModal();
+    }, [params.params]);
 
     return (
         <>
@@ -43,7 +39,6 @@ const NavMenu = (props) => {
                     {isRegistered ? 'Create new account' : 'Sign In'}
                 </span>
             </Modal>
-            {/* <LoginModal /> */}
             <div className={darkMode ? 'navMenuWrapperDark' : 'navMenuWrapperLight'}>
                 <Menu mode={'vertical'}>
                     <Menu.Item key='none'>

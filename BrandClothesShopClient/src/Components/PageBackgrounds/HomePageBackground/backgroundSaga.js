@@ -1,4 +1,4 @@
-import { call, put, takeEvery } from '@redux-saga/core/effects';
+import { put, takeEvery } from '@redux-saga/core/effects';
 import { setBackground } from '../../../Store/Reducers/homePageReducer/homePageReducer';
 
 function* setBackgroundWorker(action) {

@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-export default () => {
-    const [isAuthVisible, setAuthVisible] = useState(false);
-    const [isRegistered, setIsRegistered] = useState(true);
+export default (authDisplay = false, registered = true) => {
+    const [isAuthVisible, setAuthVisible] = useState(authDisplay);
+    const [isRegistered, setIsRegistered] = useState(registered);
 
     const Auth = {
         isAuthVisible,
