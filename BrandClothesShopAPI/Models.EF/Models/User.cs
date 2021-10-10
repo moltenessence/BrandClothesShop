@@ -13,7 +13,6 @@ namespace BrandClothesShopAPI.Models
         public int UserId { get; set; }
         [Required]
         [DataType(DataType.EmailAddress)]
-        
         public string Email { get; set; }
         [Required]
         [DataType(DataType.Password)]
@@ -21,6 +20,7 @@ namespace BrandClothesShopAPI.Models
         [MinLength(5)]
         [JsonIgnore]
         public string Password { get; set; }
+        [MaxLength(20)]
         public string Username { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
 
