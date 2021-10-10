@@ -1,7 +1,7 @@
 import React from "react";
-import { AntInput, AntInputPassword } from "./AntInputs";
+import { AntInput, AntInputPassword } from "../../Common/Components/AntInputs/AntInputs";
 import { Form, Field } from "formik";
-import { usernameValidation, emailValidation, passwordValidation } from "./fieldValidation";
+import { usernameValidation, emailValidation, passwordValidation } from "../../Common/Components/AntInputs/fieldValidation/fieldValidation";
 
 
 const DisplayLoginForm = ({ handleSubmit, values, submitCount }) => {

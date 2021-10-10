@@ -3,13 +3,17 @@ import { Menu, Modal, Form, Input, Button } from "antd";
 import './style/style.scss';
 import { useParams } from "react-router";
 import { NavLink } from "react-router-dom";
-import LoginForm from "./LoginForm/LoginForm";
+import LoginForm from "../AuthMe/LoginForm/LoginForm";
+import RegForm from "../AuthMe/RegistrationForm/RegForm";
+import useAuth from "../AuthMe/hooks/useAuth";
 // import useLoginModal from "./LoginForm/hooks/useLoginModal";
 
 const NavMenu = (props) => {
     const params = useParams();
     const [darkMode, toggleMode] = useState(true);
-    const [isLoginVisible, setLoginVisible] = useState(false);
+    // const [isAuthVisible, setAuthVisible] = useState(false);
+    // const [isRegistered, setIsRegistered] = useState(true);
+    const {isAuthVisible, setAuthVisible, isRegistered, setIsRegistered} = useAuth();
 
     useEffect(() => {
         params.params ? toggleMode(true) : toggleMode(false);
@@ -21,12 +25,23 @@ const NavMenu = (props) => {
         <>
             <Modal
                 centered={true}
-                title={'Login'}
-                visible={isLoginVisible}
-                onCancel={() => setLoginVisible(false)}
+                title={isRegistered ? 'Login' : 'Registration'}
+                visible={isAuthVisible}
+                onCancel={() => setAuthVisible(false)}
                 footer={null}
             >
-                <LoginForm />
+                {
+                    isRegistered ?
+                        <LoginForm />
+                        :
+                        <RegForm />
+                }
+                <span
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => setIsRegistered(!isRegistered)}
+                >
+                    {isRegistered ? 'Create new account' : 'Sign In'}
+                </span>
             </Modal>
             {/* <LoginModal /> */}
             <div className={darkMode ? 'navMenuWrapperDark' : 'navMenuWrapperLight'}>
@@ -43,7 +58,7 @@ const NavMenu = (props) => {
                     <Menu.Item key='none-4'>
                         <NavLink to='/cart' className='navLink'>Cart</NavLink>
                     </Menu.Item>
-                    <Menu.Item className={'loginItem'} onClick={() => setLoginVisible(true)}>
+                    <Menu.Item className={'loginItem'} onClick={() => setAuthVisible(true)}>
                         <span className='navLink'>Login</span>
                     </Menu.Item>
                 </Menu>
