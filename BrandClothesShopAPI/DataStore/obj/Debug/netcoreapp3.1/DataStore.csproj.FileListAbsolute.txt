@@ -28,3 +28,18 @@ C:\Users\PC\Source\Repos\BrandClothesShop\BrandClothesShopAPI\DataStore\obj\Debu
 C:\Users\PC\Source\Repos\BrandClothesShop\BrandClothesShopAPI\DataStore\obj\Debug\netcoreapp3.1\DataStore.dll
 C:\Users\PC\Source\Repos\BrandClothesShop\BrandClothesShopAPI\DataStore\obj\Debug\netcoreapp3.1\DataStore.pdb
 C:\Users\PC\Source\Repos\BrandClothesShop\BrandClothesShopAPI\DataStore\obj\Debug\netcoreapp3.1\DataStore.genruntimeconfig.cache
+C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\DataStore\bin\Debug\netcoreapp3.1\DataStore.deps.json
+C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\DataStore\bin\Debug\netcoreapp3.1\DataStore.runtimeconfig.json
+C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\DataStore\bin\Debug\netcoreapp3.1\DataStore.runtimeconfig.dev.json
+C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\DataStore\bin\Debug\netcoreapp3.1\DataStore.dll
+C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\DataStore\bin\Debug\netcoreapp3.1\DataStore.pdb
+C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\DataStore\bin\Debug\netcoreapp3.1\Core.dll
+C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\DataStore\bin\Debug\netcoreapp3.1\Core.pdb
+C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\DataStore\obj\Debug\netcoreapp3.1\DataStore.csprojAssemblyReference.cache
+C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\DataStore\obj\Debug\netcoreapp3.1\DataStore.AssemblyInfoInputs.cache
+C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\DataStore\obj\Debug\netcoreapp3.1\DataStore.AssemblyInfo.cs
+C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\DataStore\obj\Debug\netcoreapp3.1\DataStore.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\DataStore\obj\Debug\netcoreapp3.1\DataStore.csproj.CopyComplete
+C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\DataStore\obj\Debug\netcoreapp3.1\DataStore.dll
+C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\DataStore\obj\Debug\netcoreapp3.1\DataStore.pdb
+C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\DataStore\obj\Debug\netcoreapp3.1\DataStore.genruntimeconfig.cache

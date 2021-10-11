@@ -20,13 +20,13 @@ const NavMenu = (props) => {
                         <NavLink to='/'>Home page</NavLink>
                     </Menu.Item>
                     <Menu.Item key='none-2'>
-                        <NavLink to='/ertg'>Men</NavLink>
+                        <NavLink to='/t-shirt'>T-shirts</NavLink>
                     </Menu.Item>
                     <Menu.Item key='none-3'>
-                        <NavLink to='/ertg'>Women</NavLink>
+                        <NavLink to='/hoodie'>Hoodies</NavLink>
                     </Menu.Item>
                     <Menu.Item key='none-4'>
-                        <NavLink to='/ertg'>Cart</NavLink>
+                        <NavLink to='/cart'>Cart</NavLink>
                     </Menu.Item>
                 </Menu>
             </div>
