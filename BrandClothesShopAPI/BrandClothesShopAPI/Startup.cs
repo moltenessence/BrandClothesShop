@@ -13,6 +13,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using DataStore;
 using Newtonsoft.Json;
+using BrandClothesShopAPI.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using BrandClothesShopAPI.Services;
+using AutoMapper;
+using Microsoft.AspNetCore.Http;
 
 namespace BrandClothesShopAPI
 {
@@ -33,7 +40,10 @@ namespace BrandClothesShopAPI
             string connectionString = Configuration.GetConnectionString("ClothesShopContext");
 
             services.AddDbContext<ClothesShopContext>(options =>
-                 options.UseSqlServer(connectionString));
+                 options.UseSqlServer(connectionString, b => b.MigrationsAssembly("BrandClothesShopAPI")));
+            services.AddScoped<IUserService, UserService>();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddControllersWithViews();
             services.AddControllers()
@@ -44,7 +54,38 @@ namespace BrandClothesShopAPI
                 .AddNewtonsoftJson(options =>
                     options.SerializerSettings.Formatting = Formatting.Indented);
 
-            //services.AddControllers().AddNewtonsoftJson();
+            var tokenValidationParameters = new TokenValidationParameters()
+            {
+                ValidIssuer = AuthOptions.ISSUER,
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidAudience = AuthOptions.AUDIENCE,
+
+                ValidateLifetime = false,
+
+                IssuerSigningKey = AuthOptions.GetSymmetricSecurityKey(),
+                ValidateIssuerSigningKey = true,
+            };
+
+            services.AddSingleton(tokenValidationParameters);
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                    .AddJwtBearer(options =>
+                    {
+                        options.RequireHttpsMetadata = false;
+                        options.SaveToken = true;
+                        options.TokenValidationParameters = tokenValidationParameters;
+                    });
+
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+            services.AddMvc();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -64,6 +105,7 @@ namespace BrandClothesShopAPI
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

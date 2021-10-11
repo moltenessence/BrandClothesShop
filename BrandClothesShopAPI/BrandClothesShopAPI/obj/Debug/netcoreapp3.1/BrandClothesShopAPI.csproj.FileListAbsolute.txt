@@ -168,6 +168,9 @@ C:\Users\PC\Source\Repos\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAP
 C:\Users\PC\Source\Repos\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\obj\Debug\netcoreapp3.1\BrandClothesShopAPI.dll
 C:\Users\PC\Source\Repos\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\obj\Debug\netcoreapp3.1\BrandClothesShopAPI.pdb
 C:\Users\PC\Source\Repos\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\obj\Debug\netcoreapp3.1\BrandClothesShopAPI.genruntimeconfig.cache
+C:\Users\PC\Source\Repos\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\PC\Source\Repos\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\PC\Source\Repos\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\BrandClothesShopAPI.exe
@@ -176,6 +179,8 @@ C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\Brand
 C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\BrandClothesShopAPI.runtimeconfig.dev.json
 C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\BrandClothesShopAPI.dll
 C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\BrandClothesShopAPI.pdb
+C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\EntityFramework.SqlServer.dll
 C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\EntityFramework.dll
 C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\Humanizer.dll
@@ -184,6 +189,7 @@ C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\Brand
 C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\System.Web.WebPages.Deployment.dll
 C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\System.Web.WebPages.Razor.dll
 C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\System.Web.WebPages.dll
+C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\Lenovo\Desktop\web shop\work\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
