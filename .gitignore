@@ -25,3 +25,6 @@ BrandClothesShopAPI/BrandClothesShopAPI/obj/Debug/netcoreapp3.1/BrandClothesShop
 BrandClothesShopAPI/DataStore/bin/Debug/netcoreapp3.1/Core.dll
 *.pdb
 *.cache
+*.cache
+*.cache
+BrandClothesShopAPI/.vs/BrandClothesShopAPI/v16/.suo

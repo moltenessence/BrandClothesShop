@@ -24,16 +24,16 @@ namespace BrandClothesShopAPI.Controllers
         [HttpPost("Register")]
         public async Task<IActionResult> Register(RegistrationModel user)
         {
-            var authenticateResponse = await _userService.Register(user);
+            var registrationResponse = await _userService.Register(user);
 
-            if (authenticateResponse == null)
+            if (registrationResponse == null)
             {
-                return BadRequest("The user hadn't been registered!");
+                return new UnprocessableEntityObjectResult("The user with such email already exists!");
             }
 
             var response = new
             {
-                AuthenticateResponse = authenticateResponse,
+                RegistrationResponse = registrationResponse,
                 StatusCode = Response.StatusCode
             };
 
@@ -41,9 +41,9 @@ namespace BrandClothesShopAPI.Controllers
         }
 
         [HttpPost("Authenticate")]
-        public IActionResult Authenticate(AuthenticateRequest user)
+        public async Task<IActionResult> Authenticate(AuthenticateRequest user)
         {
-            var authenticateResponse = _userService.Authenticate(user);
+            var authenticateResponse = await _userService.Authenticate(user);
 
             if (authenticateResponse == null)
                 return BadRequest("Invalid email or password!");

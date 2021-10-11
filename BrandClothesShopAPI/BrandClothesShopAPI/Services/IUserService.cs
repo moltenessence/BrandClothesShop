@@ -10,8 +10,8 @@ namespace BrandClothesShopAPI.Services
 {
     public interface IUserService
     {
-        AuthenticateResponse Authenticate(AuthenticateRequest user);
-        Task<AuthenticateResponse> Register(RegistrationModel user);
+        Task<AuthenticateResponse> Authenticate(AuthenticateRequest user);
+        Task<RegistrationResponse> Register(RegistrationModel user);
         IEnumerable<User> GetAll();
     }
 }

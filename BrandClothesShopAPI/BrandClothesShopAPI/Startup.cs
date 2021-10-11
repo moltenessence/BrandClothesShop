@@ -54,22 +54,27 @@ namespace BrandClothesShopAPI
                 .AddNewtonsoftJson(options =>
                     options.SerializerSettings.Formatting = Formatting.Indented);
 
+            var tokenValidationParameters = new TokenValidationParameters()
+            {
+                ValidIssuer = AuthOptions.ISSUER,
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidAudience = AuthOptions.AUDIENCE,
+
+                ValidateLifetime = true,
+
+                IssuerSigningKey = AuthOptions.GetSymmetricSecurityKey(),
+                ValidateIssuerSigningKey = true,
+            };
+
+            services.AddSingleton(tokenValidationParameters);
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                     .AddJwtBearer(options =>
                     {
                         options.RequireHttpsMetadata = false;
-                        options.TokenValidationParameters = new TokenValidationParameters
-                        {
-                            ValidIssuer = AuthOptions.ISSUER,
-                            ValidateIssuer = true,
-                            ValidateAudience = true,
-                            ValidAudience = AuthOptions.AUDIENCE,
-
-                            ValidateLifetime = true,
-
-                            IssuerSigningKey = AuthOptions.GetSymmetricSecurityKey(),
-                            ValidateIssuerSigningKey = true,
-                        };
+                        options.SaveToken = true;
+                        options.TokenValidationParameters = tokenValidationParameters;
                     });
 
             var mappingConfig = new MapperConfiguration(mc =>
