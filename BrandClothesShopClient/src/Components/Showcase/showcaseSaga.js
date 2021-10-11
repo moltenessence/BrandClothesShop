@@ -4,7 +4,7 @@ import { setItemsCollection, toggleIsFetching } from "../../Store/Reducers/showc
 
 function* setItemsCollectionWorker(action) {
     const { itemType } = action.payload;
-    try {
+    try {        
         yield put(toggleIsFetching({ isFetching: true }));
 
         const itemsCollection = yield call(() => {
@@ -20,6 +20,6 @@ function* setItemsCollectionWorker(action) {
     }
 }
 
-export function* setItemsCollectionWatcher() {
+export function* setItemsCollectionWatcher() {    
     yield takeEvery(setItemsCollection.TRIGGER, setItemsCollectionWorker);
 }

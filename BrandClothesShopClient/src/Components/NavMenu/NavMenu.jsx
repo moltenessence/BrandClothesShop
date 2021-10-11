@@ -39,6 +39,7 @@ const NavMenu = (props) => {
                     {isRegistered ? 'Create new account' : 'Sign In'}
                 </span>
             </Modal>
+            
             <div className={darkMode ? 'navMenuWrapperDark' : 'navMenuWrapperLight'}>
                 <Menu mode={'vertical'}>
                     <Menu.Item key='none'>

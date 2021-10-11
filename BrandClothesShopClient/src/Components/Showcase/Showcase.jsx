@@ -7,8 +7,7 @@ import { setItemsCollection } from "../../Store/Reducers/showcaseReducer/showcas
 import { connect, useDispatch } from "react-redux";
 import Preloader from "../Common/Components/Preloader/Preloader";
 
-const Showcase = (props) => {
-
+const Showcase = ({setItemsCollection, itemsCollection, isFetching}) => {
     const urlTriggers = ['t-shirt', 'hoodie'];
 
     const dispatch = useDispatch();
@@ -17,7 +16,7 @@ const Showcase = (props) => {
 
     useEffect(() => {
         if (urlTriggers.some(item => item === params)) {
-            dispatch(props.setItemsCollection({ itemType: params }));
+            dispatch(setItemsCollection({ itemType: params }));
             toggleVisibleMode(true);
         } else {
             toggleVisibleMode(false);
@@ -29,7 +28,7 @@ const Showcase = (props) => {
             {
                 isVisible ? <div className={styles.showcaseWrapper}>
                     {
-                        props.isFetching ? <Preloader /> : props.itemsCollection.map((item, index) => <Item
+                        isFetching ? <Preloader /> : itemsCollection.map((item, index) => <Item
                             modelName={item.modelName}
                             price={item.price}
                             photoUrl={item.photos[0].url}
