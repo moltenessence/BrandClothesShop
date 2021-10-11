@@ -61,7 +61,7 @@ namespace BrandClothesShopAPI
                 ValidateAudience = true,
                 ValidAudience = AuthOptions.AUDIENCE,
 
-                ValidateLifetime = true,
+                ValidateLifetime = false,
 
                 IssuerSigningKey = AuthOptions.GetSymmetricSecurityKey(),
                 ValidateIssuerSigningKey = true,
