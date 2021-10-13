@@ -6,12 +6,14 @@ import { NavLink } from "react-router-dom";
 import useAuth from "../AuthMe/hooks/useAuth";
 import LoginForm from "../AuthMe/LoginForm/LoginForm";
 import RegForm from "../AuthMe/RegistrationForm/RegForm";
+import { useModal } from "../AuthMe/hooks/useModal";
 
 const NavMenu = (props) => {
 
     const params = useParams();
     const [darkMode, toggleMode] = useState(true);
     const { isAuthVisible, setAuthVisible, isRegistered, setIsRegistered } = useAuth();
+    // const { ModalComponent, modalOpen } = useModal();
 
     useEffect(() => {
         params.params ? toggleMode(true) : toggleMode(false);
@@ -19,6 +21,7 @@ const NavMenu = (props) => {
 
     return (
         <>
+            {/* <ModalComponent /> */}
             <Modal
                 centered={true}
                 title={isRegistered ? 'Login' : 'Registration'}
@@ -39,7 +42,7 @@ const NavMenu = (props) => {
                     {isRegistered ? 'Create new account' : 'Sign In'}
                 </span>
             </Modal>
-            
+
             <div className={darkMode ? 'navMenuWrapperDark' : 'navMenuWrapperLight'}>
                 <Menu mode={'vertical'}>
                     <Menu.Item key='none'>

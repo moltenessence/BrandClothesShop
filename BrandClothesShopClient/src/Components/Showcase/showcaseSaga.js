@@ -15,8 +15,6 @@ function* setItemsCollectionWorker(action) {
 
     } catch (error) {
         console.log(error);
-    } finally {
-        yield put(setItemsCollection.fulfill());
     }
 }
 

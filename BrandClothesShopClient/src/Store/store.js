@@ -18,6 +18,7 @@ const reducer = {
 let store = configureStore({
     reducer,
     middleware,
+    devTools: true,
 });
 
 sagaMiddleware.run(saga);

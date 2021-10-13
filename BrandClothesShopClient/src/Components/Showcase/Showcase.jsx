@@ -7,9 +7,8 @@ import { setItemsCollection } from "../../Store/Reducers/showcaseReducer/showcas
 import { connect, useDispatch } from "react-redux";
 import Preloader from "../Common/Components/Preloader/Preloader";
 
-const Showcase = ({setItemsCollection, itemsCollection, isFetching}) => {
+const Showcase = ({ setItemsCollection, itemsCollection, isFetching }) => {
     const urlTriggers = ['t-shirt', 'hoodie'];
-
     const dispatch = useDispatch();
     const [isVisible, toggleVisibleMode] = useState(false);
     const params = useParams().params;
