@@ -34,7 +34,7 @@ const DisplayRegForm = ({ handleSubmit, values, submitCount }) => {
                 defaultValue={values.password}
                 hasFeedback
             />
-            <button className="ant-btn ant-btn-primary" type="submit">
+            <button className="ant-btn" type="submit">
                 Submit
             </button>
         </Form>

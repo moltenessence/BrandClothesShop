@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Modal } from "antd";
-import LoginForm from "../LoginForm/LoginForm";
-import RegForm from '../RegistrationForm/RegForm';
+import "./style/style.scss";
+import LoginForm from "../../LoginForm/LoginForm";
+import RegForm from '../../RegistrationForm/RegForm';
 
 export const useAuthModal = () => {
     const [isLoginVisible, setLoginVisible] = useState(false);
@@ -19,14 +20,15 @@ export const useAuthModal = () => {
         const [isRegistered, setIsRegistered] = useState(true);
 
         return (
-            <div>
-                <Modal
-                    centered={true}
-                    title={isRegistered ? 'Login' : 'Registration'}
-                    visible={isLoginVisible}
-                    onCancel={handleClose}
-                    footer={null}
-                >
+            <Modal
+                className="authModal"
+                centered={true}
+                title={isRegistered ? 'Login' : 'Registration'}
+                visible={isLoginVisible}
+                onCancel={handleClose}
+                footer={null}
+            >
+                <div className="authModalBody">
                     {
                         isRegistered ?
                             <LoginForm />
@@ -34,13 +36,13 @@ export const useAuthModal = () => {
                             <RegForm />
                     }
                     <span
-                        style={{ cursor: 'pointer' }}
+                        style={{ cursor: 'pointer', marginTop: 20, display: 'block' }}
                         onClick={() => setIsRegistered(!isRegistered)}
                     >
                         {isRegistered ? 'Create new account' : 'Sign In'}
                     </span>
-                </Modal>
-            </div>
+                </div>
+            </Modal>
         );
     };
 

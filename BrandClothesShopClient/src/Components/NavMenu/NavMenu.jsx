@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Menu, Modal } from "antd";
-import styles from './style/style.module.scss';
+import './style/style.scss';
 import { useParams } from "react-router";
 import { NavLink } from "react-router-dom";
 import useAuth from "../AuthMe/hooks/useAuth";
 import LoginForm from "../AuthMe/LoginForm/LoginForm";
 import RegForm from "../AuthMe/RegistrationForm/RegForm";
-import { useAuthModal } from "../AuthMe/hooks/useAuthModal";
+import { useAuthModal } from "../AuthMe/hooks/useAuthModal/useAuthModal";
 
 const NavMenu = (props) => {
 
@@ -43,7 +43,7 @@ const NavMenu = (props) => {
                 </span>
             </Modal> */}
 
-            <div className={darkMode ? styles.navMenuWrapperDark : styles.navMenuWrapperLight}>
+            <div className={darkMode ? 'navMenuWrapperDark' : 'navMenuWrapperLight'}>
                 <Menu mode={'vertical'}>
                     <Menu.Item key='none'>
                         <NavLink to='/' className='navLink'>Home page</NavLink>
@@ -57,7 +57,7 @@ const NavMenu = (props) => {
                     <Menu.Item key='none-4'>
                         <NavLink to='/cart' className='navLink'>Cart</NavLink>
                     </Menu.Item>
-                    <Menu.Item className={styles.loginItem} onClick={() => modalOpen()}>
+                    <Menu.Item className={'loginItem'} onClick={() => modalOpen()}>
                         <span className='navLink'>Login</span>
                     </Menu.Item>
                 </Menu>
