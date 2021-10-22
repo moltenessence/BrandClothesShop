@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Modal } from "antd";
 import LoginForm from "../LoginForm/LoginForm";
+import RegForm from '../RegistrationForm/RegForm';
 
 export const useModal = () => {
     const [isLoginVisible, setLoginVisible] = useState(false);
@@ -14,16 +15,30 @@ export const useModal = () => {
     };
 
     const CustomModal = () => {
+
+        const [isRegistered, setIsRegistered] = useState(true);
+
         return (
             <div>
                 <Modal
                     centered={true}
-                    title={"Login"}
+                    title={isRegistered ? 'Login' : 'Registration'}
                     visible={isLoginVisible}
                     onCancel={handleClose}
                     footer={null}
                 >
-                    <LoginForm />
+                    {
+                        isRegistered ?
+                            <LoginForm />
+                            :
+                            <RegForm />
+                    }
+                    <span
+                        style={{ cursor: 'pointer' }}
+                        onClick={() => setIsRegistered(!isRegistered)}
+                    >
+                        {isRegistered ? 'Create new account' : 'Sign In'}
+                    </span>
                 </Modal>
             </div>
         );
