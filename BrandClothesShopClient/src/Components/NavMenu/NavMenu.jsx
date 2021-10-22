@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Menu, Modal } from "antd";
-import './style/style.scss';
+import styles from './style/style.module.scss';
 import { useParams } from "react-router";
 import { NavLink } from "react-router-dom";
 import useAuth from "../AuthMe/hooks/useAuth";
 import LoginForm from "../AuthMe/LoginForm/LoginForm";
 import RegForm from "../AuthMe/RegistrationForm/RegForm";
-import { useModal } from "../AuthMe/hooks/useModal";
+import { useAuthModal } from "../AuthMe/hooks/useAuthModal";
 
 const NavMenu = (props) => {
 
     const urlParams = useParams().params;
     const [darkMode, toggleMode] = useState(true);
     // const { isAuthVisible, setAuthVisible, isRegistered, setIsRegistered } = useAuth();
-    const { ModalComponent, modalOpen } = useModal();
+    const { ModalComponent, modalOpen } = useAuthModal();
 
     useEffect(() => {
         urlParams ? toggleMode(true) : toggleMode(false);
@@ -43,7 +43,7 @@ const NavMenu = (props) => {
                 </span>
             </Modal> */}
 
-            <div className={darkMode ? 'navMenuWrapperDark' : 'navMenuWrapperLight'}>
+            <div className={darkMode ? styles.navMenuWrapperDark : styles.navMenuWrapperLight}>
                 <Menu mode={'vertical'}>
                     <Menu.Item key='none'>
                         <NavLink to='/' className='navLink'>Home page</NavLink>
@@ -57,7 +57,7 @@ const NavMenu = (props) => {
                     <Menu.Item key='none-4'>
                         <NavLink to='/cart' className='navLink'>Cart</NavLink>
                     </Menu.Item>
-                    <Menu.Item className={'loginItem'} onClick={() => modalOpen()}>
+                    <Menu.Item className={styles.loginItem} onClick={() => modalOpen()}>
                         <span className='navLink'>Login</span>
                     </Menu.Item>
                 </Menu>

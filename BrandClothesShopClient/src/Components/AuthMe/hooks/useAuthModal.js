@@ -3,7 +3,7 @@ import { Modal } from "antd";
 import LoginForm from "../LoginForm/LoginForm";
 import RegForm from '../RegistrationForm/RegForm';
 
-export const useModal = () => {
+export const useAuthModal = () => {
     const [isLoginVisible, setLoginVisible] = useState(false);
 
     const handleOpen = () => {
