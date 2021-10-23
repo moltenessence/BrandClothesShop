@@ -1,5 +1,5 @@
 import { put, takeEvery } from '@redux-saga/core/effects';
-import { setBackground } from '../../../Store/Reducers/homePageReducer/homePageReducer';
+import { setBackground } from '../../../Store/Reducers/homePageReducer/actionCreators';
 
 function* setBackgroundWorker(action) {
     const { url } = action.payload;

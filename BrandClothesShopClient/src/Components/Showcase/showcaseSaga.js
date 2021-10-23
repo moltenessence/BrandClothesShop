@@ -1,6 +1,6 @@
 import { call, takeEvery, put } from "redux-saga/effects";
 import * as axios from "axios";
-import { setItemsCollection, toggleIsFetching } from "../../Store/Reducers/showcaseReducer/showcaseReducer";
+import { setItemsCollection, toggleIsFetching } from "../../Store/Reducers/showcaseReducer/actionCreators";
 
 function* setItemsCollectionWorker(action) {
     const { itemType } = action.payload;

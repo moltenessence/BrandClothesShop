@@ -2,7 +2,7 @@ import React from "react";
 import { Formik } from 'formik';
 import DisplayRegForm from "./DisplayRegForm";
 import { useDispatch } from "react-redux";
-import { register } from "../../../Store/Reducers/authMeReducer/authMeReducer";
+import { register } from "../../../Store/Reducers/authMeReducer/actionCreators";
 
 const initialValues = {
     username: '',

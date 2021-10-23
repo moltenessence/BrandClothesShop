@@ -1,8 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { createRoutine } from 'redux-saga-routines';
-
-export const setItemsCollection = createRoutine('showcase/SET_ITEMS_COLLECTION');
-export const toggleIsFetching = createRoutine('showcase/TOGGLE_IS_FETCHING');
+import { toggleIsFetching, setItemsCollection } from './actionCreators';
 
 const showcase = createReducer(
     {

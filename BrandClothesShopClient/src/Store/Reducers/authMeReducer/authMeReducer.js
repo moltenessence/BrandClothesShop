@@ -1,13 +1,10 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { createRoutine } from 'redux-saga-routines';
+import { login } from './actionCreators';
 
-export const login = createRoutine('authMe/LOGIN');
-export const register = createRoutine('authMe/REGISTER');
 
 const authMe = createReducer(
     {
         isAuth: false,
-        token: null,
     },
     {
         [login.SUCCESS]: (state, action) => {

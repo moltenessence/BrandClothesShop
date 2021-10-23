@@ -1,7 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { createRoutine } from 'redux-saga-routines';
-
-export const setBackground = createRoutine('homePage/SET_BACKGROUND');
+import { setBackground } from './actionCreators';
 
 const homePage = createReducer(
     {

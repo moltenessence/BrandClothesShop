@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
-import { setBackground } from "../../../Store/Reducers/homePageReducer/homePageReducer";
+import { setBackground } from "../../../Store/Reducers/homePageReducer/actionCreators";
 import styles from "./styles/HomePageBackground.module.scss";
 
 const HomePageBackground = (props) => {

@@ -2,7 +2,7 @@ import React from "react";
 import { Formik } from 'formik';
 import DisplayLoginForm from "./DisplayLoginForm";
 import { useDispatch } from "react-redux";
-import { login } from "../../../Store/Reducers/authMeReducer/authMeReducer";
+import { login } from "../../../Store/Reducers/authMeReducer/actionCreators";
 
 const initialValues = {
     email: '',

@@ -3,7 +3,7 @@ import 'antd/dist/antd.css';
 import styles from './style/styles.module.scss';
 import { useParams } from "react-router";
 import Item from "./Item/Item";
-import { setItemsCollection } from "../../Store/Reducers/showcaseReducer/showcaseReducer";
+import { setItemsCollection } from "../../Store/Reducers/showcaseReducer/actionCreators";
 import { connect, useDispatch } from "react-redux";
 import Preloader from "../Common/Components/Preloader/Preloader";
 
