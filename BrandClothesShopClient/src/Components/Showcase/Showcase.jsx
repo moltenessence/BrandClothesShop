@@ -10,22 +10,18 @@ const Showcase = ({ itemsCollection, isFetching }) => {
 
     const [isVisible] = useShowcase()
 
-    return (
-        <>
+    return isVisible ?
+        <div className={styles.showcaseWrapper}>
             {
-                isVisible ? <div className={styles.showcaseWrapper}>
-                    {
-                        isFetching ? <Preloader /> : itemsCollection.map((item, index) => <Item
-                            modelName={item.modelName}
-                            price={item.price}
-                            photoUrl={item.photos[0].url}
-                            key={index}
-                        />)
-                    }
-                </div> : null
+                isFetching ? <Preloader /> : itemsCollection.map((item, index) => <Item
+                    modelName={item.modelName}
+                    price={item.price}
+                    photoUrl={item.photos[0].url}
+                    key={index}
+                />)
             }
-        </>
-    );
+        </div> : null
+
 }
 
 const mapStateToProps = (state) => {

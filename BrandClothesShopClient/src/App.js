@@ -1,7 +1,7 @@
 import React from "react";
 import 'antd/dist/antd.css';
 import styles from './app.module.scss';
-import NavMenu from './Components/NavMenu/NavMenu';
+import NavMenu from './Components/NavMenu/DisplayNavMenu';
 import HomePageBackground from './Components/PageBackgrounds/HomePageBackground/HomePageBackground';
 import { Route } from "react-router";
 import MainHeader from "./Components/Header/MainHeader";
