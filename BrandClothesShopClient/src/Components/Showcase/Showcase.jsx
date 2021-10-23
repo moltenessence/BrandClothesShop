@@ -1,26 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import 'antd/dist/antd.css';
 import styles from './style/styles.module.scss';
-import { useParams } from "react-router";
 import Item from "./Item/Item";
-import { setItemsCollection } from "../../Store/Reducers/showcaseReducer/actionCreators";
-import { connect, useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import Preloader from "../Common/Components/Preloader/Preloader";
+import useShowcaseMode from "./hooks/useShowcaseMode";
 
-const Showcase = ({ setItemsCollection, itemsCollection, isFetching }) => {
-    const urlTriggers = ['t-shirt', 'hoodie'];
-    const dispatch = useDispatch();
-    const [isVisible, toggleVisibleMode] = useState(false);
-    const params = useParams().params;
+const Showcase = ({ itemsCollection, isFetching }) => {
 
-    useEffect(() => {
-        if (urlTriggers.some(item => item === params)) {
-            dispatch(setItemsCollection({ itemType: params }));
-            toggleVisibleMode(true);
-        } else {
-            toggleVisibleMode(false);
-        }
-    }, [params]);
+    const [isVisible] = useShowcaseMode()
 
     return (
         <>
@@ -47,4 +35,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { setItemsCollection })(Showcase);
+export default connect(mapStateToProps)(Showcase);
