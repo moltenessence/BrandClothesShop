@@ -22,10 +22,9 @@ const RegForm = (props) => {
         <>
             <Formik
                 initialValues={initialValues}
+                render={DisplayRegForm}
                 onSubmit={handleSubmit}
-            >
-                <DisplayRegForm />
-            </Formik>
+            />
         </>
     );
 }

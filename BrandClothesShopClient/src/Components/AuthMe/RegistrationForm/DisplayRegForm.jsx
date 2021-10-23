@@ -4,7 +4,7 @@ import { Form, Field } from "formik";
 import { usernameValidation, emailValidation, passwordValidation } from "../../Common/Components/AntInputs/fieldValidation/fieldValidation";
 
 
-const DisplayRegForm = ({ handleSubmit, values, submitCount }) => {
+const DisplayRegForm = ({ handleSubmit, values, submitCount, ...props }) => {
     return (
         <Form onSubmit={handleSubmit}>
             <Field
