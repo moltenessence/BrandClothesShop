@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Menu } from "antd";
 import './style/style.scss';
-import { useParams } from "react-router";
 import { NavLink } from "react-router-dom";
 import { useAuthModal } from "../AuthMe/hooks/useAuthModal/useAuthModal";
 import useNavMenu from "./hooks/useNavMenu";
