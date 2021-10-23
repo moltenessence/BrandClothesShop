@@ -1,6 +1,8 @@
 import React from "react";
 import { Formik } from 'formik';
 import DisplayRegForm from "./DisplayRegForm";
+import { useDispatch } from "react-redux";
+import { register } from "../../../Store/Reducers/authMeReducer/authMeReducer";
 
 const initialValues = {
     username: '',
@@ -8,11 +10,14 @@ const initialValues = {
     password: '',
 }
 
-const handleSubmit = (params) => {
-    alert(JSON.stringify(params));
-}
-
 const RegForm = (props) => {
+
+    const dispatch = useDispatch();
+
+    const handleSubmit = (params) => {
+        dispatch(register({ ...params }));
+    }
+
     return (
         <>
             <Formik

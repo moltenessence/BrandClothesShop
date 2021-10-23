@@ -14,7 +14,7 @@ const LoginForm = (props) => {
     const dispatch = useDispatch();
 
     const handleSubmit = (params) => {
-        dispatch(login(params));
+        dispatch(login({ ...params }));
     }
 
     return (

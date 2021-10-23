@@ -2,6 +2,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import { createRoutine } from 'redux-saga-routines';
 
 export const login = createRoutine('authMe/LOGIN');
+export const register = createRoutine('authMe/REGISTER');
 
 const authMe = createReducer(
     {
@@ -10,7 +11,8 @@ const authMe = createReducer(
     },
     {
         [login.SUCCESS]: (state, action) => {
-            state.token = action.payload.token;
+            const { token } = action.payload;
+            localStorage.setItem('token', token);
             state.isAuth = !state.isAuth;
         },
     }
