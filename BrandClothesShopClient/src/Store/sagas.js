@@ -1,5 +1,5 @@
 import { all } from 'redux-saga/effects';
-import { authMeWatcher } from '../Components/NavMenu/authMeSaga';
+import { authMeWatcher } from '../Components/AuthMe/AuthMeSaga/authMeSaga';
 import { setBackgroundWatcher } from '../Components/PageBackgrounds/HomePageBackground/backgroundSaga';
 import { setItemsCollectionWatcher } from '../Components/Showcase/showcaseSaga';
 

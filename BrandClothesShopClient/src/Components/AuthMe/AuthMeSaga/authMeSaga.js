@@ -1,6 +1,6 @@
 import { call, takeEvery, put } from "redux-saga/effects";
-import { login, register } from "../../Store/Reducers/authMeReducer/actionCreators";
-import AuthMeService from "../../Service/AuthMeService";
+import { login, register } from "../../../Store/Reducers/authMeReducer/actionCreators";
+import AuthMeService from "../../../Service/AuthMeService";
 
 function* loginWorker(action) {
 
