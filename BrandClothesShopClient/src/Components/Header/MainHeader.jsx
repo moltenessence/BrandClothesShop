@@ -13,7 +13,6 @@ const MainHeader = (props) => {
     return (
         <div className={styles.header}>
         <span className={darkMode ? styles.darkLogo : styles.lightLogo}>WEB SHOP</span>
-        <span>LOGIN</span>
         </div>
     );
 }

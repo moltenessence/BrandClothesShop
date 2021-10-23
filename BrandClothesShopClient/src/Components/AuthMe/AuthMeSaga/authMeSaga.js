@@ -27,8 +27,10 @@ function* registerWorker(action) {
         const { status } = yield call(() => AuthMeService.register(username, email, password));
 
         if (status === 200) {
+            const response = yield call(() => AuthMeService.login(email, password));
+            const { token, id } = response.data.authenticateResponse;
 
-            login({ email, password });
+            yield put(login.success({ token, email, id, username }));
         }
 
     } catch (e) {
