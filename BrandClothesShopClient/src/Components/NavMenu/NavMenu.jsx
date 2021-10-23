@@ -4,15 +4,12 @@ import './style/style.scss';
 import { useParams } from "react-router";
 import { NavLink } from "react-router-dom";
 import { useAuthModal } from "../AuthMe/hooks/useAuthModal/useAuthModal";
+import useNavMenu from "./hooks/useNavMenu";
 
 const NavMenu = (props) => {
-    const urlParams = useParams().params;
-    const [darkMode, toggleMode] = useState(true);
+    
+    const [darkMode] = useNavMenu();
     const { ModalComponent, modalOpen } = useAuthModal();
-
-    useEffect(() => {
-        urlParams ? toggleMode(true) : toggleMode(false);
-    }, [urlParams]);
 
     return (
         <>

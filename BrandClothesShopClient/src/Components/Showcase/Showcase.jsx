@@ -4,11 +4,11 @@ import styles from './style/styles.module.scss';
 import Item from "./Item/Item";
 import { connect } from "react-redux";
 import Preloader from "../Common/Components/Preloader/Preloader";
-import useShowcaseMode from "./hooks/useShowcaseMode";
+import useShowcase from "./hooks/useShowcase";
 
 const Showcase = ({ itemsCollection, isFetching }) => {
 
-    const [isVisible] = useShowcaseMode()
+    const [isVisible] = useShowcase()
 
     return (
         <>

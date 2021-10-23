@@ -1,5 +1,4 @@
 import { call, takeEvery, put } from "redux-saga/effects";
-import * as axios from "axios";
 import { setItemsCollection, toggleIsFetching } from "../../Store/Reducers/showcaseReducer/actionCreators";
 import ShowcaseService from "../../Service/ShowcaseService";
 
