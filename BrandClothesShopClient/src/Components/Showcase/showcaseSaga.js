@@ -4,12 +4,10 @@ import ShowcaseService from "../../Service/ShowcaseService";
 
 function* setItemsCollectionWorker(action) {
     const { itemType } = action.payload;
-    try {        
+    try {
         yield put(toggleIsFetching({ isFetching: true }));
 
-        const itemsCollection = yield call(() => {
-            return ShowcaseService.getItemsCollection(itemType);
-        });
+        const itemsCollection = yield call(() => ShowcaseService.getItemsCollection(itemType));
         yield put(setItemsCollection.success({ itemsCollection }));
         yield put(toggleIsFetching({ isFetching: false }));
 
@@ -18,6 +16,6 @@ function* setItemsCollectionWorker(action) {
     }
 }
 
-export function* setItemsCollectionWatcher() {    
+export function* setItemsCollectionWatcher() {
     yield takeEvery(setItemsCollection.TRIGGER, setItemsCollectionWorker);
 }
