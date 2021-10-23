@@ -1,9 +1,8 @@
 import { AuthMeAPI } from "./API"
 
-export default class {
-    static async registration(username = '', email, password) {
-        return AuthMeAPI.post('/account/register', {
-            username,
+export default class AuthMeService{
+    static async login(email, password) {
+        return AuthMeAPI.post('/account/authenticate', {
             email,
             password,
         });
