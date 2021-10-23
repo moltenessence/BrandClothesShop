@@ -20,3 +20,10 @@ AuthMeAPI.interceptors.request.use(config => {
 export const ShowcaseAPI = axios.create({
     baseURL,
 });
+
+//--------------
+//Showcase API
+//--------------
+export const BackgroundAPI = axios.create({
+    baseURL,
+});
