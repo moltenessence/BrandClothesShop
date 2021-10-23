@@ -2,10 +2,13 @@ import { Modal } from "antd";
 import LoginForm from "../LoginForm/LoginForm";
 import RegForm from "../RegistrationForm/RegForm";
 import useAuth from "../hooks/useAuth";
+import { connect } from "react-redux";
 
-export default ({ registered = true, authDisplay }) => {
+const AuthModal = ({ registered = true, authDisplay, isAuth, modalClose }) => {
 
     const { isAuthVisible, setAuthVisible, isRegistered, setIsRegistered } = useAuth(registered, authDisplay);
+
+    if (isAuth) modalClose();
 
     return (
         <Modal
@@ -30,3 +33,11 @@ export default ({ registered = true, authDisplay }) => {
         </Modal>
     );
 }
+
+const mapStateToProps = (state) => {
+    return {
+        isAuth: state.authMe.isAuth,
+    }
+}
+
+export default connect(mapStateToProps)(AuthModal)

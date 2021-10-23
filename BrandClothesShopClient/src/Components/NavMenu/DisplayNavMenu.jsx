@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './style/style.scss';
 import { useAuthModal } from "../AuthMe/hooks/useAuthModal/useAuthModal";
 import NavMenu from "./NavMenuComponent/NavMenu";
+import { connect } from "react-redux";
 
-const DisplayNavMenu = (props) => {
+const DisplayNavMenu = ({ isAuth }) => {
 
-    const { ModalComponent, modalOpen } = useAuthModal();
+    const { ModalComponent, modalOpen, modalClose } = useAuthModal();
+
+    useEffect(() => {
+        if (isAuth) modalClose()
+    }, [isAuth]);
 
     return (
         <>
@@ -15,4 +20,10 @@ const DisplayNavMenu = (props) => {
     );
 }
 
-export default DisplayNavMenu;
+const mapStateToProps = (state) => {
+    return {
+        isAuth: state.authMe.isAuth,
+    }
+}
+
+export default connect(mapStateToProps)(DisplayNavMenu);

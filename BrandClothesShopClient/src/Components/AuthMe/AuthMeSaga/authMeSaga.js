@@ -9,9 +9,9 @@ function* loginWorker(action) {
     try {
 
         const response = yield call(() => AuthMeService.login(email, password));
-        const { token } = response.data.authenticateResponse;
+        const { token, id, username } = response.data.authenticateResponse;
 
-        yield put(login.success({ token }));
+        yield put(login.success({ token, email, id, username }));
 
     } catch (e) {
         console.log(e);
@@ -28,10 +28,7 @@ function* registerWorker(action) {
 
         if (status === 200) {
 
-            const response = yield call(() => AuthMeService.login(email, password));
-            const { token } = response.data.authenticateResponse;
-
-            yield put(login.success({ token }));
+            login({ email, password });
         }
 
     } catch (e) {

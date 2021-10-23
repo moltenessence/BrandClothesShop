@@ -17,3 +17,11 @@
 .loginItem {
     margin-top: 2vh !important;
 }
+
+.helloItem {
+    margin-top: 2vh !important;
+    .username {
+        color: lightcoral !important;
+        font-weight: 700;
+    }
+}
