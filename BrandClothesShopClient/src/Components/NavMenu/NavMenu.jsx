@@ -4,18 +4,11 @@ import './style/style.scss';
 import { useParams } from "react-router";
 import { NavLink } from "react-router-dom";
 import { useAuthModal } from "../AuthMe/hooks/useAuthModal/useAuthModal";
-import { login } from "../../Store/Reducers/authMeReducer/authMeReducer";
-import { useDispatch } from "react-redux";
 
 const NavMenu = (props) => {
     const urlParams = useParams().params;
     const [darkMode, toggleMode] = useState(true);
     const { ModalComponent, modalOpen } = useAuthModal();
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(login({ email: 'dkd@maul.ru', password: 'lololo', }))
-    }, []);
 
     useEffect(() => {
         urlParams ? toggleMode(true) : toggleMode(false);
