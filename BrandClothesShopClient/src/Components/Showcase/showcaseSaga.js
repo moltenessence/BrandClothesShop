@@ -1,6 +1,7 @@
 import { call, takeEvery, put } from "redux-saga/effects";
 import * as axios from "axios";
 import { setItemsCollection, toggleIsFetching } from "../../Store/Reducers/showcaseReducer/actionCreators";
+import ShowcaseService from "../../Service/ShowcaseService";
 
 function* setItemsCollectionWorker(action) {
     const { itemType } = action.payload;
@@ -8,7 +9,7 @@ function* setItemsCollectionWorker(action) {
         yield put(toggleIsFetching({ isFetching: true }));
 
         const itemsCollection = yield call(() => {
-            return axios.get(`http://localhost:60671/api/items/${itemType}/?page=1&count=2`).then(response => response.data.items);
+            return ShowcaseService.getItemsCollection(itemType);
         });
         yield put(setItemsCollection.success({ itemsCollection }));
         yield put(toggleIsFetching({ isFetching: false }));
