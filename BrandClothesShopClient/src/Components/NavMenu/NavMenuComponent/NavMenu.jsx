@@ -34,7 +34,7 @@ const NavMenu = ({ modalOpen, userName, isAuth }) => {
                                 <span className='navLink'>Logout</span>
                             </Menu.Item>
                             <Menu.Item className={'helloItem'}>
-                                <span className='navLink'>Hello, <span className='username'>{userName}</span></span>
+                                <span className='navLink'>Hello, <span className='username'>{userName ? userName : 'guest'}</span></span>
                             </Menu.Item>
                         </>
                         :

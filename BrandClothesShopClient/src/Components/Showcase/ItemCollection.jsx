@@ -3,14 +3,16 @@ import 'antd/dist/antd.css';
 import Item from "./Item/Item";
 import { connect } from "react-redux";
 
+// modelName = { item.modelName }
+// price = { item.price }
+// photoUrl = { item.photos[0].url }
+
 const ItemsCollection = ({ itemsCollection }) => {
     return (
         <>
             {
                 itemsCollection.map((item, index) => <Item
-                    modelName={item.modelName}
-                    price={item.price}
-                    photoUrl={item.photos[0].url}
+                    {...item}
                     key={index}
                 />)
             }
