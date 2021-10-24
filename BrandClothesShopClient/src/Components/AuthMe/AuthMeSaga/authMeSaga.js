@@ -15,10 +15,11 @@ function* loginWorker(action) {
         yield put(login.success({ token, email, id, username }));
 
     } catch (e) {
+        
         if (e.response.status === 400) {
             const message = e.response.data;
             yield put(setServerError(message));
-        } else{
+        } else {
             console.log(e);
         }
     }
@@ -40,7 +41,13 @@ function* registerWorker(action) {
         }
 
     } catch (e) {
-        console.log(e)
+
+        if (e.response.status === 422) {
+            const message = e.response.data;
+            yield put(setServerError(message));
+        } else {
+            console.log(e);
+        }
     }
 }
 

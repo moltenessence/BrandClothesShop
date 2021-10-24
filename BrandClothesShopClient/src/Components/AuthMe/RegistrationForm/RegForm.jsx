@@ -10,7 +10,7 @@ const initialValues = {
     password: '',
 }
 
-const RegForm = (props) => {
+const RegForm = ({ error }) => {
 
     const dispatch = useDispatch();
 
@@ -25,6 +25,9 @@ const RegForm = (props) => {
                 render={DisplayRegForm}
                 onSubmit={handleSubmit}
             />
+            {
+                error ? <span>{error}</span> : null
+            }
         </>
     );
 }
