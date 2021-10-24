@@ -10,12 +10,11 @@ function* loginWorker(action) {
 
         const response = yield call(() => AuthMeService.login(email, password));
         const { token, id, username } = response.data.authenticateResponse;
-        const status = response.status;
-        console.log(response);
+
         yield put(login.success({ token, email, id, username }));
 
     } catch (e) {
-        
+
         if (e.response.status === 400) {
             const message = e.response.data;
             yield put(setServerError(message));
