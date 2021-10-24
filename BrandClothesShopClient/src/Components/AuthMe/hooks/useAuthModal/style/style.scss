@@ -4,3 +4,10 @@
 .authModal {
     font-family: $mainFontFamily !important;
 }
+
+.serverError {
+    display: block;
+    transition: .75s;
+    margin-top: 20px;
+    color: #ff4d4f;
+}

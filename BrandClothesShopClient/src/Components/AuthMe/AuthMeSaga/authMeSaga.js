@@ -1,5 +1,5 @@
 import { call, takeEvery, put } from "redux-saga/effects";
-import { login, register } from "../../../Store/Reducers/authMeReducer/actionCreators";
+import { login, register, setServerError } from "../../../Store/Reducers/authMeReducer/actionCreators";
 import AuthMeService from "../../../Service/AuthMeService";
 
 function* loginWorker(action) {
@@ -10,11 +10,17 @@ function* loginWorker(action) {
 
         const response = yield call(() => AuthMeService.login(email, password));
         const { token, id, username } = response.data.authenticateResponse;
-
+        const status = response.status;
+        console.log(response);
         yield put(login.success({ token, email, id, username }));
 
     } catch (e) {
-        console.log(e);
+        if (e.response.status === 400) {
+            const message = e.response.data;
+            yield put(setServerError(message));
+        } else{
+            console.log(e);
+        }
     }
 }
 

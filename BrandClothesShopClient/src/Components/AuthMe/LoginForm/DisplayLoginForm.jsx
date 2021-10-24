@@ -2,9 +2,11 @@ import React from "react";
 import { AntInput, AntInputPassword } from "../../Common/Components/AntInputs/AntInputs";
 import { Form, Field } from "formik";
 import { emailValidation, passwordValidation } from "../../Common/Components/AntInputs/fieldValidation/fieldValidation";
+import { connect } from "react-redux";
 
 
-const DisplayLoginForm = ({ handleSubmit, values, submitCount }) => {
+const DisplayLoginForm = ({ handleSubmit, values, submitCount, error }) => {
+
     return (
         <Form onSubmit={handleSubmit}>
             <Field

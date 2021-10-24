@@ -9,7 +9,7 @@ const initialValues = {
     password: '',
 }
 
-const LoginForm = (props) => {
+const LoginForm = ({ error }) => {
 
     const dispatch = useDispatch();
 
@@ -24,6 +24,9 @@ const LoginForm = (props) => {
                 render={DisplayLoginForm}
                 onSubmit={handleSubmit}
             />
+            {
+                error ? <span>{error}</span> : null
+            }
         </>
     );
 }

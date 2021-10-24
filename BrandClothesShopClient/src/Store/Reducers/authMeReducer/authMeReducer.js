@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { login, logout } from './actionCreators';
+import { login, logout, setServerError } from './actionCreators';
 
 
 const authMe = createReducer(
@@ -8,6 +8,7 @@ const authMe = createReducer(
         userId: null,
         userName: null,
         email: null,
+        serverError: null,
     },
     {
         [login.SUCCESS]: (state, action) => {
@@ -18,9 +19,14 @@ const authMe = createReducer(
             state.email = email;
             state.userName = username;
         },
+
         [logout.TRIGGER]: (state) => {
             state.isAuth = false;
             localStorage.removeItem('token');
+        },
+
+        [setServerError.TRIGGER]: (state, action) => {
+            state.serverError = action.payload;
         }
     }
 );

@@ -3,8 +3,12 @@ import { Modal } from "antd";
 import "./style/style.scss";
 import LoginForm from "../../LoginForm/LoginForm";
 import RegForm from '../../RegistrationForm/RegForm';
+import { connect, useDispatch } from "react-redux";
+import { setServerError } from "../../../../Store/Reducers/authMeReducer/actionCreators";
 
 export const useAuthModal = () => {
+
+    const dispatch = useDispatch()
     const [isLoginVisible, setLoginVisible] = useState(false);
 
     const handleOpen = () => {
@@ -13,9 +17,10 @@ export const useAuthModal = () => {
 
     const handleClose = () => {
         setLoginVisible(false);
+        dispatch(setServerError(null));
     };
 
-    const CustomModal = () => {
+    const CustomModal = ({ error }) => {
 
         const [isRegistered, setIsRegistered] = useState(true);
 
@@ -35,6 +40,12 @@ export const useAuthModal = () => {
                             :
                             <RegForm />
                     }
+                    {
+                        error ?
+                            <span
+                                className='serverError'>{error}
+                            </span> : ''
+                    }
                     <span
                         style={{ cursor: 'pointer', marginTop: 20, display: 'block' }}
                         onClick={() => setIsRegistered(!isRegistered)}
@@ -46,8 +57,16 @@ export const useAuthModal = () => {
         );
     };
 
+    const mapStateToProps = (state) => {
+        return {
+            error: state.authMe.serverError,
+        }
+    }
+
+    const Component = connect(mapStateToProps)(CustomModal)
+
     return {
-        ModalComponent: CustomModal,
+        ModalComponent: Component,
         modalClose: handleClose,
         modalOpen: handleOpen
     };
