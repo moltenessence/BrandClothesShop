@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wMLeZiD3aynZlu30i15bfPsVvkHXzhUe+wO48DOGh/CgFUz8K+cJSqwnodSPRv0IZfH4wUQSmYV3UGwDbLXAXg==",
+  "dgSpecHash": "6iVSsC0ynwD3WKIesvfv8cH2dhqCJpYVgFVBu7VZY+mApv1G1mOi/w2XLkTMRJ7UAVJ2EapiMbh/Ko2YIEbZ+w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\PC\\Source\\Repos\\BrandClothesShop\\BrandClothesShopAPI\\BrandClothesShopAPI\\BrandClothesShopAPI.csproj",
+  "projectFilePath": "C:\\Users\\PC\\source\\repos\\BrandClothesShop\\BrandClothesShopAPI\\BrandClothesShopAPI\\BrandClothesShopAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PC\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

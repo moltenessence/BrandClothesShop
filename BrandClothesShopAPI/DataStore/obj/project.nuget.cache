@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ASpG2PT/vRJPnqocrxF1PnFQ7Q20//VNJNBwYnQq3y5htWDusaHmrI5cpshxcZ2MakmaCLBD3cNN8enPGB/Cuw==",
+  "dgSpecHash": "std8oInswOZYuf91Zohg2eYcwpUzjcNmST3MNH396xGXVrK6fuMOs1BOURYcqmHuk41fKljO/0CZ6dDz9vWM5A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\PC\\Source\\Repos\\BrandClothesShop\\BrandClothesShopAPI\\DataStore\\DataStore.csproj",
+  "projectFilePath": "C:\\Users\\PC\\source\\repos\\BrandClothesShop\\BrandClothesShopAPI\\DataStore\\DataStore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PC\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.19\\microsoft.aspnetcore.authentication.jwtbearer.3.1.19.nupkg.sha512",
