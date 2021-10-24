@@ -5784,11 +5784,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\web shop\\work\\BrandClothesShop\\BrandClothesShopAPI\\DataStore\\DataStore.csproj",
       "projectName": "DataStore",
       "projectPath": "C:\\Users\\Lenovo\\Desktop\\web shop\\work\\BrandClothesShop\\BrandClothesShopAPI\\DataStore\\DataStore.csproj",
       "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Lenovo\\Desktop\\web shop\\work\\BrandClothesShop\\BrandClothesShopAPI\\DataStore\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\PC\\source\\repos\\BrandClothesShop\\BrandClothesShopAPI\\DataStore\\DataStore.csproj",
+      "projectName": "DataStore",
+      "projectPath": "C:\\Users\\PC\\source\\repos\\BrandClothesShop\\BrandClothesShopAPI\\DataStore\\DataStore.csproj",
+      "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\PC\\source\\repos\\BrandClothesShop\\BrandClothesShopAPI\\DataStore\\obj\\",
+>>>>>>> 710b24c9880c99429977389049a412428d067767
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5805,8 +5813,13 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
+<<<<<<< HEAD
             "C:\\Users\\Lenovo\\Desktop\\web shop\\work\\BrandClothesShop\\BrandClothesShopAPI\\Models.EF\\Core.csproj": {
               "projectPath": "C:\\Users\\Lenovo\\Desktop\\web shop\\work\\BrandClothesShop\\BrandClothesShopAPI\\Models.EF\\Core.csproj"
+=======
+            "C:\\Users\\PC\\source\\repos\\BrandClothesShop\\BrandClothesShopAPI\\Models.EF\\Core.csproj": {
+              "projectPath": "C:\\Users\\PC\\source\\repos\\BrandClothesShop\\BrandClothesShopAPI\\Models.EF\\Core.csproj"
+>>>>>>> 710b24c9880c99429977389049a412428d067767
             }
           }
         }

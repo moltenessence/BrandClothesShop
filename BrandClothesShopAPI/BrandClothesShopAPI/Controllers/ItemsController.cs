@@ -31,8 +31,8 @@ namespace BrandClothesShopAPI.Controllers
             var totalAmount = _context.ClothesItems.Where(i => i.Type == type).Count();
             var amountToSkip = page == 1 ? 0 : (page - 1) * count;
 
-            if (count * page > totalAmount)
-                return BadRequest($"The number of items to take is out of range! Total amount of items of type '{type}' = {totalAmount}");
+            //if (count * page > totalAmount)
+            //    return BadRequest($"The number of items to take is out of range! Total amount of items of type '{type}' = {totalAmount}");
 
             var clothesItems = await _context.ClothesItems.Where(i => i.Type == type)
                                                           .Include("Photos")

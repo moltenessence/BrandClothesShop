@@ -13,13 +13,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using DataStore;
 using Newtonsoft.Json;
-using BrandClothesShopAPI.Models;
-using Microsoft.AspNetCore.Authentication.Cookies;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using BrandClothesShopAPI.Services;
-using AutoMapper;
 using Microsoft.AspNetCore.Http;
+using BrandClothesShopAPI.Services;
 
 namespace BrandClothesShopAPI
 {
@@ -40,10 +38,13 @@ namespace BrandClothesShopAPI
             string connectionString = Configuration.GetConnectionString("ClothesShopContext");
 
             services.AddDbContext<ClothesShopContext>(options =>
-                 options.UseSqlServer(connectionString, b => b.MigrationsAssembly("BrandClothesShopAPI")));
+               options.UseSqlServer(connectionString, b => b.MigrationsAssembly("BrandClothesShopAPI")));
             services.AddScoped<IUserService, UserService>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.AddDbContext<ClothesShopContext>(options =>
+                 options.UseSqlServer(connectionString));
 
             services.AddControllersWithViews();
             services.AddControllers()
@@ -86,6 +87,8 @@ namespace BrandClothesShopAPI
             services.AddSingleton(mapper);
 
             services.AddMvc();
+
+            //services.AddControllers().AddNewtonsoftJson();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -97,6 +100,7 @@ namespace BrandClothesShopAPI
 
             app.UseCors(options =>
             options.WithOrigins("http://localhost:3000")
+            .AllowCredentials()
             .AllowAnyHeader()
             .AllowAnyMethod());
 
