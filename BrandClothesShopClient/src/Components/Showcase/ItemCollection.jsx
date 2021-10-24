@@ -1,6 +1,5 @@
-import React, { Suspense } from "react";
+import React from "react";
 import 'antd/dist/antd.css';
-import styles from './style/styles.module.scss';
 import Item from "./Item/Item";
 import { connect } from "react-redux";
 
