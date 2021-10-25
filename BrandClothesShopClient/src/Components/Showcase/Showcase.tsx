@@ -8,7 +8,7 @@ const ItemCollection = React.lazy(() => import('./ItemCollection'));
 
 const Showcase = () => {
 
-    const [isVisible] = useShowcase()
+    const [isVisible]: boolean[] = useShowcase()
 
     return (
         isVisible ?

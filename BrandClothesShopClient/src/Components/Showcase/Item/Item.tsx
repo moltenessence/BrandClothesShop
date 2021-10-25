@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import 'antd/dist/antd.css';
 import './style/style.scss';
 import { Card, Modal } from "antd";
 import Meta from "antd/lib/card/Meta";
+import { Photo } from "../../../Store/Reducers/showcaseReducer/showcaseReducer";
 
+interface IProps {
+    photos: Photo[],
+    modelName: string,
+    price: number,
+}
 
-const Item = ({ photos, modelName, price, ...props }) => {
+const Item = ({ photos, modelName, price, ...props }: IProps) => {
 
-    const [isVisible, setIsVisible] = useState();
+    const [isVisible, setIsVisible] = useState<boolean>();
 
     const handleOpen = () => {
         setIsVisible(true);
@@ -26,9 +32,9 @@ const Item = ({ photos, modelName, price, ...props }) => {
                 onCancel={handleClose}
                 footer={null}
             >
-                <p>{props.brand}</p>
-                <p>{props.size}</p>
-                <p>{props.type}</p>
+                <p>afddsfdsafd</p>
+                <p>adsfdfasd</p>
+                <p>asdfaddaf</p>
             </Modal>
             <div
                 className={'itemCardWrapper'}
