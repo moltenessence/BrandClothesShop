@@ -1,14 +1,8 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "5qs9zjKAbUKkXkA6C2A6xfuEb6MlJcfloeChuEqoWmckFcnRlbuc0Zpa+8fCrtaEhzXeRgFyGa7z9rQ+n2vgzQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Lenovo\\Desktop\\web shop\\work\\BrandClothesShop\\BrandClothesShopAPI\\DataStore\\DataStore.csproj",
-=======
-  "dgSpecHash": "std8oInswOZYuf91Zohg2eYcwpUzjcNmST3MNH396xGXVrK6fuMOs1BOURYcqmHuk41fKljO/0CZ6dDz9vWM5A==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\PC\\source\\repos\\BrandClothesShop\\BrandClothesShopAPI\\DataStore\\DataStore.csproj",
->>>>>>> 710b24c9880c99429977389049a412428d067767
   "expectedPackageFiles": [
     "C:\\Users\\Lenovo\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.19\\microsoft.aspnetcore.authentication.jwtbearer.3.1.19.nupkg.sha512",
@@ -112,5 +106,12 @@
     "C:\\Users\\Lenovo\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Ошибка чтения файла кэша C:\\Users\\Lenovo\\Desktop\\web shop\\work\\BrandClothesShop\\BrandClothesShopAPI\\DataStore\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
