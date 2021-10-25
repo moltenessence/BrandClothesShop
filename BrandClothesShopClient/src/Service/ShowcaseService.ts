@@ -1,7 +1,7 @@
 import { ItemsCollection } from "../Store/Reducers/showcaseReducer/showcaseReducer";
 import { ShowcaseAPI } from "./API";
 
-type getItemsCollectionResponse = {
+interface GetItemsCollectionResponse {
     items: ItemsCollection,
     total: number,
     statusCode: number,
@@ -11,7 +11,7 @@ export default class ShowcaseService {
 
     static async getItemsCollection(itemType: string) {
         return ShowcaseAPI.get
-            <getItemsCollectionResponse>
+            <GetItemsCollectionResponse>
             (`http://localhost:60671/api/items/${itemType}/?page=1&count=2`).then(response => response.data.items);
     }
 }

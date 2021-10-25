@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import styles from "./style/styles.module.scss"
 
-const MainHeader = (props) => {
-    const params = useParams();
+const MainHeader = () => {
+    const params = useParams<{ params: string }>().params;
     const [darkMode, toggleMode] = useState(false);
 
     useEffect(() => {
-        params.params ? toggleMode(true) : toggleMode(false);
+        params ? toggleMode(true) : toggleMode(false);
     });
 
     return (
         <div className={styles.header}>
-        <span className={darkMode ? styles.darkLogo : styles.lightLogo}>WEB SHOP</span>
+            <span className={darkMode ? styles.darkLogo : styles.lightLogo}>WEB SHOP</span>
         </div>
     );
 }

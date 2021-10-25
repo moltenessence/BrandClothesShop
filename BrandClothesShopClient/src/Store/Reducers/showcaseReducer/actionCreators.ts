@@ -1,4 +1,4 @@
-import { createRoutine } from 'redux-saga-routines';
+import createRoutine from '../../../Components/Common/utils/createRoutine/createRoutine';
 import { ISetItemsCollection, IToggleIsFetching } from './actionPayloadTypes';
 
 export const setItemsCollection = createRoutine<ISetItemsCollection>('showcase/SET_ITEMS_COLLECTION');

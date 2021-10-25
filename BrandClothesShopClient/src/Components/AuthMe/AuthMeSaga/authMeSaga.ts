@@ -1,10 +1,11 @@
 import { call, takeEvery, put } from "redux-saga/effects";
-import { login, register, setServerError } from "../../../Store/Reducers/authMeReducer/actionCreators";
+import { login, LoginTrigger, register, RegisterTrigger, setServerError } from "../../../Store/Reducers/authMeReducer/actionCreators";
 import AuthMeService from "../../../Service/AuthMeService";
 
-function* loginWorker(action) {
 
-    const { email, password } = action.payload;
+function* loginWorker({ payload }: LoginTrigger): any {
+
+    const { email, password } = payload;
 
     try {
 
@@ -13,20 +14,20 @@ function* loginWorker(action) {
 
         yield put(login.success({ token, email, id, username }));
 
-    } catch (e) {
+    } catch (e: any) {
 
         if (e.response.status === 400) {
             const message = e.response.data;
-            yield put(setServerError(message));
+            yield put(setServerError({ message }));
         } else {
             console.log(e);
         }
     }
 }
 
-function* registerWorker(action) {
+function* registerWorker({ payload }: RegisterTrigger): any {
 
-    const { username, email, password } = action.payload;
+    const { username, email, password } = payload;
 
     try {
 
@@ -39,7 +40,7 @@ function* registerWorker(action) {
             yield put(login.success({ token, email, id, username }));
         }
 
-    } catch (e) {
+    } catch (e: any) {
 
         if (e.response.status === 422) {
             const message = e.response.data;
