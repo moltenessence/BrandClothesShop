@@ -25,4 +25,6 @@ let store = configureStore({
 
 sagaMiddleware.run(saga);
 
+export type RootState = ReturnType<typeof store.getState>
+
 export default store;

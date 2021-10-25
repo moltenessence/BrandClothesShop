@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { setBackground } from './actionCreators';
+import { SetBackground, setBackground } from './actionCreators';
 
 interface IHomePageState {
     backgroundUrl: string,
@@ -12,8 +12,9 @@ const intialState: IHomePageState = {
 const homePage = createReducer(
     intialState,
     {
-        [setBackground.SUCCESS]: (state, action) => {
-            state.backgroundUrl = action.payload.url;
+        [setBackground.SUCCESS]: (state, { payload }: SetBackground) => {
+            const url = payload?.url;
+            if (url) state.backgroundUrl = url;
         }
     }
 );
