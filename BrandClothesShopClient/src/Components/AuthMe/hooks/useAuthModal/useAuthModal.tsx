@@ -3,10 +3,14 @@ import { Modal } from "antd";
 import "./style/style.scss";
 import LoginForm from "../../LoginForm/LoginForm";
 import RegForm from '../../RegistrationForm/RegForm';
-import { connect, useDispatch } from "react-redux";
+import { connect, ConnectedProps, useDispatch } from "react-redux";
 import { setServerError } from "../../../../Store/Reducers/authMeReducer/actionCreators";
+import { RootState } from "../../../../Store/store";
+
 
 export const useAuthModal = () => {
+
+    interface IProps extends ConnerctorProps { }
 
     const dispatch = useDispatch()
     const [isLoginVisible, setLoginVisible] = useState(false);
@@ -17,10 +21,10 @@ export const useAuthModal = () => {
 
     const handleClose = () => {
         setLoginVisible(false);
-        dispatch(setServerError(null));
+        dispatch(setServerError({ message: '' }));
     };
 
-    const CustomModal = ({ error }) => {
+    const CustomModal = ({ error }: IProps) => {
 
         const [isRegistered, setIsRegistered] = useState(true);
 
@@ -57,13 +61,17 @@ export const useAuthModal = () => {
         );
     };
 
-    const mapStateToProps = (state) => {
+    const mapStateToProps = (state: RootState) => {
         return {
             error: state.authMe.serverError,
         }
     }
 
-    const Component = connect(mapStateToProps)(CustomModal)
+    const connector = connect(mapStateToProps);
+
+    type ConnerctorProps = ConnectedProps<typeof connector>;
+
+    const Component = connector(CustomModal)
 
     return {
         ModalComponent: Component,

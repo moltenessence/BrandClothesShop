@@ -7,7 +7,7 @@ interface IAuthMeState {
     userId: number | null,
     userName: string | null | undefined,
     email: string | null,
-    serverError: string | null,
+    serverError: string,
 }
 
 const initialState: IAuthMeState = {
@@ -15,7 +15,7 @@ const initialState: IAuthMeState = {
     userId: null,
     userName: null,
     email: null,
-    serverError: null,
+    serverError: '',
 }
 
 
@@ -39,7 +39,7 @@ const authMe = createReducer(
         },
 
         [setServerError.TRIGGER]: (state, { payload }: SetServerError) => {
-            if (payload) state.serverError = payload.message;
+            if (payload.message) state.serverError = payload.message;
         }
     }
 );
