@@ -1,4 +1,4 @@
-import { ItemsCollection } from "../Store/Reducers/showcaseReducer/showcaseReducer";
+import { ItemsCollection } from "../Store/Reducers/showcaseReducer/types/reducerTypes";
 import { ShowcaseAPI } from "./API";
 
 interface GetItemsCollectionResponse {

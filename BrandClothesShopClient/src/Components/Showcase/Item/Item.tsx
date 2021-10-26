@@ -3,7 +3,7 @@ import 'antd/dist/antd.css';
 import './style/style.scss';
 import { Card, Modal } from "antd";
 import Meta from "antd/lib/card/Meta";
-import { Photo } from "../../../Store/Reducers/showcaseReducer/showcaseReducer";
+import { Photo } from "../../../Store/Reducers/showcaseReducer/types/reducerTypes";
 
 interface IProps {
     photos: Photo[],

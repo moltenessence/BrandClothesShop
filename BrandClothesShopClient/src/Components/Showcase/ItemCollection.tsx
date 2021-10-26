@@ -2,7 +2,6 @@ import React from "react";
 import 'antd/dist/antd.css';
 import Item from "./Item/Item";
 import { connect, ConnectedProps } from "react-redux";
-import ItemsCollection from './ItemCollection';
 import { RootState } from "../../Store/store";
 
 interface IProps extends ConnectorProps { }

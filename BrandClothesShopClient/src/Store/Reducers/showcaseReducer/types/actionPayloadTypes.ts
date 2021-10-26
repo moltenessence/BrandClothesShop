@@ -1,4 +1,4 @@
-import { ItemsCollection } from "./showcaseReducer";
+import { ItemsCollection } from "./reducerTypes";
 
 
 export interface IToggleIsFetching {

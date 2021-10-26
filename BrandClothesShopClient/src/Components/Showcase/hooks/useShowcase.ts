@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { ActionTypes, setItemsCollection } from "../../../Store/Reducers/showcaseReducer/actionCreators";
+import { ActionTypes } from "../../../Store/Reducers/showcaseReducer/types/actionTypes";
+import { setItemsCollection } from "../../../Store/Reducers/showcaseReducer/actionCreators";
 import { useParams } from 'react-router';
 import { Dispatch } from "hoist-non-react-statics/node_modules/@types/react";
 

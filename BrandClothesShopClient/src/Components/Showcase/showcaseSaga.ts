@@ -1,7 +1,8 @@
 import { call, takeEvery, put } from "redux-saga/effects";
-import { SetItemsCollection, setItemsCollection, toggleIsFetching } from "../../Store/Reducers/showcaseReducer/actionCreators";
+import { setItemsCollection, toggleIsFetching } from "../../Store/Reducers/showcaseReducer/actionCreators";
+import { SetItemsCollection } from "../../Store/Reducers/showcaseReducer/types/actionTypes"
 import ShowcaseService from "../../Service/ShowcaseService";
-import { ItemsCollection } from "../../Store/Reducers/showcaseReducer/showcaseReducer";
+import { ItemsCollection } from "../../Store/Reducers/showcaseReducer/types/reducerTypes";
 
 function* setItemsCollectionWorker({ payload }: SetItemsCollection) {
 
