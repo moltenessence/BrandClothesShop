@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { connect, useDispatch, ConnectedProps } from "react-redux";
-import { ActionTypes, setBackground } from "../../../Store/Reducers/homePageReducer/actionCreators";
+import { setBackground } from "../../../Store/Reducers/homePageReducer/actionCreators";
+import { ActionTypes } from '../../../Store/Reducers/homePageReducer/types/actionTypes';
 import { RootState } from "../../../Store/store";
 import styles from "./styles/HomePageBackground.module.scss";
 import { Dispatch } from "hoist-non-react-statics/node_modules/@types/react";

@@ -1,9 +1,8 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { SetBackground, setBackground } from './actionCreators';
+import { setBackground } from './actionCreators';
+import { SetBackground } from './types/actionTypes';
+import { IHomePageState } from './types/reducerTypes';
 
-interface IHomePageState {
-    backgroundUrl: string,
-}
 
 const intialState: IHomePageState = {
     backgroundUrl: '',

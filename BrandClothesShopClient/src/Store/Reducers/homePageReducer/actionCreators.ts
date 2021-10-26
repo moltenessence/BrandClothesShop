@@ -1,7 +1,4 @@
 import createRoutine from '../../../Components/Common/utils/createRoutine/createRoutine';
-import { ISetBackground } from './actionPayloadTypes';
+import { ISetBackground } from './types/actionPayloadTypes';
 
 export const setBackground = createRoutine<ISetBackground>('homePage/SET_BACKGROUND');
-export type SetBackground = ReturnType<typeof setBackground>;
-
-export type ActionTypes = SetBackground;
