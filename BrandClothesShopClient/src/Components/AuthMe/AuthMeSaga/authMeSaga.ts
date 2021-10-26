@@ -1,6 +1,7 @@
 import { call, takeEvery, put } from "redux-saga/effects";
-import { login, LoginTrigger, register, RegisterTrigger, setServerError } from "../../../Store/Reducers/authMeReducer/actionCreators";
+import { login, register, setServerError } from "../../../Store/Reducers/authMeReducer/actionCreators";
 import AuthMeService from "../../../Service/AuthMeService";
+import { LoginTrigger, RegisterTrigger } from "../../../Store/Reducers/authMeReducer/types/actionTypes";
 
 
 function* loginWorker({ payload }: LoginTrigger): any {

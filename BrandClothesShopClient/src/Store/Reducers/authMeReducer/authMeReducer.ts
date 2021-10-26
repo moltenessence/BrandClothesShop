@@ -1,14 +1,8 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { login, Login, logout, SetServerError, setServerError } from './actionCreators';
+import { login, logout, setServerError } from './actionCreators';
+import { IAuthMeState } from './types/reducerTypes';
+import { Login, SetServerError } from './types/actionTypes'
 
-
-interface IAuthMeState {
-    isAuth: boolean,
-    userId: number | null,
-    userName: string | null | undefined,
-    email: string | null,
-    serverError: string,
-}
 
 const initialState: IAuthMeState = {
     isAuth: false,
