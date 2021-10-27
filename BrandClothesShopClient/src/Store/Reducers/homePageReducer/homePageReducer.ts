@@ -12,8 +12,7 @@ const homePage = createReducer(
     intialState,
     {
         [setBackground.SUCCESS]: (state, { payload }: SetBackground) => {
-            const url = payload?.url;
-            if (url) state.backgroundUrl = url;
+            state.backgroundUrl = payload.url;
         }
     }
 );

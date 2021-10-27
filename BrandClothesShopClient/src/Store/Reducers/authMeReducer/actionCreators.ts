@@ -1,10 +1,10 @@
-import { ILogin, ILoginSucces, ILogout, IRegister, ISetServerError } from './types/actionPayloadTypes';
+import { ILoginTrigger, ILoginSucces, ILogoutTrigger, IRegister, ISetServerError } from './types/actionPayloadTypes';
 import createRoutine from '../../../Components/Common/utils/createRoutine/createRoutine';
 
 
-export const login = createRoutine<ILogin, ILoginSucces>('authMe/LOGIN');
+export const login = createRoutine<ILoginTrigger, ILoginSucces>('authMe/LOGIN');
 
-export const logout = createRoutine<ILogout, ILoginSucces>('authMe/LOGOUT');
+export const logout = createRoutine<ILogoutTrigger, ILoginSucces>('authMe/LOGOUT');
 
 export const register = createRoutine<IRegister>('authMe/REGISTER');
 

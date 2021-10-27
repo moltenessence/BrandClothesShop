@@ -1,22 +1,23 @@
 
-export default <T = any, K = T>(actionName: string) => {
+export default <T = any, S = T, E = T, F = T>
+    (actionName: string) => {
 
     const SUCCESS = actionName + '/SUCCES';
     const TRIGGER = actionName + '/TRIGGER';
     const ERROR = actionName + '/ERROR';
     const FULFILLED = actionName + '/FULFILLED';
 
-    const success = (payload: K) => ({
+    const success = (payload: S) => ({
         type: SUCCESS,
         payload,
     });
 
-    const fulfilled = (payload: T) => ({
+    const fulfilled = (payload: F) => ({
         type: FULFILLED,
         payload,
     });
 
-    const error = (payload: T) => ({
+    const error = (payload: E) => ({
         type: ERROR,
         payload,
     });

@@ -1,9 +1,9 @@
 
-export type ILogin = { email: string, password: string, };
+export type ILoginTrigger = { email: string, password: string, };
 export type ILoginSucces = { email: string, token: string, id: number, username: string };
 
-export type ILogout = { email: string, password: string, };
-export type ILogoutSucces = never;
+export type ILogoutTrigger = null;
+export type ILogoutSucces = null;
 
 export type ISetServerError = { message: string };
 

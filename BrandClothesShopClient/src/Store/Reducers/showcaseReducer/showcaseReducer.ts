@@ -13,12 +13,10 @@ const showcase = createReducer(
     intialState,
     {
         [setItemsCollection.SUCCESS]: (state, { payload }: SetItemsCollection) => {
-            const itemsCollection = payload?.itemsCollection;
-            if (itemsCollection) state.itemsCollection = itemsCollection;
+            state.itemsCollection = payload.itemsCollection;
         },
         [toggleIsFetching.TRIGGER]: (state, { payload }: ToggleIsFetching) => {
-            const isFetching = payload?.isFetching;
-            if (isFetching) state.isFetching = isFetching;
+            state.isFetching = payload.isFetching;
         },
     }
 );

@@ -33,7 +33,7 @@ const authMe = createReducer(
         },
 
         [setServerError.TRIGGER]: (state, { payload }: SetServerError) => {
-            if (payload.message) state.serverError = payload.message;
+            state.serverError = payload.message;
         }
     }
 );
