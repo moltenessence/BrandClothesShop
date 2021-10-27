@@ -1,4 +1,3 @@
-import React, { Suspense } from "react";
 import 'antd/dist/antd.css';
 import styles from './style/styles.module.scss';
 import Preloader from "../Common/Components/Preloader/Preloader";
