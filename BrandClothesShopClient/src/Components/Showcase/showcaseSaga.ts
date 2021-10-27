@@ -12,6 +12,7 @@ function* setItemsCollectionWorker({ payload }: SetItemsCollectionTrigger) {
         yield put(toggleIsFetching({ isFetching: true }));
 
         if (itemType) {
+
             const itemsCollection: ItemsCollection = yield call(() => ShowcaseService.getItemsCollection(itemType));
 
             yield put(setItemsCollection.success({ itemsCollection }));

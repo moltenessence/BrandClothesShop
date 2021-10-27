@@ -3,22 +3,28 @@ import 'antd/dist/antd.css';
 import styles from './style/styles.module.scss';
 import Preloader from "../Common/Components/Preloader/Preloader";
 import useShowcase from "./hooks/useShowcase";
+import ItemCollection from "./ItemCollection";
+import { connect, ConnectedProps } from 'react-redux';
+import { RootState } from "../../Store/store";
 
-const ItemCollection = React.lazy(() => import('./ItemCollection'));
+interface TProps extends ConnectorProps { }
 
-const Showcase = () => {
+const Showcase = ({ isFetching }: TProps) => {
 
     const [isVisible]: boolean[] = useShowcase()
 
     return (
         isVisible ?
             <div className={styles.showcaseWrapper}>
-                <Suspense fallback={<Preloader />}>
-                    <ItemCollection />
-                </Suspense>
+                {isFetching ? <Preloader /> : <ItemCollection />}
             </div> : null
     );
 }
 
+const mapStateToProps = (state: RootState) => ({ isFetching: state.showcase.isFetching });
 
-export default Showcase;
+const connector = connect(mapStateToProps);
+
+type ConnectorProps = ConnectedProps<typeof connector>;
+
+export default connector(Showcase);
