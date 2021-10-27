@@ -11,7 +11,7 @@ interface IProps {
     price: number,
 }
 
-const Item = ({ photos, modelName, price, ...props }: IProps) => {
+const Item = ({ photos, modelName, price }: IProps) => {
 
     const [isVisible, setIsVisible] = useState<boolean>();
 
@@ -38,11 +38,10 @@ const Item = ({ photos, modelName, price, ...props }: IProps) => {
             </Modal>
             <div
                 className={'itemCardWrapper'}
-                onClick={handleOpen}
             >
                 <Card
-                    style={{ width: 270, height: 'content-fit', border: 'none' }}
-                    hoverable={true}
+                    onClick={handleOpen}
+                    style={{ width: 270, height: 'content-fit', border: 'none', cursor: 'pointer' }}
                     cover={
                         <div style={{
                             width: 'inherit',
