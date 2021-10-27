@@ -1,8 +1,8 @@
-import React from "react";
 import { Formik } from 'formik';
 import DisplayRegForm from "./DisplayRegForm";
 import { useDispatch } from "react-redux";
 import { register } from "../../../Store/Reducers/authMeReducer/actionCreators";
+import { IRegister } from "../../../Store/Reducers/authMeReducer/types/actionPayloadTypes";
 
 const initialValues = {
     username: '',
@@ -10,11 +10,13 @@ const initialValues = {
     password: '',
 }
 
+export type FormValues = typeof initialValues;
+
 const RegForm = () => {
 
     const dispatch = useDispatch();
 
-    const handleSubmit = (params) => {
+    const handleSubmit = (params: IRegister) => {
         dispatch(register({ ...params }));
     }
 

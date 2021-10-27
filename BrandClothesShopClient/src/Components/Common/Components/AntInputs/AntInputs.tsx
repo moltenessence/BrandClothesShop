@@ -8,13 +8,13 @@ export const AntInput = ({
     label,
     submitCount,
     ...props
-}) => {
+}: any) => {
     const touched = form.touched[field.name];
     const submitted = submitCount > 0;
     const hasError = form.errors[field.name];
     const submittedError = hasError && submitted;
     const touchedError = hasError && touched;
-    const onChange = ({ target: { value } }) => form.setFieldValue(field.name, value);
+    const onChange = ({ target: { value } }: { target: { value: string } }) => form.setFieldValue(field.name, value);
     const onBlur = () => form.setFieldTouched(field.name, true);
 
     return (
@@ -43,13 +43,13 @@ export const AntInputPassword = ({
     label,
     submitCount,
     ...props
-}) => {
+}: any) => {
     const touched = form.touched[field.name];
     const submitted = submitCount > 0;
     const hasError = form.errors[field.name];
     const submittedError = hasError && submitted;
     const touchedError = hasError && touched;
-    const onChange = ({ target: { value } }) => form.setFieldValue(field.name, value);
+    const onChange = ({ target: { value } }: { target: { value: string } }) => form.setFieldValue(field.name, value);
     const onBlur = () => form.setFieldTouched(field.name, true);
 
     return (

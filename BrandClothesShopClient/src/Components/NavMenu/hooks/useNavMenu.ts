@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
 
-export default () => {
-    const urlParams = useParams().params;
+export default (): [boolean] => {
+
+    const urlParams = useParams<{ params: string }>().params;
     const [darkMode, toggleMode] = useState(true);
 
     useEffect(() => {

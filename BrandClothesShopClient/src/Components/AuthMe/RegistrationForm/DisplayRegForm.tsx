@@ -1,14 +1,21 @@
-import React from "react";
 import { AntInput, AntInputPassword } from "../../Common/Components/AntInputs/AntInputs";
-import { Form, Field } from "formik";
-import { emailValidation, passwordValidation } from "../../Common/Components/AntInputs/fieldValidation/fieldValidation";
-import { connect } from "react-redux";
+import { Form, Field, FormikProps } from "formik";
+import { usernameValidation, emailValidation, passwordValidation } from "../../Common/Components/AntInputs/fieldValidation/fieldValidation";
+import { FormValues } from "./RegForm";
 
 
-const DisplayLoginForm = ({ handleSubmit, values, submitCount, error }) => {
-
+const DisplayRegForm = ({ handleSubmit, values, submitCount }: FormikProps<FormValues>) => {
     return (
         <Form onSubmit={handleSubmit}>
+            <Field
+                component={AntInput}
+                name='username'
+                label='Username'
+                validate={usernameValidation}
+                submitCount={submitCount}
+                defaultValue={values.username}
+                hasFeedback
+            />
             <Field
                 component={AntInput}
                 name='email'
@@ -34,4 +41,4 @@ const DisplayLoginForm = ({ handleSubmit, values, submitCount, error }) => {
     );
 }
 
-export default DisplayLoginForm;
+export default DisplayRegForm;

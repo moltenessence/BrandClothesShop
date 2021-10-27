@@ -1,4 +1,4 @@
-export const usernameValidation = (value) => {
+export const usernameValidation = (value: string) => {
     let errors;
 
     if (value.length > 12) {
@@ -8,7 +8,7 @@ export const usernameValidation = (value) => {
     return errors;
 }
 
-export const emailValidation = (value) => {
+export const emailValidation = (value: string) => {
     let errors;
 
     if (!value) {
@@ -20,7 +20,7 @@ export const emailValidation = (value) => {
     return errors;
 }
 
-export const passwordValidation = (value) => {
+export const passwordValidation = (value: string) => {
     let errors;
 
     if (!value) {
