@@ -8,7 +8,7 @@ import AuthedItems from "./MenuItems/AuthedItems";
 
 
 interface TProps extends ConnectorProps {
-    modalOpen: () => void,
+    modalOpen(): void,
 }
 
 const NavMenu = ({ modalOpen, isAuth }: TProps) => {
@@ -23,7 +23,6 @@ const NavMenu = ({ modalOpen, isAuth }: TProps) => {
                     isAuth ?
                         <AuthedItems />
                         :
-
                         <Menu.Item className={'loginItem'} onClick={() => modalOpen()}>
                             <span className='navLink'>Login</span>
                         </Menu.Item>
