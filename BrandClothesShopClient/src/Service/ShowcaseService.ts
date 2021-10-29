@@ -1,6 +1,7 @@
 import { ItemsCollection } from "../Store/Reducers/showcaseReducer/types/reducerTypes";
 import { ShowcaseAPI } from "./API";
 
+
 interface GetItemsCollectionResponse {
     items: ItemsCollection,
     total: number,
