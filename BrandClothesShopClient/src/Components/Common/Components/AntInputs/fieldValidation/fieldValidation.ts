@@ -34,9 +34,9 @@ export const passwordValidation = (value: string) => {
     } else if (/^(?=.*[а-я])/.test(value) || /^(?=.*[А-Я])/.test(value)) {
         errors = `Passord must consist of Latin letters!`;
     } else if (!/([A-Z])/g.test(value)) {
-        errors = 'Password must include one uppercase letter at least!';
+        errors = 'Must include one uppercase letter at least!';
     } else if (!/([0-9])/g.test(value)) {
-        errors = 'Password must include one number at least!';
+        errors = 'Must include one number at least!';
     }
 
     return errors;
