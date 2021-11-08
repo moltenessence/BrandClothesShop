@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BrandClothesShopAPI.Models
 {
-    public class Photo : IPhoto
+    public class Photo
     {
         [Key]
         [JsonIgnore]
