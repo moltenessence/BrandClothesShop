@@ -8,7 +8,7 @@ namespace Core.ModelValidations
     {
         public static List<string> ClothesTypes = new List<string>()
         {
-            "sport", "t-Shirt", "shoes", "pants", "shirt", "hoodie"
+            "sport", "t-shirt", "shoes", "pants", "shirt", "hoodie"
         };
     }
 }
