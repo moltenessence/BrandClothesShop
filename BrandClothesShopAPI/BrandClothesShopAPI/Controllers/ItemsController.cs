@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Helpers;
 using Newtonsoft.Json;
+using Core.ModelValidations;
 
 namespace BrandClothesShopAPI.Controllers
 {
@@ -25,14 +26,15 @@ namespace BrandClothesShopAPI.Controllers
         [HttpGet("{type}")]
         public async Task<ActionResult> GetItems(int page, int count, string type)
         {
+            if (!ModelValidationParameters.ClothesTypes.Contains(type)) return NotFound($"There is no such type as {type}!");
             if (page <= 0 || count <= 0)
                 return BadRequest("The parameters are invalid!");
 
             var totalAmount = _context.ClothesItems.Where(i => i.Type == type).Count();
             var amountToSkip = page == 1 ? 0 : (page - 1) * count;
 
-            //if (count * page > totalAmount)
-            //    return BadRequest($"The number of items to take is out of range! Total amount of items of type '{type}' = {totalAmount}");
+            if (page*count - count > totalAmount)
+                return BadRequest($"The number of items to take is out of range! Total amount of items of type '{type}' = {totalAmount}");
 
             var clothesItems = await _context.ClothesItems.Where(i => i.Type == type)
                                                           .Include("Photos")
@@ -40,16 +42,13 @@ namespace BrandClothesShopAPI.Controllers
                                                           .Take(count)
                                                           .ToListAsync();
 
-            var responsesStatusCode = Response.StatusCode;
-
             var result = new
             {
                 items = clothesItems,
                 total = totalAmount,
-                statusCode = responsesStatusCode,
             };
 
-            return new JsonResult(result);
+            return Ok(result);
         }
 
         [HttpGet("{id:int}")]
@@ -57,7 +56,6 @@ namespace BrandClothesShopAPI.Controllers
         {
             var photos = await _context.Photos.ToListAsync();
             var currentItem = await _context.ClothesItems.FindAsync(id);
-            var responseStatusCode = Response.StatusCode;
 
             if (currentItem == null)
                 return NotFound($"There is no item with id = {id}");
@@ -65,10 +63,9 @@ namespace BrandClothesShopAPI.Controllers
             var result = new
             {
                 item = currentItem,
-                statusCode = responseStatusCode
             };
 
-            return new JsonResult(result);
+            return Ok(result);
         }
     }
 }

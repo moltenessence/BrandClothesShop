@@ -7,7 +7,7 @@ using System.Text.Json.Serialization;
 
 namespace BrandClothesShopAPI.Models
 {
-    public class User : IUser
+    public class User
     {
         [Key]
         public int UserId { get; set; }

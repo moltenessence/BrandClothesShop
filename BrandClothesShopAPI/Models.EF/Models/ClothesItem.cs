@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BrandClothesShopAPI.Models
 {
-    public class СlothesItem : IСlothesItem
+    public class СlothesItem
     {
         [Key]
         public int ClothesItemId { get; set; }

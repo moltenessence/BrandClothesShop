@@ -32,13 +32,7 @@ namespace BrandClothesShopAPI.Controllers
                 return new UnprocessableEntityObjectResult("The user with such email already exists!");
             }
 
-            var response = new
-            {
-                RegistrationResponse = registrationResponse,
-                StatusCode = Response.StatusCode
-            };
-
-            return new JsonResult(response);
+            return Ok(registrationResponse);
         }
 
         [HttpPost("Authenticate")]
@@ -49,13 +43,7 @@ namespace BrandClothesShopAPI.Controllers
             if (authenticateResponse == null)
                 return BadRequest("Invalid email or password!");
 
-            var response = new
-            {
-                AuthenticateResponse = authenticateResponse,
-                StatusCode = Response.StatusCode
-            };
-
-            return new JsonResult(response);
+            return new JsonResult(authenticateResponse);
         }
 
         [HttpGet("GetAll")]
@@ -63,13 +51,7 @@ namespace BrandClothesShopAPI.Controllers
         {
             var users = _userService.GetAll();
 
-            var response = new
-            {
-                Items = users,
-                StatusCode = Response.StatusCode
-            };
-
-            return new JsonResult(response);
+            return Ok(users);
         }
     }
 }
