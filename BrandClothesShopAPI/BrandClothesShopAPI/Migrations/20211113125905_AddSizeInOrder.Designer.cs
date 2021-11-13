@@ -4,14 +4,16 @@ using DataStore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BrandClothesShopAPI.Migrations
 {
     [DbContext(typeof(ClothesShopContext))]
-    partial class ClothesShopContextModelSnapshot : ModelSnapshot
+    [Migration("20211113125905_AddSizeInOrder")]
+    partial class AddSizeInOrder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,9 +30,6 @@ namespace BrandClothesShopAPI.Migrations
 
                     b.Property<int>("ClothesItemId")
                         .HasColumnType("int");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime?>("PurchaseTime")
                         .HasColumnType("datetime2");
