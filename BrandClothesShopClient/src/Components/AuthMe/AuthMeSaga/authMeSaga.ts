@@ -12,12 +12,11 @@ function* loginWorker({ payload }: LoginTrigger): any {
     try {
 
         const response = yield call(() => AuthMeService.login(email, password));
-        const { token, id, username } = response.data.authenticateResponse;
+        const { token, id, username } = response.data;
 
         yield put(login.success({ token, email, id, username }));
 
     } catch (e: any) {
-
         if (e.response.status === LoginCodes.InvalidData) {
             const message = e.response.data;
             yield put(setServerError({ message }));
@@ -37,13 +36,12 @@ function* registerWorker({ payload }: RegisterTrigger): any {
 
         if (status === RegisterCodes.Success) {
             const response = yield call(() => AuthMeService.login(email, password));
-            const { token, id } = response.data.authenticateResponse;
-
+            const { token, id, username } = response.data;
+    
             yield put(login.success({ token, email, id, username }));
         }
 
     } catch (e: any) {
-
         if (e.response.status === RegisterCodes.AlreadyExist) {
             const message = e.response.data;
             yield put(setServerError(message));

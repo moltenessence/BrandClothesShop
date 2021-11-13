@@ -13,6 +13,6 @@ export default class ShowcaseService {
     static async getItemsCollection(itemType: string) {
         return ShowcaseAPI.get
             <GetItemsCollectionResponse>
-            (`http://localhost:60671/api/items/${itemType}/?page=1&count=2`).then(response => response.data.items);
+            (`http://localhost:60671/api/items/${itemType}/?page=1&count=20`).then(response => response.data.items);
     }
 }
