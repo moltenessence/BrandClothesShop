@@ -1,11 +1,12 @@
 import {useState} from "react";
 import 'antd/dist/antd.css';
 import './style/style.scss';
-import {Card, Carousel, Image, Modal, Typography} from "antd";
+import {Card, Carousel, Select, Modal, Typography, Button} from "antd";
 import Meta from "antd/lib/card/Meta";
 import {Photo} from "../../../Store/Reducers/showcaseReducer/types/reducerTypes";
 
 const {Title, Paragraph, Text} = Typography;
+const {Option} = Select;
 
 interface IProps {
     photos: Photo[],
@@ -32,7 +33,7 @@ const Item = ({photos, modelName, price, description, size, brand}: IProps) => {
             <Modal
                 centered={true}
                 visible={isVisible}
-                width={'70vw'}
+                width={'60vw'}
                 onCancel={handleClose}
                 footer={null}
             >
@@ -64,7 +65,7 @@ const Item = ({photos, modelName, price, description, size, brand}: IProps) => {
                                 }
                             </Carousel>
                             :
-                            <div style={{width: 300, height: 408}}>
+                            <div style={{width: 300, height: 350}}>
                                 <Card
                                     style={{width: 270, height: 'content-fit', border: 'none', cursor: 'pointer'}}
                                 >
@@ -83,10 +84,50 @@ const Item = ({photos, modelName, price, description, size, brand}: IProps) => {
                         <Title style={{marginBottom: '.3em'}}>{modelName}</Title>
                         <Text strong={true}
                               style={{marginBottom: 15, display: 'block', fontSize: '1.5em'}}>{brand}</Text>
+                        <Select
+                            showSearch
+                            style={{width: 100}}
+                            placeholder="Size"
+                            optionFilterProp="children"
+                            filterOption={(input, option) =>
+                                option!.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                            }
+                        >
+                            <Option value="jack">S</Option>
+                            <Option value="lucy">M</Option>
+                            <Option value="tom">XL</Option>
+                        </Select>
                         <Text strong={true}
-                              style={{marginBottom: 10, display: 'block', fontSize: '1.5em'}}>Description</Text>
-                        <Paragraph style={{fontSize: '1.2em'}}>{description}</Paragraph>
+                              style={{
+                                  marginBottom: 10,
+                                  marginTop: 10,
+                                  display: 'block',
+                                  fontSize: '1.5em'
+                              }}
+                        >
+                            Description
+                        </Text>
+                        <Paragraph style={{fontSize: '1.2em'}}>
+                            {description ? description : 'Lorem ipsum dolor sit amet, consectetur ' +
+                                'adipisicing elit. Culpa cupiditate distinctio eius et ' +
+                                'facere labore, neque nisi placeat. Aliquam dicta explicabo' +
+                                ' itaque minima nesciunt non quae reprehenderit sit voluptate voluptatibus?'}
+                        </Paragraph>
+                        <Text strong={true}
+                              style={{
+                                  opacity: '.5',
+                                  marginTop: 10,
+                                  display: 'block',
+                                  fontSize: '2em'
+                              }}
+                        >
+                            €{price}
+                        </Text>
                     </Typography>
+                </div>
+                <div style={{display:'flex', justifyContent:'end'}}>
+                    <Button style={{height: 40, width: 90}}>Order</Button>
+                    <Button style={{height: 40, width: 110, marginLeft:10}}>Add to cart</Button>
                 </div>
             </Modal>
             <div
