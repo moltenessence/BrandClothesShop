@@ -18,8 +18,18 @@ namespace BrandClothesShopAPI.Models
         public int UserId { get; set; }
         [ForeignKey("ClothesItem")]
         public int ClothesItemId { get; set; }
-        public virtual User User { get; set; }
-        public virtual СlothesItem ClothesItem { get; set; }
+        [Required]
+        public string Size { get; set; }
+        [Required]
+        public decimal Price { get; set; }
+        public string Name { get; set; }
+
+        //public virtual User User { get; set; }
+        //public virtual СlothesItem ClothesItem { get; set; }
+        public Order()
+        {
+
+        }
     }
 }
 

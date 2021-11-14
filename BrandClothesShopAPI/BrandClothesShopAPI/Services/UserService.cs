@@ -20,12 +20,10 @@ namespace BrandClothesShopAPI.Services
     {
         private readonly ClothesShopContext _context;
         private readonly IMapper _mapper;
-        private readonly TokenValidationParameters _tokenValidationParameters;
 
-        public UserService (ClothesShopContext context, IMapper mapper, TokenValidationParameters tokenValidationParameters)
+        public UserService (ClothesShopContext context, IMapper mapper)
         {
             _context = context;
-            _tokenValidationParameters = tokenValidationParameters;
             _mapper = mapper;
         }
 
@@ -36,7 +34,8 @@ namespace BrandClothesShopAPI.Services
             var securityKey = AuthOptions.GetSymmetricSecurityKey();
             var jwt = new JwtSecurityToken(issuer: AuthOptions.ISSUER,
                                            audience: AuthOptions.AUDIENCE,
-                                           expires: now.Add(TimeSpan.FromMinutes(AuthOptions.LIFETIME)),
+                                           notBefore: now,
+                                           expires: DateTime.Now.AddMinutes(AuthOptions.LIFETIME),
                                            claims: identity.Claims,
                                            signingCredentials: new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256));
             var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);

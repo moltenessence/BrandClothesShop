@@ -43,7 +43,7 @@ namespace BrandClothesShopAPI.Controllers
             if (authenticateResponse == null)
                 return BadRequest("Invalid email or password!");
 
-            return new JsonResult(authenticateResponse);
+            return Ok(authenticateResponse);
         }
 
         [HttpGet("GetAll")]
