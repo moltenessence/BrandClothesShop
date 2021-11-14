@@ -2,22 +2,17 @@ import {useState} from "react";
 import 'antd/dist/antd.css';
 import './style/style.scss';
 import {Card, Carousel, Select, Modal, Typography, Button} from "antd";
+import {Item as IItem} from "./../../../Store/Reducers/showcaseReducer/types/reducerTypes";
 import Meta from "antd/lib/card/Meta";
-import {Photo} from "../../../Store/Reducers/showcaseReducer/types/reducerTypes";
+import OrderService from "../../../Service/OrderService";
 
 const {Title, Paragraph, Text} = Typography;
 const {Option} = Select;
 
-interface IProps {
-    photos: Photo[],
-    modelName: string,
-    brand: string,
-    description: string,
-    size: string,
-    price: number,
+interface IProps extends IItem {
 }
 
-const Item = ({photos, modelName, price, description, size, brand}: IProps) => {
+const Item = ({photos, modelName, price, description, size, brand, clothesItemId}: IProps) => {
     const [isVisible, setIsVisible] = useState<boolean>();
 
     const handleOpen = () => {
@@ -27,6 +22,14 @@ const Item = ({photos, modelName, price, description, size, brand}: IProps) => {
     const handleClose = () => {
         setIsVisible(false);
     };
+
+    const handleOrder = () => {
+        OrderService.Order(1033, clothesItemId, 'M').then(r => console.log(r));
+    }
+
+    const aaa = () => {
+        OrderService.getOrders(1033);
+    }
 
     return (
         <>
@@ -125,9 +128,9 @@ const Item = ({photos, modelName, price, description, size, brand}: IProps) => {
                         </Text>
                     </Typography>
                 </div>
-                <div style={{display:'flex', justifyContent:'end'}}>
-                    <Button style={{height: 40, width: 90}}>Order</Button>
-                    <Button style={{height: 40, width: 110, marginLeft:10}}>Add to cart</Button>
+                <div style={{display: 'flex', justifyContent: 'end'}}>
+                    <Button style={{height: 40, width: 90}} onClick={handleOrder}>Order</Button>
+                    <Button style={{height: 40, width: 110, marginLeft: 10}} onClick={aaa}>Add to cart</Button>
                 </div>
             </Modal>
             <div

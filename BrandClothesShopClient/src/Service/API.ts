@@ -27,3 +27,15 @@ export const ShowcaseAPI = axios.create({
 export const BackgroundAPI = axios.create({
     baseURL,
 });
+
+//--------------
+//Order API
+//--------------
+export const OrderAPI = axios.create({
+    baseURL,
+});
+
+OrderAPI.interceptors.request.use(config => {
+    config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`;
+    return config;
+})

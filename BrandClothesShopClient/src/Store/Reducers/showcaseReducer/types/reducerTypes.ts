@@ -2,7 +2,7 @@ export type Photo = {
     url: string,
 }
 
-type Item = {
+export type Item = {
     clothesItemId: number,
     modelName: string,
     brand: string,

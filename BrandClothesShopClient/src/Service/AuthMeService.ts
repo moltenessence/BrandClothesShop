@@ -1,4 +1,4 @@
-import { AuthMeAPI } from "./API"
+import {AuthMeAPI} from "./API"
 
 interface LoginResponsse {
     authenticateResponse: {
@@ -22,7 +22,7 @@ export default class AuthMeService {
 
     static async login(email: string, password: string) {
         return AuthMeAPI.post
-            <LoginResponsse>
+            < LoginResponsse >
             ('/account/authenticate', {
                 email,
                 password,
@@ -31,7 +31,7 @@ export default class AuthMeService {
 
     static async register(username: string | undefined, email: string, password: string) {
         return AuthMeAPI.post
-            <RegisterResponse>
+            < RegisterResponse >
             ('/account/register', {
                 username,
                 email,
