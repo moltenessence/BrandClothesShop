@@ -9,7 +9,7 @@ export default (): boolean[] => {
 
     const dispatch = useDispatch<Dispatch<ActionTypes>>();
 
-    const urlTriggers: Array<string> = ['t-shirt', 'hoodie'];
+    const urlTriggers: Array<string> = ['t-shirt', 'hoodie', 'pants', 'shoes'];
     const [isVisible, toggleVisibleMode] = useState(false);
     const params: string = useParams<{ params: string }>().params;
 

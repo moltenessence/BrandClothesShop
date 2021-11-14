@@ -14,6 +14,12 @@ export default () => {
             <Menu.Item key='none-3'>
                 <NavLink to='/hoodie' className='navLink'>Hoodies</NavLink>
             </Menu.Item>
+            <Menu.Item key='none-3'>
+                <NavLink to='/pants' className='navLink'>Pants</NavLink>
+            </Menu.Item>
+            <Menu.Item key='none-3'>
+                <NavLink to='/shoes' className='navLink'>Shoes</NavLink>
+            </Menu.Item>
             <Menu.Item key='none-4'>
                 <NavLink to='/cart' className='navLink'>Cart</NavLink>
             </Menu.Item>
