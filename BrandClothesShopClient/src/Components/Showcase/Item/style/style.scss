@@ -31,3 +31,32 @@
     justify-content: center;
     font-family: $mainFontFamily !important;
 }
+
+////-------------
+////Ant design carousel styles redefinition
+////-------------
+.slick-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+}
+
+.ant-carousel .slick-dots li button {
+    background: #ff4d4f;
+    height: inherit;
+}
+
+.ant-carousel .slick-dots li {
+    height: 8px;
+    width: 25px;
+}
+
+.ant-carousel .slick-dots li.slick-active button {
+    background: #ff4d4f;
+}
+
+.ant-carousel .slick-dots li.slick-active {
+    width: 35px;
+    background: #ff4d4f;
+}
