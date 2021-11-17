@@ -12,5 +12,5 @@ export enum LoginCodes {
 
 export enum OrderCodes {
     Success = 200,
-    Unauthorized = 400,
+    Error = 400,
 }

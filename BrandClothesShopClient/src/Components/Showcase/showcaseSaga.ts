@@ -38,11 +38,20 @@ interface IOrderResponse {
 
 function* orderWorker<T extends Order>({payload}: T): any {
     const {UserId, ItemId, Size} = payload;
+    const delay = (time: number) => new Promise(resolve => setTimeout(resolve, time));
     try {
         const response = yield call(() => OrderService.Order(UserId, ItemId, Size));
-        if(response.status == OrderCodes.Success) alert('hihi');
-    } catch (error) {
-        console.log(error);
+        if (response.status == OrderCodes.Success) {
+            yield put(order.success());
+            yield delay(300);
+            yield put(order.success());
+        }
+    } catch (e: any) {
+        if (e.response.status == OrderCodes.Error) {
+            yield put(order.error());
+            yield delay(300);
+            yield put(order.error());
+        }
     }
 }
 

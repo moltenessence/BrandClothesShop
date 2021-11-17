@@ -18,4 +18,6 @@ export type ItemsCollection = Array<Item>;
 export interface IShowcaseState {
     itemsCollection: ItemsCollection,
     isFetching: boolean,
+    orderSuccess: boolean,
+    orderError: boolean,
 }

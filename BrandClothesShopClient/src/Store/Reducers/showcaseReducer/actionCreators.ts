@@ -11,4 +11,4 @@ export const setItemsCollection = createRoutine<ISetItemsCollectionTrigger, ISet
 
 export const toggleIsFetching = createRoutine<IToggleIsFetching>('showcase/TOGGLE_IS_FETCHING');
 
-export const order = createRoutine<IOrder>('showcase/ORDER');
+export const order = createRoutine<IOrder, void, void>('showcase/ORDER');

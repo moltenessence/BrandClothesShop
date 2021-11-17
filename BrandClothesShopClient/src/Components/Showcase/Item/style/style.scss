@@ -6,57 +6,72 @@
 //-------------
 .itemCardWrapper {
 
-    
-    .ant-card-body {
-        padding: 15px 24px !important;
-    }
+  .ant-card-body {
+    padding: 15px 24px !important;
+  }
 
-    .ant-card-meta-detail {
-        
-        div:not(:last-child){
-            margin-bottom: 4px;
-        }
-    }
+  .ant-card-meta-detail {
 
-    .ant-card-meta-title {
-        text-align: center;
+    div:not(:last-child) {
+      margin-bottom: 4px;
     }
+  }
 
-    .ant-card-meta-description {
-        text-align: center;
-        line-height: 1.2em;
-    }
+  .ant-card-meta-title {
+    text-align: center;
+  }
 
-    display: flex;
-    justify-content: center;
-    font-family: $mainFontFamily !important;
+  .ant-card-meta-description {
+    text-align: center;
+    line-height: 1.2em;
+  }
+
+  display: flex;
+  justify-content: center;
+  font-family: $mainFontFamily !important;
+}
+
+.ant-modal-body {
+  .ant-btn-dangerous {
+    outline: 1px solid forestgreen !important;
+    transition: outline 1s !important;
+    color: forestgreen !important;
+    border-color: forestgreen !important;
+  }
+
+  .orderError {
+    outline: 1px solid darkred;
+    transition: outline 1s;
+    color: darkred;
+    border-color: darkred;
+  }
 }
 
 ////-------------
 ////Ant design carousel styles redefinition
 ////-------------
 .slick-dots {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
 }
 
 .ant-carousel .slick-dots li button {
-    background: #ff4d4f;
-    height: inherit;
+  background: #ff4d4f;
+  height: inherit;
 }
 
 .ant-carousel .slick-dots li {
-    height: 8px;
-    width: 25px;
+  height: 8px;
+  width: 25px;
 }
 
 .ant-carousel .slick-dots li.slick-active button {
-    background: #ff4d4f;
+  background: #ff4d4f;
 }
 
 .ant-carousel .slick-dots li.slick-active {
-    width: 35px;
-    background: #ff4d4f;
+  width: 35px;
+  background: #ff4d4f;
 }

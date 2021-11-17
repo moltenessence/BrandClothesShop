@@ -7,6 +7,7 @@ import Meta from "antd/lib/card/Meta";
 import OrderService from "../../../Service/OrderService";
 import {useDispatch} from "react-redux";
 import {order} from "../../../Store/Reducers/showcaseReducer/actionCreators";
+import {CheckOutlined} from "@ant-design/icons";
 
 const {Title, Paragraph, Text} = Typography;
 const {Option} = Select;
@@ -14,9 +15,23 @@ const {Option} = Select;
 interface IProps extends IItem {
     userId: number | null,
     isAuth: boolean,
+    orderError: boolean,
+    orderSuccess: boolean,
 }
 
-const Item = ({photos, modelName, price, description, userId, isAuth, brand, clothesItemId}: IProps) => {
+const Item = ({
+                  photos,
+                  modelName,
+                  price,
+                  description,
+                  userId,
+                  isAuth,
+                  size,
+                  brand,
+                  clothesItemId,
+                  orderError,
+                  orderSuccess
+              }: IProps) => {
     const [isVisible, setIsVisible] = useState<boolean>();
     const [selectedSize, setSelectedSize] = useState('');
 
@@ -106,9 +121,9 @@ const Item = ({photos, modelName, price, description, userId, isAuth, brand, clo
                                 option!.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
                             }
                         >
-                            <Option value="S">S</Option>
-                            <Option value="M">M</Option>
-                            <Option value="XL">XL</Option>
+                            {
+                                size.split(' ').map(size => <Option value={size}>{size}</Option>)
+                            }
                         </Select>
                         <Text strong={true}
                               style={{
@@ -139,9 +154,21 @@ const Item = ({photos, modelName, price, description, userId, isAuth, brand, clo
                     </Typography>
                 </div>
                 <div style={{display: 'flex', justifyContent: 'end'}}>
+                    {/*<CheckOutlined style={{*/}
+                    {/*    fontSize: 40,*/}
+                    {/*    marginRight: 10,*/}
+                    {/*    transition: '1s',*/}
+                    {/*    color: "green",*/}
+                    {/*    display: orderSuccess ? `inline-block` : 'none'*/}
+                    {/*}}/>*/}
                     <Tooltip placement="top" mouseEnterDelay={1} title={'You must be logged in to make purchases'}>
                         <Button style={{height: 40, width: 90}} onClick={handleOrder}
-                                disabled={!isAuth}>Order</Button>
+                                danger={orderSuccess}
+                                disabled={!isAuth}
+                                className={orderError ? 'orderError' : ''}
+                        >
+                            Order
+                        </Button>
                     </Tooltip>
                     <Button style={{height: 40, width: 110, marginLeft: 10}} onClick={aaa}>Add to cart</Button>
                 </div>
