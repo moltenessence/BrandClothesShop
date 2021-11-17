@@ -15,12 +15,10 @@ namespace BrandClothesShopAPI.Models
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         [Required]
-        [DataType(DataType.Password)]
-        [MaxLength(20)]
-        [MinLength(5)]
+        [StringLength(20, MinimumLength = 5, ErrorMessage = "The password can contain 5-20 characters!")]
         [JsonIgnore]
         public string Password { get; set; }
-        [MaxLength(20)]
+        [MaxLength(20, ErrorMessage = "The username can't contain more than 20 characters!")]
         public string Username { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
 

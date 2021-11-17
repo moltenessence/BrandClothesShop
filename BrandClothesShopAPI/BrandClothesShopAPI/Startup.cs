@@ -6,11 +6,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using DataStore;
 using Newtonsoft.Json;
 using AutoMapper;
@@ -40,7 +35,9 @@ namespace BrandClothesShopAPI
 
             services.AddDbContext<ClothesShopContext>(options =>
                options.UseSqlServer(connectionString, b => b.MigrationsAssembly("BrandClothesShopAPI")));
+
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ITokenService, TokenService>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 

@@ -20,43 +20,13 @@ namespace BrandClothesShopAPI.Services
     {
         private readonly ClothesShopContext _context;
         private readonly IMapper _mapper;
+        private readonly ITokenService _tokenService;
 
-        public UserService (ClothesShopContext context, IMapper mapper)
+        public UserService (ClothesShopContext context, IMapper mapper, ITokenService tokenService)
         {
             _context = context;
             _mapper = mapper;
-        }
-
-        public string GenerateJwtToken(User user)
-        {
-            var now = DateTime.UtcNow;
-            var identity = GetIdentity(user);
-            var securityKey = AuthOptions.GetSymmetricSecurityKey();
-            var jwt = new JwtSecurityToken(issuer: AuthOptions.ISSUER,
-                                           audience: AuthOptions.AUDIENCE,
-                                           notBefore: now,
-                                           expires: DateTime.Now.AddMinutes(AuthOptions.LIFETIME),
-                                           claims: identity.Claims,
-                                           signingCredentials: new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256));
-            var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
-
-            return encodedJwt;
-        }
-        private ClaimsIdentity GetIdentity(User user)
-        {
-            if (user == null) return null;
-
-            var claims = new List<Claim>
-                {
-                    new Claim("Username", user.Username),
-                    new Claim("Email", user.Email),
-                    new Claim("UserID", user.UserId.ToString())
-                };
-
-            ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, "Token",
-                                                 ClaimsIdentity.DefaultNameClaimType,
-                                                 ClaimsIdentity.DefaultRoleClaimType);
-            return claimsIdentity;
+            _tokenService = tokenService;
         }
 
         public async Task<AuthenticateResponse> Authenticate(AuthenticateRequest user)
@@ -66,7 +36,7 @@ namespace BrandClothesShopAPI.Services
 
             if (authUser == null) return null;
 
-            var token = GenerateJwtToken(authUser);
+            var token = _tokenService.GenerateJwtToken(authUser);
 
             return new AuthenticateResponse(authUser, token);
         }
