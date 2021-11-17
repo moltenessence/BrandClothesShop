@@ -7,13 +7,14 @@ import {RootState} from "../../Store/store";
 interface IProps extends ConnectorProps {
 }
 
-const ItemsCollectionComponent = ({itemsCollection, userId}: IProps) => {
+const ItemsCollectionComponent = ({itemsCollection, userId, isAuth}: IProps) => {
     return (
         <>
             {
                 itemsCollection.map((item, index) => <Item
                     {...item}
                     userId={userId}
+                    isAuth={isAuth}
                     key={index}
                 />)
             }
@@ -26,6 +27,7 @@ const mapStateToProps = (state: RootState) => {
         userId: state.authMe.userId,
         itemsCollection: state.showcase.itemsCollection,
         isFetching: state.showcase.isFetching,
+        isAuth: state.authMe.isAuth,
     }
 }
 

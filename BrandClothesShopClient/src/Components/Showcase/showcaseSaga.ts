@@ -4,6 +4,7 @@ import {Order, SetItemsCollectionTrigger} from "../../Store/Reducers/showcaseRed
 import ShowcaseService from "../../Service/ShowcaseService";
 import {ItemsCollection} from "../../Store/Reducers/showcaseReducer/types/reducerTypes";
 import OrderService from "../../Service/OrderService";
+import {OrderCodes} from "../../Service/statusCodes";
 
 function* setItemsCollectionWorker({payload}: SetItemsCollectionTrigger) {
 
@@ -35,11 +36,11 @@ interface IOrderResponse {
     name: string
 }
 
-function* orderWorker<T extends Order>({payload}: T) {
+function* orderWorker<T extends Order>({payload}: T): any {
     const {UserId, ItemId, Size} = payload;
     try {
-        const response: IOrderResponse = yield call(() => OrderService.Order(UserId, ItemId, Size));
-        console.log(response);
+        const response = yield call(() => OrderService.Order(UserId, ItemId, Size));
+        if(response.status == OrderCodes.Success) alert('hihi');
     } catch (error) {
         console.log(error);
     }

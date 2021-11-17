@@ -9,3 +9,8 @@ export enum LoginCodes {
     Success = 200,
     InvalidData = 400,
 }
+
+export enum OrderCodes {
+    Success = 200,
+    Unauthorized = 400,
+}
