@@ -5,15 +5,20 @@ import {Card, Carousel, Select, Modal, Typography, Button} from "antd";
 import {Item as IItem} from "./../../../Store/Reducers/showcaseReducer/types/reducerTypes";
 import Meta from "antd/lib/card/Meta";
 import OrderService from "../../../Service/OrderService";
+import {useDispatch} from "react-redux";
+import {order} from "../../../Store/Reducers/showcaseReducer/actionCreators";
 
 const {Title, Paragraph, Text} = Typography;
 const {Option} = Select;
 
 interface IProps extends IItem {
+    userId: number | null,
 }
 
-const Item = ({photos, modelName, price, description, size, brand, clothesItemId}: IProps) => {
+const Item = ({photos, modelName, price, description, userId, size, brand, clothesItemId}: IProps) => {
     const [isVisible, setIsVisible] = useState<boolean>();
+
+    const dispatch = useDispatch();
 
     const handleOpen = () => {
         setIsVisible(true);
@@ -24,7 +29,7 @@ const Item = ({photos, modelName, price, description, size, brand, clothesItemId
     };
 
     const handleOrder = () => {
-        OrderService.Order(1033, clothesItemId, 'M').then(r => console.log(r));
+        dispatch(order({UserId: userId, ItemId: clothesItemId, Size: size}));
     }
 
     const aaa = () => {

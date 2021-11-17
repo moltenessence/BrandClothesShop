@@ -23,7 +23,7 @@ interface GetOrdersResponse {
 
 export default class OrderService {
 
-    static async Order(UserId: number, ItemId: number, Size: string) {
+    static async Order(UserId: number | null, ItemId: number, Size: string) {
         return OrderAPI.post
             < OrderResponse >
             ('/orders/purchase', {

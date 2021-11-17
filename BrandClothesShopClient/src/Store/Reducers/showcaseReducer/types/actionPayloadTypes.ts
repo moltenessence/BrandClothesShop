@@ -1,4 +1,4 @@
-import { ItemsCollection } from "./reducerTypes";
+import {ItemsCollection} from "./reducerTypes";
 
 
 export interface IToggleIsFetching {
@@ -12,4 +12,10 @@ export interface ISetItemsCollectionSuccess {
 
 export interface ISetItemsCollectionTrigger {
     itemType: string,
+}
+
+export interface IOrder {
+    UserId: number | null,
+    ItemId: number,
+    Size: string,
 }

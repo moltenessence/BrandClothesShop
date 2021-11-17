@@ -2,7 +2,7 @@
 export default <T = any, S = T, E = T, F = T>
     (actionName: string) => {
 
-    const SUCCESS = actionName + '/SUCCES';
+    const SUCCESS = actionName + '/SUCCESS';
     const TRIGGER = actionName + '/TRIGGER';
     const ERROR = actionName + '/ERROR';
     const FULFILLED = actionName + '/FULFILLED';
