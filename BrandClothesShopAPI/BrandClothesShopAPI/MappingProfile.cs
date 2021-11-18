@@ -20,7 +20,8 @@ namespace BrandClothesShopAPI
                 .ForMember(dst => dst.Email, opt => opt.MapFrom(src => src.Email))
                 .ForMember(dst => dst.Username, opt => opt.MapFrom(src => src.Username))
                 .ForMember(dst => dst.Id, opt => opt.MapFrom(src => src.UserId))
-                .ForMember(dst => dst.Token, opt => opt.Ignore());
+                .ForMember(dst => dst.Token, opt => opt.Ignore())
+                .ForMember(dst => dst.RefreshToken, opt => opt.Ignore());
         }
 
     }

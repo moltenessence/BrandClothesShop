@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Http;
 using BrandClothesShopAPI.Services;
+using System;
 
 namespace BrandClothesShopAPI
 {
@@ -40,7 +41,7 @@ namespace BrandClothesShopAPI
             services.AddScoped<ITokenService, TokenService>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
+            
             services.AddDbContext<ClothesShopContext>(options =>
                  options.UseSqlServer(connectionString));
 
@@ -60,8 +61,10 @@ namespace BrandClothesShopAPI
                 IssuerSigningKey = AuthOptions.GetSymmetricSecurityKey(),
                 ValidateIssuer = false,
                 ValidateAudience = false,
-                ValidateLifetime = false
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.Zero
             };
+            services.AddSingleton(tokenValidationParameters);
 
             services.AddAuthentication(x =>{ x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                                              x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;

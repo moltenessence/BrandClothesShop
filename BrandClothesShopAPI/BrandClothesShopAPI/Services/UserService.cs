@@ -37,8 +37,9 @@ namespace BrandClothesShopAPI.Services
             if (authUser == null) return null;
 
             var token = _tokenService.GenerateJwtToken(authUser);
+            var refreshToken = _tokenService.GenerateRefreshToken(authUser);
 
-            return new AuthenticateResponse(authUser, token);
+            return new AuthenticateResponse(authUser, token, refreshToken.ToString());
         }
 
         public async Task<RegistrationResponse> Register(RegistrationModel registrationModel)
