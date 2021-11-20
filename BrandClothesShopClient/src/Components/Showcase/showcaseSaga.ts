@@ -6,7 +6,7 @@ import {ItemsCollection} from "../../Store/Reducers/showcaseReducer/types/reduce
 import OrderService from "../../Service/OrderService";
 import {OrderCodes} from "../../Service/statusCodes";
 
-function* setItemsCollectionWorker({payload}: SetItemsCollectionTrigger) {
+function* setItemsCollectionWorker<T extends SetItemsCollectionTrigger>({payload}: T) {
 
     const itemType = payload.itemType;
 

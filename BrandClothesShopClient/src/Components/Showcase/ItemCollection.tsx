@@ -7,14 +7,13 @@ import {RootState} from "../../Store/store";
 interface IProps extends ConnectorProps {
 }
 
-const ItemsCollectionComponent = ({itemsCollection, userId, isAuth, orderError, orderSuccess}: IProps) => {
+const ItemsCollectionComponent = ({itemsCollection, userId, orderError, orderSuccess}: IProps) => {
     return (
         <>
             {
                 itemsCollection.map((item, index) => <Item
                     {...item}
                     userId={userId}
-                    isAuth={isAuth}
                     orderSuccess={orderSuccess}
                     orderError={orderError}
                     key={index}
@@ -29,7 +28,6 @@ const mapStateToProps = (state: RootState) => {
         userId: state.authMe.userId,
         itemsCollection: state.showcase.itemsCollection,
         isFetching: state.showcase.isFetching,
-        isAuth: state.authMe.isAuth,
         orderSuccess: state.showcase.orderSuccess,
         orderError: state.showcase.orderError,
     }
