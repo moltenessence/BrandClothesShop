@@ -63,9 +63,9 @@ namespace BrandClothesShopAPI.Controllers
             if (_context.Users.Find(userId) == null)
                 return new NotFoundObjectResult("There is no such a user!");
 
-            var userOrders = _context.Orders.Where(c => c.UserId == userId);
+            var userOrders =  allOrders.Where(c => c.UserId == userId);
 
-            if (userOrders == null) return new OkObjectResult("Your Order List is empty!");
+            if (userOrders.Count() == 0) return new OkObjectResult("Your Order List is empty!");
 
             return new OkObjectResult(userOrders);
         }

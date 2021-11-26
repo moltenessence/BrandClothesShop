@@ -10,7 +10,6 @@ namespace BrandClothesShopAPI.Models
         [JsonIgnore]
         public int PhotoId { get; set; }
         [Required]
-        [DataType(DataType.ImageUrl)]
         public string URL { get; set; }
         [ForeignKey("ClothesItem")]
         [JsonIgnore]

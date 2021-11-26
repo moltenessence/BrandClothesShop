@@ -7,6 +7,7 @@ namespace DataStore
     public class ClothesShopContext : DbContext
     {
         public DbSet<СlothesItem> ClothesItems { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Photo> Photos { get; set; }
         public DbSet<User> Users { get; set; }
