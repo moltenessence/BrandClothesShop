@@ -22,6 +22,7 @@ const Item = ({
                   brand,
                   clothesItemId,
                   orderError,
+                  orderSuccess,
                   type,
               }: IProps) => {
     const [isVisible, setIsVisible] = useState<boolean>();
@@ -43,7 +44,7 @@ const Item = ({
                 onCancel={handleClose}
                 footer={null}
             >
-                <ItemModalBody userId={userId} orderError={orderError} orderSuccess={orderError}
+                <ItemModalBody userId={userId} orderError={orderError} orderSuccess={orderSuccess}
                                clothesItemId={clothesItemId} modelName={modelName} brand={brand}
                                type={type} size={size} description={description} price={price} photos={photos}/>
             </Modal>

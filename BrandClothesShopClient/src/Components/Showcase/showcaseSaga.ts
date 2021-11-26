@@ -41,13 +41,13 @@ function* orderWorker<T extends Order>({payload}: T): any {
     const delay = (time: number) => new Promise(resolve => setTimeout(resolve, time));
     try {
         const response = yield call(() => OrderService.Order(UserId, ItemId, Size));
-        if (response.status == OrderCodes.Success) {
+        if (response.status === OrderCodes.Success) {
             yield put(order.success());
             yield delay(300);
             yield put(order.success());
         }
     } catch (e: any) {
-        if (e.response.status == OrderCodes.Error) {
+        if (e.response.status === OrderCodes.Error) {
             yield put(order.error());
             yield delay(300);
             yield put(order.error());
