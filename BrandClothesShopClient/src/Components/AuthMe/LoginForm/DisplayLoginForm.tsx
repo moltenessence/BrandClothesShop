@@ -14,7 +14,7 @@ const DisplayLoginForm = ({ handleSubmit, values, submitCount }: FormikProps<For
                 label='E-mail'
                 validate={emailValidation}
                 submitCount={submitCount}
-                defaultValue={values.email}
+                d4efaultValue={values.email}
                 hasFeedback
             />
             <Field
