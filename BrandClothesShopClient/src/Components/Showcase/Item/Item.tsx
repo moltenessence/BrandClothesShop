@@ -12,6 +12,7 @@ interface IProps extends IItem {
     orderSuccess: boolean,
 }
 
+<<<<<<< HEAD
 const Item = <T extends IProps>({
                                     photos,
                                     modelName,
@@ -24,6 +25,21 @@ const Item = <T extends IProps>({
                                     orderError,
                                     type,
                                 }: T) => {
+=======
+const Item = ({
+                  photos,
+                  modelName,
+                  price,
+                  description,
+                  userId,
+                  size,
+                  brand,
+                  clothesItemId,
+                  orderError,
+                  orderSuccess,
+                  type,
+              }: IProps) => {
+>>>>>>> master
     const [isVisible, setIsVisible] = useState<boolean>();
 
     const handleOpen = () => {
@@ -43,7 +59,7 @@ const Item = <T extends IProps>({
                 onCancel={handleClose}
                 footer={null}
             >
-                <ItemModalBody userId={userId} orderError={orderError} orderSuccess={orderError}
+                <ItemModalBody userId={userId} orderError={orderError} orderSuccess={orderSuccess}
                                clothesItemId={clothesItemId} modelName={modelName} brand={brand}
                                type={type} size={size} description={description} price={price} photos={photos}/>
             </Modal>

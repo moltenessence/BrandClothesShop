@@ -16,14 +16,16 @@ namespace BrandClothesShopAPI.Controllers
     public class AccountController : ControllerBase
     {
         private readonly IUserService _userService;
+        private readonly ITokenService _tokenService;
 
-        public AccountController(IUserService userService)
+        public AccountController(IUserService userService, ITokenService tokenService)
         {
             _userService = userService;
+            _tokenService = tokenService;
         }
 
         [HttpPost("Register")]
-        public async Task<IActionResult> Register(RegistrationModel user)
+        public async Task<IActionResult> Register([FromBody] RegistrationModel user)
         {
             var registrationResponse = await _userService.Register(user);
 
@@ -36,7 +38,7 @@ namespace BrandClothesShopAPI.Controllers
         }
 
         [HttpPost("Authenticate")]
-        public async Task<IActionResult> Authenticate(AuthenticateRequest user)
+        public async Task<IActionResult> Authenticate([FromBody] AuthenticateRequest user)
         {
             var authenticateResponse = await _userService.Authenticate(user);
 
@@ -44,6 +46,17 @@ namespace BrandClothesShopAPI.Controllers
                 return BadRequest("Invalid email or password!");
 
             return Ok(authenticateResponse);
+        }
+
+        [HttpPost]
+        [Route("Refresh-Token")]
+        public IActionResult RefreshToken([FromBody] TokenRequest tokenRequest)
+        {
+            var result = _tokenService.ValidateAndUpdateToken(tokenRequest);
+
+            if (!result.Success) return new BadRequestObjectResult(result);
+
+            return new ObjectResult(result);
         }
 
         [HttpGet("GetAll")]
@@ -54,4 +67,6 @@ namespace BrandClothesShopAPI.Controllers
             return Ok(users);
         }
     }
+
+          
 }
