@@ -12,20 +12,6 @@ interface IProps extends IItem {
     orderSuccess: boolean,
 }
 
-<<<<<<< HEAD
-const Item = <T extends IProps>({
-                                    photos,
-                                    modelName,
-                                    price,
-                                    description,
-                                    userId,
-                                    size,
-                                    brand,
-                                    clothesItemId,
-                                    orderError,
-                                    type,
-                                }: T) => {
-=======
 const Item = ({
                   photos,
                   modelName,
@@ -39,7 +25,6 @@ const Item = ({
                   orderSuccess,
                   type,
               }: IProps) => {
->>>>>>> master
     const [isVisible, setIsVisible] = useState<boolean>();
 
     const handleOpen = () => {
