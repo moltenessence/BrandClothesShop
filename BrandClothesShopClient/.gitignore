@@ -1,6 +1,13 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
+../BrandClothesShopAPI/.vs/BrandClothesShopAPI/DesignTimeBuild/.dtbcache.v2
+../BrandClothesShopAPI/.vs/BrandClothesShopAPI/v16/.suo
+../BrandClothesShopAPI/BrandClothesShopAPI/bin/Debug/netcoreapp3.1/BrandClothesShopAPI.dll
+../BrandClothesShopAPI/BrandClothesShopAPI/obj/Debug/netcoreapp3.1/BrandClothesShopAPI.csprojAssemblyReference.cache
+../BrandClothesShopAPI/DataStore/obj/Debug/netcoreapp3.1/DataStore.csprojAssemblyReference.cache
+../BrandClothesShopAPI/Models.EF/obj/Debug/netcoreapp3.1/Core.csprojAssemblyReference.cache
+
 /node_modules
 /.pnp
 .pnp.js
