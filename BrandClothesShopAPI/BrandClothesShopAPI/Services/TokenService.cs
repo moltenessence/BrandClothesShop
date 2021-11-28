@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -15,9 +16,11 @@ namespace BrandClothesShopAPI.Services
     public class TokenService : ITokenService
     {
         private readonly ClothesShopContext _context;
+        private readonly TokenValidationParameters _tokenValidationParameters;
         public TokenService(ClothesShopContext context, TokenValidationParameters tokenValidationParameters)
         {
             _context = context;
+            _tokenValidationParameters = tokenValidationParameters;
         }
         public string GenerateJwtToken(User user)
         {
@@ -69,7 +72,51 @@ namespace BrandClothesShopAPI.Services
             return refreshToken;
         }
 
-        public UpdateTokenResult ValidateAndUpdateToken(TokenRequest tokenRequest)
+        public TokenValidationResult ValidateToken(TokenRequest tokenRequest)
+        {
+            var jwtTokenHandler = new JwtSecurityTokenHandler();
+
+            try
+            {
+                var tokenInVerification = jwtTokenHandler.ValidateToken(tokenRequest.Token, _tokenValidationParameters, out var validatedToken);
+
+                if (validatedToken is JwtSecurityToken jwtSecurityToken)
+                {
+                    return new TokenValidationResult
+                    {
+                        Success = true,
+                        Errors = null,
+                        StatusCode = HttpStatusCode.OK
+                    };
+                }
+
+                return new TokenValidationResult
+                {
+                    Success = false,
+                    Errors = new List<string>() { "Token isn't valid" },
+                    StatusCode = HttpStatusCode.BadRequest
+                };
+            }
+            catch(SecurityTokenExpiredException)
+            {
+                return new TokenValidationResult
+                {
+                    Success = false,
+                    Errors = new List<string>() { "The token is expired." },
+                    StatusCode = HttpStatusCode.Forbidden
+                };
+            }
+            catch (Exception ex)
+            {
+                return new TokenValidationResult
+                {
+                    Success = false,
+                    Errors = new List<string>() { $"Something went wrong: {ex.Message}" },
+                    StatusCode = HttpStatusCode.BadRequest
+                };
+            }
+        }
+        public UpdateTokenResult ValidateAndUpdateToken(UpdateTokenRequest tokenRequest)
         {
             var jwtTokenHandler = new JwtSecurityTokenHandler();
 
@@ -99,7 +146,8 @@ namespace BrandClothesShopAPI.Services
                 {
                     Success = false,
                     Errors = new List<string>() { "Token hasn't expired yet" },
-                    Token = null
+                    Token = null,
+                    StatusCode = HttpStatusCode.BadRequest
                 };
 
                 var storedToken = _context.RefreshTokens.FirstOrDefault(x => x.Token == tokenRequest.RefreshToken);
@@ -108,7 +156,8 @@ namespace BrandClothesShopAPI.Services
                 {
                     Success = false,
                     Errors = new List<string>() { "The token doesn't exist" },
-                    Token = null
+                    Token = null,
+                    StatusCode = HttpStatusCode.BadRequest
                 };
 
                 if (storedToken.ExpiryDate < DateTime.Now)
@@ -120,7 +169,8 @@ namespace BrandClothesShopAPI.Services
                     {
                         Success = false,
                         Errors = new List<string>() { "The refresh token expired." },
-                        Token = null
+                        Token = null,
+                        StatusCode = HttpStatusCode.NotFound
                     };
                 }
 
@@ -130,7 +180,8 @@ namespace BrandClothesShopAPI.Services
                     {
                         Success = false,
                         Errors = new List<string>() { "The refresh token has been used" },
-                        Token = null
+                        Token = null,
+                        StatusCode = HttpStatusCode.BadRequest
                     };
                 }
               
@@ -147,7 +198,8 @@ namespace BrandClothesShopAPI.Services
                     Success = true,
                     Errors = null,
                     Token = token,
-                    RefreshToken = GenerateRefreshToken(user).Token
+                    RefreshToken = GenerateRefreshToken(user).Token,
+                    StatusCode = HttpStatusCode.OK
                 };
 
             }
@@ -159,7 +211,8 @@ namespace BrandClothesShopAPI.Services
                     Errors = new List<string>() {
                        $"Something went wrong: {ex.Message}"
                         },
-                    Token = null
+                    Token = null,
+                    StatusCode = HttpStatusCode.InternalServerError
                 };
             }
         }

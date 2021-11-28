@@ -8,6 +8,7 @@ namespace BrandClothesShopAPI.Services
     {
         string GenerateJwtToken(User user);
         RefreshToken GenerateRefreshToken(User user);
-        UpdateTokenResult ValidateAndUpdateToken(TokenRequest tokenRequest);
+        UpdateTokenResult ValidateAndUpdateToken(UpdateTokenRequest tokenRequest);
+        TokenValidationResult ValidateToken(TokenRequest tokenRequest);
     }
 }
