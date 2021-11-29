@@ -27,20 +27,21 @@ function* setItemsCollectionWorker<T extends SetItemsCollectionTrigger>({payload
 }
 
 interface IOrderResponse {
-    orderId: number,
-    purchaseTime: string,
-    userId: number,
-    clothesItemId: number,
-    size: string,
-    price: number,
-    name: string
+    status: number,
+    // orderId: number,
+    // purchaseTime: string,
+    // userId: number,
+    // clothesItemId: number,
+    // size: string,
+    // price: number,
+    // name: string
 }
 
-function* orderWorker<T extends Order>({payload}: T): any {
+function* orderWorker<T extends Order>({payload}: T) {
     const {UserId, ItemId, Size} = payload;
     const delay = (time: number) => new Promise(resolve => setTimeout(resolve, time));
     try {
-        const response = yield call(() => OrderService.Order(UserId, ItemId, Size));
+        const response: IOrderResponse = yield call(() => OrderService.Order(UserId, ItemId, Size));
         if (response.status === OrderCodes.Success) {
             yield put(order.success());
             yield delay(300);
