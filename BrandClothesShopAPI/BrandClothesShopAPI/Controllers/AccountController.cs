@@ -49,9 +49,9 @@ namespace BrandClothesShopAPI.Controllers
 
         [HttpPost]
         [Route("Refresh-Token")]
-        public IActionResult RefreshToken(UpdateTokenRequest tokenRequest)
+        public async Task<IActionResult> RefreshToken(UpdateTokenRequest tokenRequest)
         {
-            var result = _tokenService.ValidateAndUpdateToken(tokenRequest);
+            var result = await _tokenService.ValidateAndUpdateTokenAsync(tokenRequest);
 
             return new ObjectResult(result);
         }
