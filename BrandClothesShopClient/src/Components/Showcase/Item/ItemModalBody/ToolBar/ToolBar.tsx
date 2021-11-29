@@ -1,5 +1,6 @@
 import React, {FC} from 'react';
 import {Button, Tooltip} from "antd";
+import styles from "./styles/styles.module.scss";
 
 
 interface IProps {
@@ -16,17 +17,17 @@ const ToolBar: FC<IProps> = ({
                                  orderError,
                              }) => {
     return (
-        <div style={{display: 'flex', justifyContent: 'end'}}>
+        <div className={styles.toolbarContainer}>
             <Tooltip placement="top" mouseEnterDelay={1} title={'You must be logged in to make purchases'}>
-                <Button style={{height: 40, width: 90}} onClick={handleOrder}
+                <Button onClick={handleOrder}
                         danger={orderSuccess}
                         disabled={!isAuth}
-                        className={orderError ? 'orderError' : ''}
+                        className={`${orderError ? ' orderError ' : ''}` + styles.orderBtn}
                 >
                     Order
                 </Button>
             </Tooltip>
-            <Button style={{height: 40, width: 110, marginLeft: 10}}>Add to cart</Button>
+            <Button className={styles.addToCartBtn}>Add to cart</Button>
         </div>
     );
 }

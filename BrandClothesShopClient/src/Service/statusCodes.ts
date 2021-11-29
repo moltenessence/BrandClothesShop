@@ -1,5 +1,4 @@
 
-
 export enum RegisterCodes {
     Success = 200,
     AlreadyExist = 422,

@@ -1,0 +1,14 @@
+
+.card {
+  width: 270px;
+  border: none;
+  cursor: pointer;
+
+  .photo {
+    width: inherit;
+    height: 320px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+  }
+}

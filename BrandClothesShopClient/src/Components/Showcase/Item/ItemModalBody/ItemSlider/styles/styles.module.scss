@@ -1,0 +1,20 @@
+
+.carousel {
+  width: 300px;
+  height: 408px;
+
+  .carouselItem {
+    width: 270px;
+    height: fit-content;
+    border: none;
+    cursor: pointer;
+
+    .carouselPhoto {
+      width: inherit;
+      height: 320px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: top;
+    }
+  }
+}

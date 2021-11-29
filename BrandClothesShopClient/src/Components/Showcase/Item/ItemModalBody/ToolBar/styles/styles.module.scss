@@ -1,0 +1,18 @@
+
+.toolbarContainer {
+  display: flex;
+  justify-content: end;
+
+  button {
+    height: 40px;
+  }
+
+  .orderBtn {
+    width: 90px;
+  }
+
+  .addToCartBtn {
+    width: 110px;
+    margin-left: 10px;
+  }
+}

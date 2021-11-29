@@ -1,0 +1,19 @@
+
+.photoContainer {
+  width: 300px;
+  height: 350px;
+
+  .photoCard {
+    width: 270px;
+    border: none;
+    cursor: pointer;
+
+    .photoItem {
+      width: inherit;
+      height: 320px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: top;
+    }
+  }
+}

@@ -7,6 +7,7 @@ import {RootState} from "../../../../Store/store";
 import ItemSlider from "./ItemSlider/ItemSlider";
 import SinglePhoto from "./SinglePhoto/SinglePhoto";
 import ToolBar from "./ToolBar/ToolBar";
+import styles from "./styles/styles.module.scss";
 
 
 interface IProps extends IItem, ConnectorProps {
@@ -45,20 +46,20 @@ const ItemModalBody: FC<IProps> = ({
 
     return (
         <>
-            <div style={{display: 'flex', margin: '20px 0'}}>
+            <div className={styles.mainContainer}>
                 {
                     photos.length > 1 ?
                         <ItemSlider photos={photos}/>
                         :
                         <SinglePhoto photos={photos}/>
                 }
-                <Typography style={{marginLeft: 25}}>
-                    <Title style={{marginBottom: '.3em'}}>{modelName}</Title>
+                <Typography className={styles.mainTypography}>
+                    <Title className={styles.title}>{modelName}</Title>
                     <Text strong={true}
-                          style={{marginBottom: 15, display: 'block', fontSize: '1.5em'}}>{brand}</Text>
+                          className={styles.brandName}>{brand}</Text>
                     <Select
                         showSearch
-                        style={{width: 100}}
+                        className={styles.selectSizeInput}
                         placeholder="Size"
                         onSelect={handleSelect}
                         optionFilterProp="children"
@@ -71,12 +72,7 @@ const ItemModalBody: FC<IProps> = ({
                         }
                     </Select>
                     <Text strong={true}
-                          style={{
-                              marginBottom: 10,
-                              marginTop: 10,
-                              display: 'block',
-                              fontSize: '1.5em'
-                          }}
+                          className={styles.descriptionText}
                     >
                         Description
                     </Text>
@@ -87,12 +83,7 @@ const ItemModalBody: FC<IProps> = ({
                             ' itaque minima nesciunt non quae reprehenderit sit voluptate voluptatibus?'}
                     </Paragraph>
                     <Text strong={true}
-                          style={{
-                              opacity: '.5',
-                              marginTop: 10,
-                              display: 'block',
-                              fontSize: '2em'
-                          }}
+                          className={styles.price}
                     >
                         €{price}
                     </Text>

@@ -1,13 +1,15 @@
-import { Menu } from 'antd';
-import { connect, ConnectedProps } from 'react-redux';
-import { RootState } from '../../../../Store/store';
-import { useDispatch } from 'react-redux';
-import { logout } from '../../../../Store/Reducers/authMeReducer/actionCreators';
+import {Menu} from 'antd';
+import {connect, ConnectedProps} from 'react-redux';
+import {RootState} from '../../../../Store/store';
+import {useDispatch} from 'react-redux';
+import {logout} from '../../../../Store/Reducers/authMeReducer/actionCreators';
+import {FC} from "react";
 
 
-interface TProps extends ConnectorProps { }
+interface IProps extends ConnectorProps {
+}
 
-const AuthedItems = ({ userName }: TProps) => {
+const AuthedItems: FC<IProps> = ({userName}) => {
 
     const dispatch = useDispatch();
 

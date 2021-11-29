@@ -1,6 +1,7 @@
 import React, {FC} from 'react';
 import {Card} from "antd";
 import {Photo} from "../../../../../Store/Reducers/showcaseReducer/types/reducerTypes";
+import styles from "./styles/styles.module.scss";
 
 
 interface IProps {
@@ -9,18 +10,14 @@ interface IProps {
 
 const SinglePhoto: FC<IProps> = ({photos}) => {
     return (
-        <div style={{width: 300, height: 350}}>
+        <div className={styles.photoContainer}>
             <Card
-                style={{width: 270, height: 'content-fit', border: 'none', cursor: 'pointer'}}
+                className={styles.photoCard}
             >
-                <div style={{
-                    width: 'inherit',
-                    height: 320,
-                    backgroundSize: 'cover',
-                    backgroundImage: `url(${photos[0].url})`,
-                    backgroundRepeat: 'no-repeat',
-                    backgroundPosition: 'top',
-                }}/>
+                <div
+                    className={styles.photoItem}
+                    style={{backgroundImage: `url(${photos[0].url})`,}}
+                />
             </Card>
         </div>
     );

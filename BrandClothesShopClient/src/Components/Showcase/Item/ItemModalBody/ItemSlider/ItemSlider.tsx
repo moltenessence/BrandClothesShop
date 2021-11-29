@@ -1,6 +1,7 @@
 import React, {FC} from 'react';
 import {Card, Carousel} from "antd";
 import {Photo} from "../../../../../Store/Reducers/showcaseReducer/types/reducerTypes";
+import styles from "./styles/styles.module.scss";
 
 
 interface IItemSliderProps {
@@ -9,26 +10,17 @@ interface IItemSliderProps {
 
 const ItemSlider: FC<IItemSliderProps> = ({photos}) => {
     return (
-        <Carousel autoplay pauseOnDotsHover={true} style={{width: 300, height: 408}}>
+        <Carousel autoplay pauseOnDotsHover={true} className={styles.carousel}>
             {
                 photos.map(e =>
                     <Card
                         bordered={false}
-                        style={{
-                            width: 270,
-                            height: 'content-fit',
-                            border: 'none',
-                            cursor: 'pointer'
-                        }}
+                        className={styles.carouselItem}
                     >
-                        <div style={{
-                            width: 'inherit',
-                            height: 320,
-                            backgroundSize: 'cover',
-                            backgroundImage: `url(${e.url})`,
-                            backgroundRepeat: 'no-repeat',
-                            backgroundPosition: 'top',
-                        }}/>
+                        <div
+                            className={styles.carouselPhoto}
+                            style={{backgroundImage: `url(${e.url})`,}}
+                        />
                     </Card>
                 )
             }
