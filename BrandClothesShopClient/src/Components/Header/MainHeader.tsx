@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import {FC, useEffect, useState} from "react";
+import {useParams} from "react-router";
 import styles from "./style/styles.module.scss"
 
-const MainHeader = () => {
+const MainHeader: FC = () => {
     const params = useParams<{ params: string }>().params;
     const [darkMode, toggleMode] = useState(false);
 

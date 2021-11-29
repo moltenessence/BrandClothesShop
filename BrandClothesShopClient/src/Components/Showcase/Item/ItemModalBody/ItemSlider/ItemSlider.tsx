@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {Card, Carousel} from "antd";
 import {Photo} from "../../../../../Store/Reducers/showcaseReducer/types/reducerTypes";
 
@@ -7,7 +7,7 @@ interface IItemSliderProps {
     photos: Photo[],
 }
 
-const ItemSlider = <T extends IItemSliderProps>({photos}: T) => {
+const ItemSlider: FC<IItemSliderProps> = ({photos}) => {
     return (
         <Carousel autoplay pauseOnDotsHover={true} style={{width: 300, height: 408}}>
             {

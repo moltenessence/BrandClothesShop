@@ -1,27 +1,28 @@
-import { Menu } from "antd";
+import {Menu} from "antd";
 import './../style/style.scss';
 import useNavMenu from "../hooks/useNavMenu";
-import { connect, ConnectedProps } from "react-redux";
+import {connect, ConnectedProps} from "react-redux";
 import ConstItems from "./MenuItems/ConstItems";
-import { RootState } from "../../../Store/store";
+import {RootState} from "../../../Store/store";
 import AuthedItems from "./MenuItems/AuthedItems";
+import {FC} from "react";
 
 
-interface TProps extends ConnectorProps {
+interface IProps extends ConnectorProps {
     modalOpen(): void,
 }
 
-const NavMenu = ({ modalOpen, isAuth }: TProps) => {
+const NavMenu: FC<IProps> = ({modalOpen, isAuth}) => {
 
     const [darkMode] = useNavMenu();
 
     return (
         <div className={darkMode ? 'navMenuWrapperDark' : 'navMenuWrapperLight'}>
             <Menu mode={'vertical'}>
-                <ConstItems />
+                <ConstItems/>
                 {
                     isAuth ?
-                        <AuthedItems />
+                        <AuthedItems/>
                         :
                         <Menu.Item className={'loginItem'} onClick={() => modalOpen()}>
                             <span className='navLink'>Login</span>

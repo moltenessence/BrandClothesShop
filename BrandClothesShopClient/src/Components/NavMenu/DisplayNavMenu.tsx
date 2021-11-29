@@ -1,16 +1,17 @@
-import { useEffect } from "react";
+import {FC, useEffect} from "react";
 import './style/style.scss';
-import { useAuthModal } from "../AuthMe/hooks/useAuthModal/useAuthModal";
+import {useAuthModal} from "../AuthMe/hooks/useAuthModal/useAuthModal";
 import NavMenu from "./NavMenuComponent/NavMenu";
-import { connect, ConnectedProps } from "react-redux";
-import { RootState } from "../../Store/store";
+import {connect, ConnectedProps} from "react-redux";
+import {RootState} from "../../Store/store";
 
 
-interface TProps extends ConnectorProps { }
+interface IProps extends ConnectorProps {
+}
 
-const DisplayNavMenu = ({ isAuth }: TProps) => {
+const DisplayNavMenu: FC<IProps> = ({isAuth}) => {
 
-    const { ModalComponent, modalOpen, modalClose } = useAuthModal();
+    const {ModalComponent, modalOpen, modalClose} = useAuthModal();
 
     useEffect(() => {
         if (isAuth) modalClose()
@@ -18,8 +19,8 @@ const DisplayNavMenu = ({ isAuth }: TProps) => {
 
     return (
         <>
-            <ModalComponent />
-            <NavMenu modalOpen={modalOpen} />
+            <ModalComponent/>
+            <NavMenu modalOpen={modalOpen}/>
         </>
     );
 }

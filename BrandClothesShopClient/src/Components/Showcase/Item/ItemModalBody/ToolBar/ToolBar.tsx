@@ -1,20 +1,20 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {Button, Tooltip} from "antd";
 
 
-interface IToolBarProps {
+interface IProps {
     handleOrder: () => void,
     orderError: boolean,
     orderSuccess: boolean,
     isAuth: boolean,
 }
 
-const ToolBar = <T extends IToolBarProps>({
-                                              handleOrder,
-                                              orderSuccess,
-                                              isAuth,
-                                              orderError,
-                                          }: T) => {
+const ToolBar: FC<IProps> = ({
+                                 handleOrder,
+                                 orderSuccess,
+                                 isAuth,
+                                 orderError,
+                             }) => {
     return (
         <div style={{display: 'flex', justifyContent: 'end'}}>
             <Tooltip placement="top" mouseEnterDelay={1} title={'You must be logged in to make purchases'}>

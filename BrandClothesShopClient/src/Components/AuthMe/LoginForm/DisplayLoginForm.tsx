@@ -1,10 +1,11 @@
-import { AntInput, AntInputPassword } from "../../Common/Components/AntInputs/AntInputs";
-import { Form, Field, FormikProps } from "formik";
-import { emailValidation, passwordValidation } from "../../Common/Components/AntInputs/fieldValidation/fieldValidation";
-import { FormValues } from "../LoginForm/LoginForm";
+import {AntInput, AntInputPassword} from "../../Common/Components/AntInputs/AntInputs";
+import {Form, Field, FormikProps} from "formik";
+import {emailValidation, passwordValidation} from "../../Common/Components/AntInputs/fieldValidation/fieldValidation";
+import {FormValues} from "../LoginForm/LoginForm";
+import {FC} from "react";
 
 
-const DisplayLoginForm = ({ handleSubmit, values, submitCount }: FormikProps<FormValues>) => {
+const DisplayLoginForm: FC<FormikProps<FormValues>> = ({handleSubmit, values, submitCount}) => {
 
     return (
         <Form onSubmit={(params) => handleSubmit(params)}>

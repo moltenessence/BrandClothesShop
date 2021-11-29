@@ -1,8 +1,9 @@
-import { Formik } from 'formik';
+import {Formik} from 'formik';
 import DisplayLoginForm from "./DisplayLoginForm";
-import { useDispatch } from "react-redux";
-import { login } from "../../../Store/Reducers/authMeReducer/actionCreators";
-import { ILoginTrigger } from '../../../Store/Reducers/authMeReducer/types/actionPayloadTypes';
+import {useDispatch} from "react-redux";
+import {login} from "../../../Store/Reducers/authMeReducer/actionCreators";
+import {ILoginTrigger} from '../../../Store/Reducers/authMeReducer/types/actionPayloadTypes';
+import {FC} from "react";
 
 const initialValues = {
     email: '',
@@ -11,12 +12,12 @@ const initialValues = {
 
 export type FormValues = typeof initialValues;
 
-const LoginForm = () => {
+const LoginForm: FC = () => {
 
     const dispatch = useDispatch();
 
     const handleSubmit = (params: ILoginTrigger) => {
-        dispatch(login({ ...params }));
+        dispatch(login({...params}));
     }
 
     return (

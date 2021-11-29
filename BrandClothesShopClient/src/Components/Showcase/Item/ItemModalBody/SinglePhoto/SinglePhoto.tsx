@@ -1,13 +1,13 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {Card} from "antd";
 import {Photo} from "../../../../../Store/Reducers/showcaseReducer/types/reducerTypes";
 
 
-interface ISinglePhotoProps {
+interface IProps {
     photos: Photo[],
 }
 
-const SinglePhoto = <T extends ISinglePhotoProps>({photos}: T) => {
+const SinglePhoto: FC<IProps> = ({photos}) => {
     return (
         <div style={{width: 300, height: 350}}>
             <Card

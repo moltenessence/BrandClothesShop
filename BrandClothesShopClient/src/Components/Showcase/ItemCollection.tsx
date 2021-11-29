@@ -1,4 +1,4 @@
-import React from "react";
+import React, {FC} from "react";
 import 'antd/dist/antd.css';
 import Item from "./Item/Item";
 import {connect, ConnectedProps} from "react-redux";
@@ -7,7 +7,7 @@ import {RootState} from "../../Store/store";
 interface IProps extends ConnectorProps {
 }
 
-const ItemsCollectionComponent = ({itemsCollection, userId, orderError, orderSuccess}: IProps) => {
+const ItemsCollectionComponent: FC<IProps> = ({itemsCollection, userId, orderError, orderSuccess}) => {
     return (
         <>
             {

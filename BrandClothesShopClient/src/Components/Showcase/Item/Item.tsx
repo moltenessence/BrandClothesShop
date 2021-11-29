@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {FC, useState} from "react";
 import 'antd/dist/antd.css';
 import './style/style.scss';
 import {Modal} from "antd";
@@ -12,19 +12,19 @@ interface IProps extends IItem {
     orderSuccess: boolean,
 }
 
-const Item = ({
-                  photos,
-                  modelName,
-                  price,
-                  description,
-                  userId,
-                  size,
-                  brand,
-                  clothesItemId,
-                  orderError,
-                  orderSuccess,
-                  type,
-              }: IProps) => {
+const Item: FC<IProps> = ({
+                              photos,
+                              modelName,
+                              price,
+                              description,
+                              userId,
+                              size,
+                              brand,
+                              clothesItemId,
+                              orderError,
+                              orderSuccess,
+                              type,
+                          }) => {
     const [isVisible, setIsVisible] = useState<boolean>();
 
     const handleOpen = () => {

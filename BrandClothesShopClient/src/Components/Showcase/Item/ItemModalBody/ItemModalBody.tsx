@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {FC, useState} from 'react';
 import {Select, Typography} from "antd";
 import {connect, ConnectedProps, useDispatch} from "react-redux";
 import {order} from "../../../../Store/Reducers/showcaseReducer/actionCreators";
@@ -9,7 +9,7 @@ import SinglePhoto from "./SinglePhoto/SinglePhoto";
 import ToolBar from "./ToolBar/ToolBar";
 
 
-interface IItemModalBodyProps extends IItem, ConnectorProps {
+interface IProps extends IItem, ConnectorProps {
     userId: number | null,
     isAuth: boolean,
     orderError: boolean,
@@ -19,19 +19,19 @@ interface IItemModalBodyProps extends IItem, ConnectorProps {
 const {Title, Text, Paragraph} = Typography;
 const {Option} = Select;
 
-const ItemModalBody = ({
-                           photos,
-                           modelName,
-                           description,
-                           brand,
-                           size,
-                           price,
-                           userId,
-                           clothesItemId,
-                           orderSuccess,
-                           orderError,
-                           isAuth
-                       }: IItemModalBodyProps) => {
+const ItemModalBody: FC<IProps> = ({
+                                       photos,
+                                       modelName,
+                                       description,
+                                       brand,
+                                       size,
+                                       price,
+                                       userId,
+                                       clothesItemId,
+                                       orderSuccess,
+                                       orderError,
+                                       isAuth
+                                   }) => {
 
     const [selectedSize, setSelectedSize] = useState('');
 

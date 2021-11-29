@@ -1,17 +1,17 @@
-import React from 'react';
+import React, {FC} from 'react';
 import Meta from "antd/lib/card/Meta";
 import {Card} from "antd";
 import {Photo} from "../../../../Store/Reducers/showcaseReducer/types/reducerTypes";
 
 
-interface IItemCardProps {
+interface IProps {
     handleOpen: () => void,
     photos: Photo[],
     modelName: string,
     price: number,
 }
 
-const ItemCard = <T extends IItemCardProps>({handleOpen, photos, modelName, price}: T) => {
+const ItemCard: FC<IProps> = ({handleOpen, photos, modelName, price}) => {
     return (
         <Card
             onClick={handleOpen}
