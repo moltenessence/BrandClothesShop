@@ -38,7 +38,7 @@ namespace BrandClothesShopAPI.Controllers
         }
 
         [HttpPost("Authenticate")]
-        public async Task<IActionResult> Authenticate([FromBody] AuthenticateRequest user)
+        public async Task<IActionResult> Authenticate(AuthenticateRequest user)
         {
             var authenticateResponse = await _userService.Authenticate(user);
 
@@ -50,11 +50,18 @@ namespace BrandClothesShopAPI.Controllers
 
         [HttpPost]
         [Route("Refresh-Token")]
-        public IActionResult RefreshToken([FromBody] TokenRequest tokenRequest)
+        public IActionResult RefreshToken(UpdateTokenRequest tokenRequest)
         {
             var result = _tokenService.ValidateAndUpdateToken(tokenRequest);
 
-            if (!result.Success) return new BadRequestObjectResult(result);
+            return new ObjectResult(result);
+        }
+
+        [HttpPost]
+        [Route("Validate-Token")]
+        public IActionResult ValidateToken(TokenRequest tokenRequest)
+        {
+            var result = _tokenService.ValidateToken(tokenRequest);
 
             return new ObjectResult(result);
         }
