@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render the <App /> component 1`] = `
+<Fragment>
+  <Route
+    exact={true}
+    path="/"
+  >
+    <Connect(HomePageBackground) />
+  </Route>
+  <div
+    className="appWrapper"
+  >
+    <Route
+      path="/:params?"
+    >
+      <MainHeader />
+    </Route>
+    <div
+      className="navSection"
+    />
+    <Route
+      path="/:params?"
+    >
+      <Connect(DisplayNavMenu) />
+    </Route>
+    <main
+      className="contentWrapper"
+    >
+      <Route
+        path="/:params?"
+      >
+        <Connect(Showcase) />
+      </Route>
+    </main>
+  </div>
+</Fragment>
+`;
