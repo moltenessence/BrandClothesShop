@@ -34,12 +34,8 @@ function* registerWorker({payload}: RegisterTrigger): any {
 
         const {status} = yield call(() => AuthMeService.register(username, email, password));
 
-        if (status === RegisterCodes.Success) {
-            const response = yield call(() => AuthMeService.login(email, password));
-            const {token, id, username, refreshToken} = response.data;
+        if (status === RegisterCodes.Success) yield put(login({email, password}));
 
-            yield put(login.success({token, refreshToken, email, id, username}));
-        }
 
     } catch (e: any) {
         if (e.response.status === RegisterCodes.AlreadyExist) {
