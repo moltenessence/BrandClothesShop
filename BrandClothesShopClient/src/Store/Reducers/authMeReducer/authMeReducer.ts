@@ -18,9 +18,11 @@ const authMe = createReducer(
     {
         [login.SUCCESS]: (state, {payload}: Login) => {
 
-            const {token, username, id, email} = payload;
+            const {token, username, id, email, refreshToken} = payload;
 
             localStorage.setItem('token', token);
+            localStorage.setItem('refreshToken', refreshToken);
+
             state.isAuth = true;
             state.userId = id;
             state.email = email;

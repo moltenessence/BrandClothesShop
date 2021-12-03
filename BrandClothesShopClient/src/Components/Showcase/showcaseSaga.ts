@@ -4,7 +4,8 @@ import {Order, SetItemsCollectionTrigger} from "../../Store/Reducers/showcaseRed
 import ShowcaseService from "../../Service/ShowcaseService";
 import {ItemsCollection} from "../../Store/Reducers/showcaseReducer/types/reducerTypes";
 import OrderService from "../../Service/OrderService";
-import {OrderCodes} from "../../Service/statusCodes";
+import {CommonCodes, OrderCodes} from "../../Service/statusCodes";
+import AuthMeService from "../../Service/AuthMeService";
 
 function* setItemsCollectionWorker<T extends SetItemsCollectionTrigger>({payload}: T) {
 
@@ -37,21 +38,33 @@ interface IOrderResponse {
     // name: string
 }
 
-function* orderWorker<T extends Order>({payload}: T) {
+function* orderWorker<T extends Order>({payload}: T): any {
     const {UserId, ItemId, Size} = payload;
     const delay = (time: number) => new Promise(resolve => setTimeout(resolve, time));
     try {
         const response: IOrderResponse = yield call(() => OrderService.Order(UserId, ItemId, Size));
         if (response.status === OrderCodes.Success) {
             yield put(order.success());
-            yield delay(300);
+            yield delay(800);
             yield put(order.success());
         }
     } catch (e: any) {
         if (e.response.status === OrderCodes.Error) {
             yield put(order.error());
-            yield delay(300);
+            yield delay(1500);
             yield put(order.error());
+        } else if (e.response.status === CommonCodes.invalidToken) {
+            const {data: {token, refreshToken}} = yield call(() => AuthMeService.refreshToken());
+            // console.log(res);
+            localStorage.setItem('token', token);
+            localStorage.setItem('refreshToken', refreshToken);
+
+            const response: IOrderResponse = yield call(() => OrderService.Order(UserId, ItemId, Size));
+            if (response.status === OrderCodes.Success) {
+                yield put(order.success());
+                yield delay(800);
+                yield put(order.success());
+            }
         }
     }
 }

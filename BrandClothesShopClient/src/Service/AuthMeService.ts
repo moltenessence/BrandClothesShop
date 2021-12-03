@@ -38,4 +38,13 @@ export default class AuthMeService {
                 password,
             });
     }
+
+    static async refreshToken() {
+        return AuthMeAPI.post
+            < RegisterResponse >
+            ('/account/refresh-token', {
+                Token: localStorage.getItem('token'),
+                RefreshToken: localStorage.getItem('refreshToken'),
+            });
+    }
 }

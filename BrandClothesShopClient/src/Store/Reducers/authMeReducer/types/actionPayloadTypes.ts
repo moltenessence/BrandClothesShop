@@ -1,6 +1,5 @@
-
 export type ILoginTrigger = { email: string, password: string, };
-export type ILoginSucces = { email: string, token: string, id: number, username: string };
+export type ILoginSucces = { email: string, token: string, refreshToken: string, id: number, username: string };
 
 export type ILogout = any;
 

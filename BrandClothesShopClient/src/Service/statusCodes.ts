@@ -1,3 +1,7 @@
+export enum CommonCodes {
+    Success = 200,
+    invalidToken = 401,
+}
 
 export enum RegisterCodes {
     Success = 200,

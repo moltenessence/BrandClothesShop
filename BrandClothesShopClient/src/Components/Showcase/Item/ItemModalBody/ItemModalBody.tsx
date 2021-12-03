@@ -1,5 +1,5 @@
 import React, {FC, useState} from 'react';
-import {Select, Typography} from "antd";
+import {Modal, Select, Typography} from "antd";
 import {connect, ConnectedProps, useDispatch} from "react-redux";
 import {order} from "../../../../Store/Reducers/showcaseReducer/actionCreators";
 import {Item as IItem} from "./../../../../Store/Reducers/showcaseReducer/types/reducerTypes";
@@ -47,6 +47,21 @@ const ItemModalBody: FC<IProps> = ({
     return (
         <>
             <div className={styles.mainContainer}>
+                <Modal
+                    visible={orderSuccess || orderError}
+                    closable={false}
+                    bodyStyle={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}
+                    footer={null}
+                >
+                     <span style={{
+                         fontSize: '1.3em',
+                         color: orderError ? 'red' : 'green',
+                     }}>
+                        {
+                            orderError ? 'Some error occurred...' : 'Success!'
+                        }
+                     </span>
+                </Modal>
                 {
                     photos.length > 1 ?
                         <ItemSlider photos={photos}/>
