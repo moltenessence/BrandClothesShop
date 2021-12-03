@@ -1,4 +1,4 @@
-import {call, takeEvery, put} from "redux-saga/effects";
+import {call, takeEvery, put, delay as sagaDelay} from "redux-saga/effects";
 import {order, setItemsCollection, toggleIsFetching} from "../../Store/Reducers/showcaseReducer/actionCreators";
 import {Order, SetItemsCollectionTrigger} from "../../Store/Reducers/showcaseReducer/types/actionTypes"
 import ShowcaseService from "../../Service/ShowcaseService";
@@ -55,16 +55,17 @@ function* orderWorker<T extends Order>({payload}: T): any {
             yield put(order.error());
         } else if (e.response.status === CommonCodes.invalidToken) {
             const {data: {token, refreshToken}} = yield call(() => AuthMeService.refreshToken());
-            // console.log(res);
+
             localStorage.setItem('token', token);
             localStorage.setItem('refreshToken', refreshToken);
-
-            const response: IOrderResponse = yield call(() => OrderService.Order(UserId, ItemId, Size));
-            if (response.status === OrderCodes.Success) {
-                yield put(order.success());
-                yield delay(800);
-                yield put(order.success());
-            }
+            //
+            // const response: IOrderResponse = yield call(() => OrderService.Order(UserId, ItemId, Size));
+            // if (response.status === OrderCodes.Success) {
+            //     yield put(order.success());
+            //     yield delay(800);
+            //     yield put(order.success());
+            // }
+            yield put(order(payload));
         }
     }
 }
