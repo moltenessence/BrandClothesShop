@@ -1,4 +1,4 @@
-import {call, takeEvery, put, delay as sagaDelay} from "redux-saga/effects";
+import {call, takeEvery, put, throttle, delay} from "redux-saga/effects";
 import {order, setItemsCollection, toggleIsFetching} from "../../Store/Reducers/showcaseReducer/actionCreators";
 import {Order, SetItemsCollectionTrigger} from "../../Store/Reducers/showcaseReducer/types/actionTypes"
 import ShowcaseService from "../../Service/ShowcaseService";
@@ -41,7 +41,7 @@ interface IOrderResponse {
 
 function* orderWorker<T extends Order>({payload}: T) {
     const {UserId, ItemId, Size} = payload;
-    const delay = (time: number) => new Promise(resolve => setTimeout(resolve, time));
+    // const delay = (time: number) => new Promise(resolve => setTimeout(resolve, time));
     try {
         const response: IOrderResponse = yield call(() => OrderService.Order(UserId, ItemId, Size));
         if (response.status === OrderCodes.Success) {
@@ -67,5 +67,6 @@ function* orderWorker<T extends Order>({payload}: T) {
 
 export function* setItemsCollectionWatcher() {
     yield takeEvery(setItemsCollection.TRIGGER, setItemsCollectionWorker);
-    yield takeEvery(order.TRIGGER, orderWorker);
+    yield throttle(3000, order.TRIGGER, orderWorker)
+    // yield takeEvery(order.TRIGGER, orderWorker);
 }
