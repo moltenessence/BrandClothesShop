@@ -128,6 +128,7 @@ namespace BrandClothesShopAPI.Services
                     IssuerSigningKey = AuthOptions.GetSymmetricSecurityKey(),
                     ValidateIssuer = false,
                     ValidateAudience = false,
+                    ValidateLifetime = false,
                 },
                 out var validatedToken);
 

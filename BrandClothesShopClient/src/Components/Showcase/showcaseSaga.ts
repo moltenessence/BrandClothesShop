@@ -6,6 +6,7 @@ import {ItemsCollection} from "../../Store/Reducers/showcaseReducer/types/reduce
 import OrderService from "../../Service/OrderService";
 import {CommonCodes, OrderCodes} from "../../Service/statusCodes";
 import AuthMeService from "../../Service/AuthMeService";
+import {IRefreshTokenResponse} from "../Common/commonInterfaces/commonInterfaces";
 
 function* setItemsCollectionWorker<T extends SetItemsCollectionTrigger>({payload}: T) {
 
@@ -38,7 +39,7 @@ interface IOrderResponse {
     // name: string
 }
 
-function* orderWorker<T extends Order>({payload}: T): any {
+function* orderWorker<T extends Order>({payload}: T) {
     const {UserId, ItemId, Size} = payload;
     const delay = (time: number) => new Promise(resolve => setTimeout(resolve, time));
     try {
@@ -54,17 +55,11 @@ function* orderWorker<T extends Order>({payload}: T): any {
             yield delay(1500);
             yield put(order.error());
         } else if (e.response.status === CommonCodes.invalidToken) {
-            const {data: {token, refreshToken}} = yield call(() => AuthMeService.refreshToken());
+            const {data: {token, refreshToken}}: IRefreshTokenResponse = yield call(() => AuthMeService.refreshToken());
 
             localStorage.setItem('token', token);
             localStorage.setItem('refreshToken', refreshToken);
-            //
-            // const response: IOrderResponse = yield call(() => OrderService.Order(UserId, ItemId, Size));
-            // if (response.status === OrderCodes.Success) {
-            //     yield put(order.success());
-            //     yield delay(800);
-            //     yield put(order.success());
-            // }
+
             yield put(order(payload));
         }
     }
