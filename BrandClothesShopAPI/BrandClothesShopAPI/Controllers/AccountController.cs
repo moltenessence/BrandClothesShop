@@ -65,7 +65,7 @@ namespace BrandClothesShopAPI.Controllers
             return new ObjectResult(result);
         }
 
-        [HttpGet("GetAll")]
+        [HttpGet("Users")]
         public IActionResult GetAllUsers()
         {
             var users = _userService.GetAll();
