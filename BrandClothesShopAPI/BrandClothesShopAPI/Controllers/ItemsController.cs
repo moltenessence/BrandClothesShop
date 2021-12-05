@@ -36,7 +36,8 @@ namespace BrandClothesShopAPI.Controllers
             if (page*count - count > totalAmount)
                 return BadRequest($"The number of items to take is out of range! Total amount of items of type '{type}' = {totalAmount}");
 
-            var clothesItems = await _context.ClothesItems.Where(i => i.Type == type)
+            var clothesItems = await _context.ClothesItems.AsNoTracking()
+                                                          .Where(i => i.Type == type)
                                                           .Include("Photos")
                                                           .Skip(amountToSkip)
                                                           .Take(count)
@@ -54,7 +55,9 @@ namespace BrandClothesShopAPI.Controllers
         [HttpGet("{id:int}")]
         public async Task<ActionResult> GetItemById(int id)
         {
-            var photos = await _context.Photos.ToListAsync();
+            if (id < 0) return BadRequest();
+
+            await _context.Photos.AsNoTracking().ToListAsync();
             var currentItem = await _context.ClothesItems.FindAsync(id);
 
             if (currentItem == null)

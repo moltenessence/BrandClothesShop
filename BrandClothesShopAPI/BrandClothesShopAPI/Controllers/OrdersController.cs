@@ -55,7 +55,7 @@ namespace BrandClothesShopAPI.Controllers
         [HttpGet("{userId}")]
         public async Task<IActionResult> GetOrders(int userId)
         {
-            var allOrders = await _context.Orders.ToListAsync();
+            var allOrders = await _context.Orders.AsNoTracking().ToListAsync();
 
             if (userId <= 0)
                 return new BadRequestResult();
