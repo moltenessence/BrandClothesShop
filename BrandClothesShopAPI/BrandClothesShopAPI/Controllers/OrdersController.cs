@@ -29,14 +29,14 @@ namespace BrandClothesShopAPI.Controllers
             if (orderRequest.ItemId <= 0 || orderRequest.UserId <= 0 || !ModelValidationParameters.Sizes.Contains(orderRequest.Size.ToLower()))
                 return new BadRequestResult();
 
-            var user = _context.Users.Find(orderRequest.UserId);
-            var item = _context.ClothesItems.Find(orderRequest.ItemId);
+            var user = await _context.Users.FindAsync(orderRequest.UserId);
+            var item = await _context.ClothesItems.FindAsync(orderRequest.ItemId);
 
             if (user == null || item == null)
                 return new NotFoundObjectResult("There is no such user or item!");
 
 
-            var order = await _context.Orders.AddAsync(new Order
+            await _context.Orders.AddAsync(new Order
             {
                 UserId = orderRequest.UserId,
                 ClothesItemId = orderRequest.ItemId,
@@ -55,10 +55,10 @@ namespace BrandClothesShopAPI.Controllers
         [HttpGet("{userId}")]
         public async Task<IActionResult> GetOrders(int userId)
         {
-            var allOrders = await _context.Orders.ToListAsync();
-
             if (userId <= 0)
                 return new BadRequestResult();
+
+            var allOrders = await _context.Orders.AsNoTracking().ToListAsync();
 
             if (_context.Users.Find(userId) == null)
                 return new NotFoundObjectResult("There is no such a user!");

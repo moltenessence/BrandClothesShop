@@ -37,24 +37,6 @@ namespace BrandClothesShopAPI.Services
 
             return encodedJwt;
         }
-
-        public async Task<RefreshToken> GenerateRefreshTokenAsync(User user)
-        {
-            var refreshToken = new RefreshToken()
-            {
-                UserId = user.UserId,
-                AddedDate = DateTime.UtcNow,
-                IsUsed = false,
-                ExpiryDate = DateTime.UtcNow.AddMonths(2),
-                Token = RandomString(35) + Guid.NewGuid()
-            };
-
-            await _context.RefreshTokens.AddAsync(refreshToken);
-            await _context.SaveChangesAsync();
-
-            return refreshToken;
-        }
-
         public RefreshToken GenerateRefreshToken(User user)
         {
             var refreshToken = new RefreshToken()
@@ -116,7 +98,7 @@ namespace BrandClothesShopAPI.Services
                 };
             }
         }
-        public UpdateTokenResult ValidateAndUpdateToken(UpdateTokenRequest tokenRequest)
+        public async Task<UpdateTokenResult> ValidateAndUpdateTokenAsync(UpdateTokenRequest tokenRequest)
         {
             var jwtTokenHandler = new JwtSecurityTokenHandler();
 
@@ -128,7 +110,11 @@ namespace BrandClothesShopAPI.Services
                     IssuerSigningKey = AuthOptions.GetSymmetricSecurityKey(),
                     ValidateIssuer = false,
                     ValidateAudience = false,
+<<<<<<< HEAD
                     ValidateLifetime = false,
+=======
+                    ValidateLifetime = false
+>>>>>>> fbbec0f47e2e762a69cdc69d1dbf373e20d17629
                 },
                 out var validatedToken);
 
@@ -164,7 +150,7 @@ namespace BrandClothesShopAPI.Services
                 if (storedToken.ExpiryDate < DateTime.Now)
                 {
                     _context.RefreshTokens.Remove(storedToken);
-                    _context.SaveChanges();
+                    await _context.SaveChangesAsync();
 
                     return new UpdateTokenResult
                     {
@@ -189,9 +175,9 @@ namespace BrandClothesShopAPI.Services
 
                 storedToken.IsUsed = true;
                 _context.RefreshTokens.Update(storedToken);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
 
-                var user = _context.Users.Find(storedToken.UserId);
+                var user = await _context.Users.FindAsync(storedToken.UserId);
                 var token = GenerateJwtToken(user);
 
                 return new UpdateTokenResult
