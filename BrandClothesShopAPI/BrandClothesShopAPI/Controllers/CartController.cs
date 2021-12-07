@@ -22,7 +22,7 @@ namespace BrandClothesShopAPI.Controllers
             _context = context;
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpPost("Add")]
         public async Task<ActionResult> AddItemIntoCart(CartRequest cartRequest)
         {
@@ -55,7 +55,7 @@ namespace BrandClothesShopAPI.Controllers
             return Ok("The item was successfully added into the cart!");
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpGet("{userId}")]
         public ActionResult GetItemsFromCart(int userId)
         {
@@ -69,7 +69,7 @@ namespace BrandClothesShopAPI.Controllers
             return Ok(userCartItems);
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpDelete("Delete")]
         public async Task<ActionResult> DeleteItemsFromCart(int userId, int itemId)
         {
