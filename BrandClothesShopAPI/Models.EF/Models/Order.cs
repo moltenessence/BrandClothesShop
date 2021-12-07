@@ -23,9 +23,6 @@ namespace BrandClothesShopAPI.Models
         [Required]
         public decimal Price { get; set; }
         public string Name { get; set; }
-
-        //public virtual User User { get; set; }
-        //public virtual СlothesItem ClothesItem { get; set; }
         public Order()
         {
 

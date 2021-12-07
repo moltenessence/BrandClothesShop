@@ -11,6 +11,7 @@ namespace DataStore
         public DbSet<Order> Orders { get; set; }
         public DbSet<Photo> Photos { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
 
         public ClothesShopContext(DbContextOptions<ClothesShopContext> options)
             : base(options)
