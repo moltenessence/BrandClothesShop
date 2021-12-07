@@ -76,10 +76,8 @@ namespace BrandClothesShopAPI.Controllers
             if (itemId <= 0 || userId <= 0) return BadRequest();
 
             var user = await _context.Users.FindAsync(userId);
-            var item = await _context.ClothesItems.FindAsync(itemId);
 
-            if (user == null || item == null)
-                return NotFound("There is no such user or item!");
+            if (user == null) return NotFound("There is no such user!");
 
             var userCartItems = _context.CartItems.Where(i => i.UserId == userId).ToList();
             var itemToRemove = userCartItems.Where(i => i.ItemId == itemId).SingleOrDefault();
