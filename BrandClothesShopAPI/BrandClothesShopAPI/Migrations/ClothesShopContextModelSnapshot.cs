@@ -29,6 +29,9 @@ namespace BrandClothesShopAPI.Migrations
                     b.Property<int>("ClothesItemId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
@@ -43,8 +46,6 @@ namespace BrandClothesShopAPI.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("OrderId");
-
-                    b.HasIndex("ClothesItemId");
 
                     b.HasIndex("UserId");
 
@@ -110,6 +111,9 @@ namespace BrandClothesShopAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("CartId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -130,26 +134,64 @@ namespace BrandClothesShopAPI.Migrations
 
                     b.HasKey("ClothesItemId");
 
+                    b.HasIndex("CartId");
+
                     b.ToTable("ClothesItems");
+                });
+
+            modelBuilder.Entity("Core.Models.CartItem", b =>
+                {
+                    b.Property<int>("CartId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CartId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Carts");
+                });
+
+            modelBuilder.Entity("Core.Models.RefreshToken", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("AddedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("ExpiryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsUsed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Token")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("RefreshTokens");
                 });
 
             modelBuilder.Entity("BrandClothesShopAPI.Models.Order", b =>
                 {
-                    b.HasOne("BrandClothesShopAPI.Models.СlothesItem", "ClothesItem")
-                        .WithMany()
-                        .HasForeignKey("ClothesItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("BrandClothesShopAPI.Models.User", "User")
+                    b.HasOne("BrandClothesShopAPI.Models.User", null)
                         .WithMany("Orders")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("ClothesItem");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("BrandClothesShopAPI.Models.Photo", b =>
@@ -163,6 +205,35 @@ namespace BrandClothesShopAPI.Migrations
                     b.Navigation("ClothesItem");
                 });
 
+            modelBuilder.Entity("BrandClothesShopAPI.Models.СlothesItem", b =>
+                {
+                    b.HasOne("Core.Models.Cart", null)
+                        .WithMany("Items")
+                        .HasForeignKey("CartId");
+                });
+
+            modelBuilder.Entity("Core.Models.Cart", b =>
+                {
+                    b.HasOne("BrandClothesShopAPI.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Core.Models.RefreshToken", b =>
+                {
+                    b.HasOne("BrandClothesShopAPI.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("BrandClothesShopAPI.Models.User", b =>
                 {
                     b.Navigation("Orders");
@@ -171,6 +242,11 @@ namespace BrandClothesShopAPI.Migrations
             modelBuilder.Entity("BrandClothesShopAPI.Models.СlothesItem", b =>
                 {
                     b.Navigation("Photos");
+                });
+
+            modelBuilder.Entity("Core.Models.Cart", b =>
+                {
+                    b.Navigation("Items");
                 });
 #pragma warning restore 612, 618
         }
