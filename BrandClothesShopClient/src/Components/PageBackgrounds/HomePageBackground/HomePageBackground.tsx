@@ -12,9 +12,7 @@ interface IProps extends ConnectorProps {
 const HomePageBackground: FC<IProps> = ({setBackground, backgroundUrl}) => {
     const dispatch = useDispatch<Dispatch<ActionTypes>>();
 
-    useEffect(() => dispatch(setBackground({
-        url: 'https://sun9-44.userapi.com/impf/c851328/v851328291/1afa24/p1YoZbAiNrQ.jpg?size=959x1280&quality=96&sign=c89220d868d218e81bbf9d1c139a3a8a&type=album'
-    })));
+    useEffect(() => dispatch(setBackground({})));
 
     return (
         <div className={styles.pageBackground} style={{

@@ -1,12 +1,13 @@
-import { put, takeEvery } from '@redux-saga/core/effects';
-import { setBackground } from '../../../Store/Reducers/homePageReducer/actionCreators';
-import {SetBackground} from '../../../Store/Reducers/homePageReducer/types/actionTypes';
+import {put, takeEvery} from '@redux-saga/core/effects';
+import {setBackground} from '../../../Store/Reducers/homePageReducer/actionCreators';
+import BackgroundService from "../../../Service/BackgroundService";
+import {call} from "redux-saga/effects";
 
-function* setBackgroundWorker({ payload }: SetBackground) {
-    const url = payload?.url;
-    const { success } = setBackground;
+function* setBackgroundWorker() {
+    const url: string = yield call(() => BackgroundService.getBackground());
+    const {success} = setBackground;
     try {
-        if (url) yield put(success({ url }))
+        yield put(success({url}))
     } catch (e) {
         console.log(e);
     }
