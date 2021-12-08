@@ -110,11 +110,7 @@ namespace BrandClothesShopAPI.Services
                     IssuerSigningKey = AuthOptions.GetSymmetricSecurityKey(),
                     ValidateIssuer = false,
                     ValidateAudience = false,
-<<<<<<< HEAD
-                    ValidateLifetime = false,
-=======
                     ValidateLifetime = false
->>>>>>> fbbec0f47e2e762a69cdc69d1dbf373e20d17629
                 },
                 out var validatedToken);
 
