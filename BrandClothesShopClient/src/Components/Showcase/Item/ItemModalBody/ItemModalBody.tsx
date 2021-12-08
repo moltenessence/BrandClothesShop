@@ -1,5 +1,5 @@
 import React, {FC, useState} from 'react';
-import {Modal, Select, Typography} from "antd";
+import {Card, Modal, Select, Typography} from "antd";
 import {connect, ConnectedProps, useDispatch} from "react-redux";
 import {order} from "../../../../Store/Reducers/showcaseReducer/actionCreators";
 import {Item as IItem} from "./../../../../Store/Reducers/showcaseReducer/types/reducerTypes";
@@ -50,16 +50,54 @@ const ItemModalBody: FC<IProps> = ({
                 <Modal
                     visible={orderSuccess || orderError}
                     closable={false}
-                    bodyStyle={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}
+                    bodyStyle={{display: 'flex', justifyContent: 'start', alignItems: 'center'}}
                     footer={null}
                 >
                      <span style={{
                          fontSize: '1.3em',
                          color: orderError ? 'red' : 'green',
                      }}>
-                        {
-                            orderError ? 'Some error occurred...' : 'Success!'
-                        }
+                            <div className={styles.notificationContainer}>
+                                {
+                                    orderError ?
+                                        <div className={styles.errorBlock}>
+                                            <div className={styles.errorImgHolder}>
+                                                <img
+                                                    src="https://icon-library.com/images/image-error-icon/image-error-icon-9.jpg"
+                                                    alt=""/>
+                                            </div>
+                                            <Typography>
+                                                <div className={styles.errorHolder}>
+                                                    <Text>
+                                                        Some error occurred...
+                                                    </Text>
+                                                </div>
+                                            </Typography>
+                                        </div>
+                                        :
+                                        <>
+                                            <div className={styles.photoContainer}>
+                                                <img src={photos[0].url} alt="ordered item"/>
+                                            </div>
+                                            <Typography style={{fontSize: '.9em'}} className={styles.textBlock}>
+                                                <Title style={{fontSize: '1.3em'}}>
+                                                    You bought:
+                                                </Title>
+                                                <div className={styles.notificationDescription}>
+                                                    <Text>
+                                                        Brand: {brand}
+                                                    </Text>
+                                                    <Text>
+                                                        Model: {modelName}
+                                                    </Text>
+                                                    <Text className={styles.size}>
+                                                        SIZE: {selectedSize}
+                                                    </Text>
+                                                </div>
+                                            </Typography>
+                                        </>
+                                }
+                            </div>
                      </span>
                 </Modal>
                 {

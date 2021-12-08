@@ -4,6 +4,60 @@
   margin: 20px 0;
 }
 
+.notificationContainer {
+  display: flex;
+
+  //ERROR case
+  .errorBlock{
+    display: flex;
+    align-items: center;
+
+    .errorImgHolder{
+      height: 50px;
+      width: 55px;
+      display: flex;
+    }
+
+    .errorHolder{
+      margin-left: 5em;
+    }
+
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+    }
+  }
+
+  //SUCCESS case
+  .textBlock {
+    display: inline-block;
+    margin-left: 1em;
+
+    .notificationDescription {
+      display: flex;
+      margin-left: .4em;
+      flex-direction: column;
+
+      .size {
+        display: inline-block;
+      }
+    }
+  }
+
+  .photoContainer {
+    width: 100px;
+    height: 120px;
+
+    img {
+      object-fit: cover;
+      object-position: top;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
 .mainTypography {
   margin-left: 25px;
 
