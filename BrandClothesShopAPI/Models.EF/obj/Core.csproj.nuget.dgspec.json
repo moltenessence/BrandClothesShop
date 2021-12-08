@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Lenovo\\Desktop\\web shop\\work\\BrandClothesShop\\BrandClothesShopAPI\\Models.EF\\Core.csproj": {}
+    "C:\\Users\\Lenovo\\Desktop\\test\\BrandClothesShop\\BrandClothesShopAPI\\Models.EF\\Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Lenovo\\Desktop\\web shop\\work\\BrandClothesShop\\BrandClothesShopAPI\\Models.EF\\Core.csproj": {
+    "C:\\Users\\Lenovo\\Desktop\\test\\BrandClothesShop\\BrandClothesShopAPI\\Models.EF\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\web shop\\work\\BrandClothesShop\\BrandClothesShopAPI\\Models.EF\\Core.csproj",
+        "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\test\\BrandClothesShop\\BrandClothesShopAPI\\Models.EF\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Users\\Lenovo\\Desktop\\web shop\\work\\BrandClothesShop\\BrandClothesShopAPI\\Models.EF\\Core.csproj",
+        "projectPath": "C:\\Users\\Lenovo\\Desktop\\test\\BrandClothesShop\\BrandClothesShopAPI\\Models.EF\\Core.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lenovo\\Desktop\\web shop\\work\\BrandClothesShop\\BrandClothesShopAPI\\Models.EF\\obj\\",
+        "outputPath": "C:\\Users\\Lenovo\\Desktop\\test\\BrandClothesShop\\BrandClothesShopAPI\\Models.EF\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",

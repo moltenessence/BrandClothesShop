@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JQGZxMJBrehGr+FKYd/rWymuPyYpdoP0Um118htoKVF91uNR4L+Iz3b4e3roRsJm0lOJN6ryMXF/0Hyl14m4kQ==",
+  "dgSpecHash": "xJwnKqblra0IuP0djTUf5yEFm/wyXQGfuHMdD3cI54wyJ2dc61woMstA2STZYsY6EE97vVI5kffOSJEwtuMBbg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Lenovo\\Desktop\\web shop\\work\\BrandClothesShop\\BrandClothesShopAPI\\BrandClothesShopAPI\\BrandClothesShopAPI.csproj",
+  "projectFilePath": "C:\\Users\\Lenovo\\Desktop\\test\\BrandClothesShop\\BrandClothesShopAPI\\BrandClothesShopAPI\\BrandClothesShopAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lenovo\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
@@ -123,12 +123,6 @@
     "C:\\Users\\Lenovo\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
   "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Ошибка чтения файла кэша C:\\Users\\Lenovo\\Desktop\\web shop\\work\\BrandClothesShop\\BrandClothesShopAPI\\BrandClothesShopAPI\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
-    },
     {
       "code": "NU1701",
       "level": "Warning",
