@@ -8,6 +8,7 @@ import ItemSlider from "./ItemSlider/ItemSlider";
 import SinglePhoto from "./SinglePhoto/SinglePhoto";
 import ToolBar from "./ToolBar/ToolBar";
 import styles from "./styles/styles.module.scss";
+import parseSizes from "../../../Common/utils/parseSizes/parseSizes";
 
 
 interface IProps extends IItem, ConnectorProps {
@@ -121,7 +122,7 @@ const ItemModalBody: FC<IProps> = ({
                         }
                     >
                         {
-                            size.split(' ').map(size => <Option value={size}>{size}</Option>)
+                            parseSizes(size).map(size => <Option value={size}>{size}</Option>)
                         }
                     </Select>
                     <Text strong={true}
