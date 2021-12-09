@@ -1,4 +1,4 @@
-import {call, delay, put, takeEvery, takeLeading} from "redux-saga/effects";
+import {call, delay, put, takeEvery, takeLatest} from "redux-saga/effects";
 import {order, setItemsCollection, toggleIsFetching} from "../../Store/Reducers/showcaseReducer/actionCreators";
 import {Order, SetItemsCollectionTrigger} from "../../Store/Reducers/showcaseReducer/types/actionTypes"
 import ShowcaseService from "../../Service/ShowcaseService";
@@ -67,5 +67,5 @@ function* orderWorker<T extends Order>({payload}: T) {
 
 export function* setItemsCollectionWatcher() {
     yield takeEvery(setItemsCollection.TRIGGER, setItemsCollectionWorker);
-    yield takeLeading(order.TRIGGER, orderWorker)
+    yield takeLatest(order.TRIGGER, orderWorker);
 }
