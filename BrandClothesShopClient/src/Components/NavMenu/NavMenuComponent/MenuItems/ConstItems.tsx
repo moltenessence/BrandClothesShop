@@ -5,22 +5,22 @@ import { NavLink } from 'react-router-dom';
 export default () => {
     return (
         <>
-            <Menu.Item key='none'>
+            <Menu.Item key={'HomePage'}>
                 <NavLink to='/' className='navLink'>Home page</NavLink>
             </Menu.Item>
-            <Menu.Item key='none-2'>
+            <Menu.Item key='t-shirts'>
                 <NavLink to='/t-shirt' className='navLink'>T-shirts</NavLink>
             </Menu.Item>
-            <Menu.Item key='none-3'>
+            <Menu.Item key='hoodies'>
                 <NavLink to='/hoodie' className='navLink'>Hoodies</NavLink>
             </Menu.Item>
-            <Menu.Item key='none-10'>
+            <Menu.Item key='pants'>
                 <NavLink to='/pants' className='navLink'>Pants</NavLink>
             </Menu.Item>
-            <Menu.Item key='none-20'>
+            <Menu.Item key='shoes'>
                 <NavLink to='/shoes' className='navLink'>Shoes</NavLink>
             </Menu.Item>
-            <Menu.Item key='none-4'>
+            <Menu.Item key='cart'>
                 <NavLink to='/cart' className='navLink'>Cart</NavLink>
             </Menu.Item>
         </>

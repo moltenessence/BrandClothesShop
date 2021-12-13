@@ -1,6 +1,6 @@
 import {Menu} from "antd";
 import './../style/style.scss';
-import useNavMenu from "../hooks/useNavMenu";
+import useNavMenu from "../hooks/useNavMenuLayout";
 import {connect, ConnectedProps} from "react-redux";
 import ConstItems from "./MenuItems/ConstItems";
 import {RootState} from "../../../Store/store";
@@ -14,7 +14,7 @@ interface IProps extends ConnectorProps {
 
 const NavMenu: FC<IProps> = ({modalOpen, isAuth}) => {
 
-    const [darkMode] = useNavMenu();
+    const [darkMode]: boolean[] = useNavMenu();
 
     return (
         <div className={darkMode ? 'navMenuWrapperDark' : 'navMenuWrapperLight'}>

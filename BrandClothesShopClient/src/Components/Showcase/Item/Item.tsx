@@ -25,7 +25,7 @@ const Item: FC<IProps> = ({
                               orderSuccess,
                               type,
                           }) => {
-    const [isVisible, setIsVisible] = useState<boolean>();
+    const [isVisible, setIsVisible] = useState(false);
 
     const handleOpen = () => {
         setIsVisible(true);

@@ -1,17 +1,22 @@
 import {OrderAPI} from "./API";
+import {IResponse} from "../Components/Common/commonInterfaces/commonInterfaces";
 
 
-interface OrderResponse {
+interface IOrderResponseData {
     orderId: number,
     purchaseTime: string,
     userId: number,
     clothesItemId: number,
     size: string,
     price: number,
-    name: string,
+    name: string
 }
 
-interface GetOrdersResponse {
+export interface IOrderResponse extends IResponse {
+}
+
+
+interface IGetOrdersResponse {
     orderId: number,
     purchaseTime: string,
     userId: number,
@@ -25,17 +30,19 @@ export default class OrderService {
 
     static async Order(UserId: number | null, ItemId: number, Size: string) {
         return OrderAPI.post
-            < OrderResponse >
+            < IOrderResponseData >
             ('/orders/purchase', {
                 UserId,
                 ItemId,
                 Size,
-            });
+            }).then(response => ({
+                status: response.status,
+            }));
     }
 
     static async getOrders(UserId: number) {
         return OrderAPI.get
-            < GetOrdersResponse >
+            < IGetOrdersResponse >
             (`/orders/${UserId}`);
     }
 }

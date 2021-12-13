@@ -1,18 +1,18 @@
 import {call, put, takeEvery} from "redux-saga/effects";
 import {login, register, setServerError} from "../../../Store/Reducers/authMeReducer/actionCreators";
-import AuthMeService from "../../../Service/AuthMeService";
+import AuthMeService, {ILoginResponse, IRegisterResponse} from "../../../Service/AuthMeService";
 import {LoginTrigger, RegisterTrigger} from "../../../Store/Reducers/authMeReducer/types/actionTypes";
 import {LoginCodes, RegisterCodes} from "../../../Service/statusCodes";
+import {ISetServerError} from "../../../Store/Reducers/authMeReducer/types/actionPayloadTypes";
 
 
-function* loginWorker({payload}: LoginTrigger): any {
+function* loginWorker<T extends LoginTrigger>({payload}: T) {
 
     const {email, password} = payload;
 
     try {
 
-        const response = yield call(() => AuthMeService.login(email, password));
-        const {token, id, username, refreshToken} = response.data;
+        const {token, id, username, refreshToken}: ILoginResponse = yield call(() => AuthMeService.login(email, password));
 
         yield put(login.success({token, email, id, username, refreshToken}));
 
@@ -26,20 +26,20 @@ function* loginWorker({payload}: LoginTrigger): any {
     }
 }
 
-function* registerWorker({payload}: RegisterTrigger): any {
+function* registerWorker<T extends RegisterTrigger>({payload}: T) {
 
     const {username, email, password} = payload;
 
     try {
 
-        const {status} = yield call(() => AuthMeService.register(username, email, password));
+        const {status}: IRegisterResponse = yield call(() => AuthMeService.register(username, email, password));
 
         if (status === RegisterCodes.Success) yield put(login({email, password}));
 
 
     } catch (e: any) {
         if (e.response.status === RegisterCodes.AlreadyExist) {
-            const message = e.response.data;
+            const message: ISetServerError = e.response.data;
             yield put(setServerError(message));
         } else {
             console.log(e);

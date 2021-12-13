@@ -1,19 +1,21 @@
-import { Form, Input } from "antd";
+import {Form, Input} from "antd";
+
 
 export const AntInput = ({
-    field,
-    form,
-    hasFeedback,
-    label,
-    submitCount,
-    ...props
-}: any) => {
+                             field,
+                             form,
+                             hasFeedback,
+                             label,
+                             submitCount,
+                             ...props
+                         }: any) => {
+    // console.log(field, form, hasFeedback, label, submitCount, props)
     const touched = form.touched[field.name];
     const submitted = submitCount > 0;
     const hasError = form.errors[field.name];
     const submittedError = hasError && submitted;
     const touchedError = hasError && touched;
-    const onChange = ({ target: { value } }: { target: { value: string } }) => form.setFieldValue(field.name, value);
+    const onChange = ({target: {value}}: { target: { value: string } }) => form.setFieldValue(field.name, value);
     const onBlur = () => form.setFieldTouched(field.name, true);
 
     return (
@@ -36,19 +38,19 @@ export const AntInput = ({
 }
 
 export const AntInputPassword = ({
-    field,
-    form,
-    hasFeedback,
-    label,
-    submitCount,
-    ...props
-}: any) => {
+                                     field,
+                                     form,
+                                     hasFeedback,
+                                     label,
+                                     submitCount,
+                                     ...props
+                                 }: any) => {
     const touched = form.touched[field.name];
     const submitted = submitCount > 0;
     const hasError = form.errors[field.name];
     const submittedError = hasError && submitted;
     const touchedError = hasError && touched;
-    const onChange = ({ target: { value } }: { target: { value: string } }) => form.setFieldValue(field.name, value);
+    const onChange = ({target: {value}}: { target: { value: string } }) => form.setFieldValue(field.name, value);
     const onBlur = () => form.setFieldTouched(field.name, true);
 
     return (

@@ -3,7 +3,7 @@ import {useParams} from "react-router";
 import styles from "./style/styles.module.scss"
 
 const MainHeader: FC = () => {
-    const params = useParams<{ params: string }>().params;
+    const params: string = useParams<{ params: string }>().params;
     const [darkMode, toggleMode] = useState(false);
 
     useEffect(() => {

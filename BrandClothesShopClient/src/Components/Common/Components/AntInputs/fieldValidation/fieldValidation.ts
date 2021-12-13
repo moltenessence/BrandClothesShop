@@ -1,5 +1,5 @@
 export const usernameValidation = (value: string) => {
-    let errors;
+    let errors: string = '';
 
     if (value.length > 12) {
         errors = "Max-length is 12 symbols!"
@@ -9,7 +9,7 @@ export const usernameValidation = (value: string) => {
 }
 
 export const emailValidation = (value: string) => {
-    let errors;
+    let errors: string = '';
 
     if (!value) {
         errors = "Field is required!";
@@ -21,7 +21,7 @@ export const emailValidation = (value: string) => {
 }
 
 export const passwordValidation = (value: string) => {
-    let errors;
+    let errors: string = '';
 
     if (!value) {
         errors = "Field is required!";
@@ -32,7 +32,7 @@ export const passwordValidation = (value: string) => {
     } else if (/^(?=.*[!@#$%^&(),.+/\/\]\[{}?><":;|])/.test(value)) {
         errors = `Forbidden symbols: !@#$%^&(),.+=\/]\[{}?><":;`;
     } else if (/^(?=.*[а-я])/.test(value) || /^(?=.*[А-Я])/.test(value)) {
-        errors = `Passord must consist of Latin letters!`;
+        errors = `Password must consist of Latin letters!`;
     } else if (!/([A-Z])/g.test(value)) {
         errors = 'Must include one uppercase letter at least!';
     } else if (!/([0-9])/g.test(value)) {
