@@ -8,11 +8,11 @@ interface IGetBackgroundResponseData {
 export interface IGetBackgroundResponse extends IResponse, IGetBackgroundResponseData {
 }
 
-export default class BackgroundService {
+export default class BackgroundService{
 
     static async getBackground() {
         return await BackgroundAPI.get<IGetBackgroundResponseData>("http://localhost:60671/api/background/homepage").then(response => ({
-            url: response.data.url,
+            url: response.data,
             status: response.status,
         }));
     }
