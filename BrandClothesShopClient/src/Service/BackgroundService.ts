@@ -12,8 +12,10 @@ export default class BackgroundService{
 
     static async getBackground() {
         return await BackgroundAPI.get<IGetBackgroundResponseData>("http://localhost:60671/api/background/homepage").then(response => ({
-            url: response.data,
+            url: response.data.url,
             status: response.status,
         }));
     }
 }
+
+type a = ReturnType<typeof BackgroundService.getBackground>

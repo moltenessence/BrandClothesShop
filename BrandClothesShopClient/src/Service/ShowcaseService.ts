@@ -1,6 +1,5 @@
 import {ItemsCollection} from "../Store/Reducers/showcaseReducer/types/reducerTypes";
 import {ShowcaseAPI} from "./API";
-import {CommonCodes} from "./statusCodes";
 import {IResponse} from "../Components/Common/commonInterfaces/commonInterfaces";
 
 

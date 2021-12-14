@@ -9,7 +9,7 @@ function* setBackgroundWorker() {
 
     try {
         const {url, status}: IGetBackgroundResponse = yield call(() => BackgroundService.getBackground());
-        
+
         if (status === CommonCodes.Success) {
             yield put(success({url}))
         }
