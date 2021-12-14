@@ -1,21 +1,15 @@
 import {BackgroundAPI} from "./API";
-import {IResponse} from "../Components/Common/commonInterfaces/commonInterfaces";
+import IBackgroundService, {IGetBackgroundResponseData} from "./interfaces/IBackgroundService";
 
-interface IGetBackgroundResponseData {
-    url: string,
-}
 
-export interface IGetBackgroundResponse extends IResponse, IGetBackgroundResponseData {
-}
+const BackgroundService: IBackgroundService = {
 
-export default class BackgroundService{
-
-    static async getBackground() {
+    async getBackground() {
         return await BackgroundAPI.get<IGetBackgroundResponseData>("http://localhost:60671/api/background/homepage").then(response => ({
             url: response.data.url,
             status: response.status,
         }));
-    }
+    },
 }
 
-type a = ReturnType<typeof BackgroundService.getBackground>
+export default BackgroundService;

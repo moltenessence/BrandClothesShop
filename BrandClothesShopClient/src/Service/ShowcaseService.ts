@@ -1,20 +1,10 @@
-import {ItemsCollection} from "../Store/Reducers/showcaseReducer/types/reducerTypes";
 import {ShowcaseAPI} from "./API";
-import {IResponse} from "../Components/Common/commonInterfaces/commonInterfaces";
+import IShowcaseService, {IGetItemsCollectionResponseData} from "./interfaces/IShowcaseService";
 
 
-interface IGetItemsCollectionResponseData {
-    items: ItemsCollection,
-    total: number,
-}
+const ShowcaseService: IShowcaseService = {
 
-export interface IGetItemsCollectionResponse extends IResponse{
-    items: ItemsCollection,
-}
-
-export default class ShowcaseService {
-
-    static async getItemsCollection(itemType: string) {
+    async getItemsCollection(itemType: string) {
         return await ShowcaseAPI.get
             < IGetItemsCollectionResponseData >
             (`http://localhost:60671/api/items/${itemType}/?page=1&count=20`).then(response => ({
@@ -23,3 +13,5 @@ export default class ShowcaseService {
             }));
     }
 }
+
+export default ShowcaseService;

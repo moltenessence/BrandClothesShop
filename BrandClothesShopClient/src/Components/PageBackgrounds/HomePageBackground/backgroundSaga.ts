@@ -1,8 +1,9 @@
 import {put, takeEvery} from '@redux-saga/core/effects';
 import {setBackground} from '../../../Store/Reducers/homePageReducer/actionCreators';
-import BackgroundService, {IGetBackgroundResponse} from "../../../Service/BackgroundService";
 import {call} from "redux-saga/effects";
 import {CommonCodes} from "../../../Service/statusCodes";
+import {IGetBackgroundResponse} from "../../../Service/interfaces/IBackgroundService";
+import BackgroundService from "../../../Service/BackgroundService";
 
 function* setBackgroundWorker() {
     const {success} = setBackground;

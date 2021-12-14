@@ -1,12 +1,13 @@
 import {call, delay, put, takeEvery, takeLatest} from "redux-saga/effects";
 import {order, setItemsCollection, toggleIsFetching} from "../../Store/Reducers/showcaseReducer/actionCreators";
 import {Order, SetItemsCollectionTrigger} from "../../Store/Reducers/showcaseReducer/types/actionTypes"
-import ShowcaseService, {IGetItemsCollectionResponse} from "../../Service/ShowcaseService";
-import {ItemsCollection} from "../../Store/Reducers/showcaseReducer/types/reducerTypes";
-import OrderService, {IOrderResponse} from "../../Service/OrderService";
+import ShowcaseService from "../../Service/ShowcaseService";
+import OrderService from "../../Service/OrderService";
 import {CommonCodes, OrderCodes} from "../../Service/statusCodes";
 import AuthMeService from "../../Service/AuthMeService";
-import {IRefreshTokenResponse, IResponse} from "../Common/commonInterfaces/commonInterfaces";
+import {IGetItemsCollectionResponse} from "../../Service/interfaces/IShowcaseService";
+import {IOrderResponse} from "../../Service/interfaces/IOrderService";
+import {IRefreshTokenResponse} from "../../Service/interfaces/IAuthMeService";
 
 function* setItemsCollectionWorker<T extends SetItemsCollectionTrigger>({payload}: T) {
 
@@ -50,7 +51,7 @@ function* orderWorker<T extends Order>({payload}: T) {
             yield delay(1500);
             yield put(order.error());
         } else if (e.response.status === CommonCodes.invalidToken) {
-            const {data: {token, refreshToken}}: IRefreshTokenResponse = yield call(() => AuthMeService.refreshToken());
+            const {token, refreshToken}: IRefreshTokenResponse = yield call(() => AuthMeService.refreshToken());
 
             localStorage.setItem('token', token);
             localStorage.setItem('refreshToken', refreshToken);

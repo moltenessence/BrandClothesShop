@@ -1,9 +1,10 @@
 import {call, put, takeEvery} from "redux-saga/effects";
 import {login, register, setServerError} from "../../../Store/Reducers/authMeReducer/actionCreators";
-import AuthMeService, {ILoginResponse, IRegisterResponse} from "../../../Service/AuthMeService";
+import AuthMeService from "../../../Service/AuthMeService";
 import {LoginTrigger, RegisterTrigger} from "../../../Store/Reducers/authMeReducer/types/actionTypes";
 import {LoginCodes, RegisterCodes} from "../../../Service/statusCodes";
 import {ISetServerError} from "../../../Store/Reducers/authMeReducer/types/actionPayloadTypes";
+import {ILoginResponse, IRegisterResponse} from "../../../Service/interfaces/IAuthMeService";
 
 
 function* loginWorker<T extends LoginTrigger>({payload}: T) {
