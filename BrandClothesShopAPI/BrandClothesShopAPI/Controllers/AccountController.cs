@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.Models;
+using Microsoft.Extensions.Logging;
 
 namespace BrandClothesShopAPI.Controllers
 {
@@ -16,15 +17,16 @@ namespace BrandClothesShopAPI.Controllers
     {
         private readonly IUserService _userService;
         private readonly ITokenService _tokenService;
-
-        public AccountController(IUserService userService, ITokenService tokenService)
+        private readonly ILogger<AccountController> _logger;
+        public AccountController(IUserService userService, ITokenService tokenService, ILogger<AccountController> logger)
         {
             _userService = userService;
             _tokenService = tokenService;
+            _logger = logger;
         }
 
         [HttpPost("Register")]
-        public async Task<IActionResult> Register([FromBody] RegistrationModel user)
+        public async Task<IActionResult> Register(RegistrationModel user)
         {
             var registrationResponse = await _userService.Register(user);
 
@@ -32,6 +34,8 @@ namespace BrandClothesShopAPI.Controllers
             {
                 return new UnprocessableEntityObjectResult("The user with such email already exists!");
             }
+
+            _logger.LogInformation($"[{DateTime.Now}]:The user with e-mail {user.Email} created account.");
 
             return Ok(registrationResponse);
         }
@@ -43,6 +47,8 @@ namespace BrandClothesShopAPI.Controllers
 
             if (authenticateResponse == null)
                 return BadRequest("Invalid email or password!");
+
+            _logger.LogInformation($"[{DateTime.Now}]:The user {user.Email} logged in.");
 
             return Ok(authenticateResponse);
         }

@@ -70,9 +70,9 @@ namespace BrandClothesShopAPI
                                              x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                                              x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
             })
-                    .AddJwtBearer(options =>{ options.RequireHttpsMetadata = false;
-                                              options.SaveToken = true;
-                                              options.TokenValidationParameters = tokenValidationParameters;});
+            .AddJwtBearer(options =>{ options.RequireHttpsMetadata = false;
+                                      options.SaveToken = true;
+                                      options.TokenValidationParameters = tokenValidationParameters;});
 
             services.AddAuthorization();
 
@@ -85,6 +85,7 @@ namespace BrandClothesShopAPI
             services.AddSingleton(mapper);
 
             services.AddMvc();
+            services.AddLogging();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

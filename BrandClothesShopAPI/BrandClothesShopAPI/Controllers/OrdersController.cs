@@ -3,12 +3,12 @@ using DataStore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Core.ModelValidations;
 using Core.Models;
+using Microsoft.Extensions.Logging;
 
 namespace BrandClothesShopAPI.Controllers
 {
@@ -17,9 +17,11 @@ namespace BrandClothesShopAPI.Controllers
     public class OrdersController
     {
         private readonly ClothesShopContext _context;
-        public OrdersController(ClothesShopContext context)
+        private readonly ILogger<AccountController> _logger;
+        public OrdersController(ClothesShopContext context, ILogger<AccountController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         [Authorize]
@@ -47,6 +49,7 @@ namespace BrandClothesShopAPI.Controllers
             });
              
             await _context.SaveChangesAsync();
+            _logger.LogInformation($"[{DateTime.Now}]:The user {user.Email} ordered {item.ModelName} for {item.Price} euros.");
 
             return new OkObjectResult(user.Orders.Last());
         }
