@@ -6281,11 +6281,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\test\\BrandClothesShop\\BrandClothesShopAPI\\BrandClothesShopAPI\\BrandClothesShopAPI.csproj",
+      "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\WORK\\BrandClothesShopAPI\\BrandClothesShopAPI\\BrandClothesShopAPI.csproj",
       "projectName": "BrandClothesShopAPI",
-      "projectPath": "C:\\Users\\Lenovo\\Desktop\\test\\BrandClothesShop\\BrandClothesShopAPI\\BrandClothesShopAPI\\BrandClothesShopAPI.csproj",
+      "projectPath": "C:\\Users\\Lenovo\\Desktop\\WORK\\BrandClothesShopAPI\\BrandClothesShopAPI\\BrandClothesShopAPI.csproj",
       "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lenovo\\Desktop\\test\\BrandClothesShop\\BrandClothesShopAPI\\BrandClothesShopAPI\\obj\\",
+      "outputPath": "C:\\Users\\Lenovo\\Desktop\\WORK\\BrandClothesShopAPI\\BrandClothesShopAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6302,11 +6302,11 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\Lenovo\\Desktop\\test\\BrandClothesShop\\BrandClothesShopAPI\\DataStore\\DataStore.csproj": {
-              "projectPath": "C:\\Users\\Lenovo\\Desktop\\test\\BrandClothesShop\\BrandClothesShopAPI\\DataStore\\DataStore.csproj"
+            "C:\\Users\\Lenovo\\Desktop\\WORK\\BrandClothesShopAPI\\DataStore\\DataStore.csproj": {
+              "projectPath": "C:\\Users\\Lenovo\\Desktop\\WORK\\BrandClothesShopAPI\\DataStore\\DataStore.csproj"
             },
-            "C:\\Users\\Lenovo\\Desktop\\test\\BrandClothesShop\\BrandClothesShopAPI\\Models.EF\\Core.csproj": {
-              "projectPath": "C:\\Users\\Lenovo\\Desktop\\test\\BrandClothesShop\\BrandClothesShopAPI\\Models.EF\\Core.csproj"
+            "C:\\Users\\Lenovo\\Desktop\\WORK\\BrandClothesShopAPI\\Models.EF\\Core.csproj": {
+              "projectPath": "C:\\Users\\Lenovo\\Desktop\\WORK\\BrandClothesShopAPI\\Models.EF\\Core.csproj"
             }
           }
         }

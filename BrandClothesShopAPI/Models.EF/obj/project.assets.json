@@ -5441,11 +5441,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\test\\BrandClothesShop\\BrandClothesShopAPI\\Models.EF\\Core.csproj",
+      "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\WORK\\BrandClothesShopAPI\\Models.EF\\Core.csproj",
       "projectName": "Core",
-      "projectPath": "C:\\Users\\Lenovo\\Desktop\\test\\BrandClothesShop\\BrandClothesShopAPI\\Models.EF\\Core.csproj",
+      "projectPath": "C:\\Users\\Lenovo\\Desktop\\WORK\\BrandClothesShopAPI\\Models.EF\\Core.csproj",
       "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lenovo\\Desktop\\test\\BrandClothesShop\\BrandClothesShopAPI\\Models.EF\\obj\\",
+      "outputPath": "C:\\Users\\Lenovo\\Desktop\\WORK\\BrandClothesShopAPI\\Models.EF\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",

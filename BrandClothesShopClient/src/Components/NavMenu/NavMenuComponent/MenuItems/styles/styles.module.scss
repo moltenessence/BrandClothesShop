@@ -1,51 +1,5 @@
 
 .profileModal {
-  width: 65vw !important;
+  width: 50vw !important;
   height: fit-content;
-
-  .contentHolder {
-    display: flex;
-
-
-    .userMenu {
-      display: flex;
-      flex: 1;
-      align-items: center;
-      gap: 2em;
-
-      .avatarContainer {
-        width: 100px;
-        height: 100px;
-
-        .avatar {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-      }
-    }
-
-    .cart {
-      flex: 3;
-
-      .itemCard {
-        display: flex;
-
-        .itemImg {
-          min-width: 100px;
-          height: 119px;
-
-          img {
-            width: 100%;
-            height: 100%;
-            object-position: top;
-            object-fit: cover;
-          }
-
-          .description {
-          }
-        }
-      }
-    }
-  }
 }
