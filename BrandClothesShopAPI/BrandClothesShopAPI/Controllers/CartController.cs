@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace BrandClothesShopAPI.Controllers
 {
+    //This controller allows to manage users' carts.
     [ApiController]
     [Route("api/[controller]")]
     public class CartController : ControllerBase
@@ -21,7 +22,11 @@ namespace BrandClothesShopAPI.Controllers
         {
             _context = context;
         }
-
+        /// <summary>
+        /// The method is available only for authorized users. It adds the item into personal cart.
+        /// </summary>
+        /// <param name="cartRequest"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpPost("Add")]
         public async Task<ActionResult> AddItemIntoCart(CartRequest cartRequest)
@@ -55,6 +60,12 @@ namespace BrandClothesShopAPI.Controllers
             return Ok("The item was successfully added into the cart!");
         }
 
+        /// <summary>
+        /// This method allows to GET all the items for a current user by his ID.
+        /// It is available only for authorized users.
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns>User's Cart Items</returns>
         [Authorize]
         [HttpGet("{userId}")]
         public ActionResult GetItemsFromCart(int userId)
@@ -69,6 +80,14 @@ namespace BrandClothesShopAPI.Controllers
             return Ok(userCartItems);
         }
 
+        /// <summary>
+        /// This DELETE Method allow user to drop the item off his cart.
+        /// The usage of IDs helps to define the user's cart and the definite
+        /// item to drop.
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="itemId"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpDelete("Delete")]
         public async Task<ActionResult> DeleteItemsFromCart(int userId, int itemId)

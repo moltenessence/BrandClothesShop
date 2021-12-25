@@ -171,3 +171,10 @@ C:\Users\PC\Source\Repos\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAP
 C:\Users\PC\Source\Repos\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\PC\Source\Repos\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\AutoMapper.dll
 C:\Users\PC\Source\Repos\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\PC\source\repos\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\PC\source\repos\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\PC\source\repos\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\PC\source\repos\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\PC\source\repos\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\obj\Debug\netcoreapp3.1\BrandClothesShopAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\PC\source\repos\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\bin\Debug\netcoreapp3.1\BrandClothesShopAPI.xml
+C:\Users\PC\source\repos\BrandClothesShop\BrandClothesShopAPI\BrandClothesShopAPI\obj\Debug\netcoreapp3.1\BrandClothesShopAPI.xml

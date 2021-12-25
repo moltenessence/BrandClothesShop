@@ -12,6 +12,10 @@ using Microsoft.Extensions.Logging;
 
 namespace BrandClothesShopAPI.Controllers
 {
+    /// <summary>
+    /// This controller allows to make orders. There aren't any transactions, just imitation of
+    /// order and its influence on DataBase.
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class OrdersController
@@ -24,6 +28,11 @@ namespace BrandClothesShopAPI.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// This Method adds item into user's OrderList. It also loggs the information about the purchase.
+        /// </summary>
+        /// <param name="orderRequest"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpPost("Purchase")]
         public async Task<IActionResult> Order(OrderRequest orderRequest)
@@ -54,6 +63,11 @@ namespace BrandClothesShopAPI.Controllers
             return new OkObjectResult(user.Orders.Last());
         }
 
+        /// <summary>
+        /// GET Method which shows current user's Order List.
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns>The list of orders</returns>
         [Authorize]
         [HttpGet("{userId}")]
         public async Task<IActionResult> GetOrders(int userId)

@@ -11,6 +11,9 @@ using Microsoft.Extensions.Logging;
 
 namespace BrandClothesShopAPI.Controllers
 {
+    /// <summary>
+    /// This controller manages all the operations with users and their accounts.
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class AccountController : ControllerBase
@@ -25,6 +28,12 @@ namespace BrandClothesShopAPI.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// This Method allows to register a new user in case if
+        /// the user hadn't created an account before. It loggs successfull registration.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns>Email, Username</returns>
         [HttpPost("Register")]
         public async Task<IActionResult> Register(RegistrationModel user)
         {
@@ -40,6 +49,13 @@ namespace BrandClothesShopAPI.Controllers
             return Ok(registrationResponse);
         }
 
+        /// <summary>
+        /// This Method is responsible for user authentication. It checks if the user exists in DB and 
+        /// in case of successfull authentication generates Access JWT Token (expiration time is 5 minutes)
+        /// and Refresh Token. The method also loggs successfull cases of authentication.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         [HttpPost("Authenticate")]
         public async Task<IActionResult> Authenticate(AuthenticateRequest user)
         {
@@ -53,6 +69,11 @@ namespace BrandClothesShopAPI.Controllers
             return Ok(authenticateResponse);
         }
 
+        /// <summary>
+        /// Generates new pair of tokens if the Access Token is expired and valid.
+        /// </summary>
+        /// <param name="tokenRequest"></param>
+        /// <returns>Access Token, Refresh Token</returns>
         [HttpPost]
         [Route("Refresh-Token")]
         public async Task<IActionResult> RefreshToken(UpdateTokenRequest tokenRequest)
@@ -62,6 +83,11 @@ namespace BrandClothesShopAPI.Controllers
             return new ObjectResult(result);
         }
 
+        /// <summary>
+        /// Validates the expiration time of current access token.
+        /// </summary>
+        /// <param name="tokenRequest"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("Validate-Token")]
         public IActionResult ValidateToken(TokenRequest tokenRequest)
@@ -70,7 +96,10 @@ namespace BrandClothesShopAPI.Controllers
 
             return new ObjectResult(result);
         }
-
+        /// <summary>
+        /// The GET Method which allows to see the list of all the accounts.
+        /// </summary>
+        /// <returns>The list of Users</returns>
         [HttpGet("Users")]
         public IActionResult GetAllUsers()
         {

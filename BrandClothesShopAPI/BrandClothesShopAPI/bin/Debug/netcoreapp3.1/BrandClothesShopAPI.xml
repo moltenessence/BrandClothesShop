@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BrandClothesShopAPI</name>
+    </assembly>
+    <members>
+        <member name="T:BrandClothesShopAPI.Controllers.AccountController">
+            <summary>
+            This controller manages all the operations with users and their accounts.
+            </summary>
+        </member>
+        <member name="M:BrandClothesShopAPI.Controllers.AccountController.Register(Core.Models.RegistrationModel)">
+            <summary>
+            This Method allows to register a new user in case if
+            the user hadn't created an account before. It loggs successfull registration.
+            </summary>
+            <param name="user"></param>
+            <returns>Email, Username</returns>
+        </member>
+        <member name="M:BrandClothesShopAPI.Controllers.AccountController.Authenticate(Core.Models.AuthenticateRequest)">
+            <summary>
+            This Method is responsible for user authentication. It checks if the user exists in DB and 
+            in case of successfull authentication generates Access JWT Token (expiration time is 5 minutes)
+            and Refresh Token. The method also loggs successfull cases of authentication.
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BrandClothesShopAPI.Controllers.AccountController.RefreshToken(Core.Models.UpdateTokenRequest)">
+            <summary>
+            Generates new pair of tokens if the Access Token is expired and valid.
+            </summary>
+            <param name="tokenRequest"></param>
+            <returns>Access Token, Refresh Token</returns>
+        </member>
+        <member name="M:BrandClothesShopAPI.Controllers.AccountController.ValidateToken(Core.Models.TokenRequest)">
+            <summary>
+            Validates the expiration time of current access token.
+            </summary>
+            <param name="tokenRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BrandClothesShopAPI.Controllers.AccountController.GetAllUsers">
+            <summary>
+            The GET Method which allows to see the list of all the accounts.
+            </summary>
+            <returns>The list of Users</returns>
+        </member>
+        <member name="M:BrandClothesShopAPI.Controllers.BackgroundController.GetHomepageImageUrl">
+            <summary>
+            This GET method returns HomePage URL
+            </summary>
+            <returns>HomePage URL</returns>
+        </member>
+        <member name="M:BrandClothesShopAPI.Controllers.CartController.AddItemIntoCart(Core.Models.CartRequest)">
+            <summary>
+            The method is available only for authorized users. It adds the item into personal cart.
+            </summary>
+            <param name="cartRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BrandClothesShopAPI.Controllers.CartController.GetItemsFromCart(System.Int32)">
+            <summary>
+            This method allows to GET all the items for a current user by his ID.
+            It is available only for authorized users.
+            </summary>
+            <param name="userId"></param>
+            <returns>User's Cart Items</returns>
+        </member>
+        <member name="M:BrandClothesShopAPI.Controllers.CartController.DeleteItemsFromCart(System.Int32,System.Int32)">
+            <summary>
+            This DELETE Method allow user to drop the item off his cart.
+            The usage of IDs helps to define the user's cart and the definite
+            item to drop.
+            </summary>
+            <param name="userId"></param>
+            <param name="itemId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:BrandClothesShopAPI.Controllers.ItemsController">
+            <summary>
+            This controller is used for getting all the information about items in catalog for their view on the client side.
+            </summary>
+        </member>
+        <member name="M:BrandClothesShopAPI.Controllers.ItemsController.GetItems(System.Int32,System.Int32,System.String)">
+            <summary>
+            Returns all the items from the DataBase.
+            </summary>
+            <param name="page"></param>
+            <param name="count"></param>
+            <param name="type"></param>
+            <returns>List of Items</returns>
+        </member>
+        <member name="M:BrandClothesShopAPI.Controllers.ItemsController.GetItemById(System.Int32)">
+            <summary>
+            Returns current item by its ID.
+            </summary>
+            <param name="id"></param>
+            <returns>Item</returns>
+        </member>
+        <member name="T:BrandClothesShopAPI.Controllers.OrdersController">
+            <summary>
+            This controller allows to make orders. There aren't any transactions, just imitation of
+            order and its influence on DataBase.
+            </summary>
+        </member>
+        <member name="M:BrandClothesShopAPI.Controllers.OrdersController.Order(Core.Models.OrderRequest)">
+            <summary>
+            This Method adds item into user's OrderList. It also loggs the information about the purchase.
+            </summary>
+            <param name="orderRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BrandClothesShopAPI.Controllers.OrdersController.GetOrders(System.Int32)">
+            <summary>
+            GET Method which shows current user's Order List.
+            </summary>
+            <param name="userId"></param>
+            <returns>The list of orders</returns>
+        </member>
+    </members>
+</doc>

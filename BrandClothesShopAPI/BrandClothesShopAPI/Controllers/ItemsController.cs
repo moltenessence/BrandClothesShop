@@ -13,6 +13,9 @@ using Core.ModelValidations;
 
 namespace BrandClothesShopAPI.Controllers
 {
+    /// <summary>
+    /// This controller is used for getting all the information about items in catalog for their view on the client side.
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class ItemsController : ControllerBase
@@ -23,6 +26,13 @@ namespace BrandClothesShopAPI.Controllers
             _context = context;
         }
 
+        /// <summary>
+        /// Returns all the items from the DataBase.
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="count"></param>
+        /// <param name="type"></param>
+        /// <returns>List of Items</returns>
         [HttpGet("{type}")]
         public async Task<ActionResult> GetItems(int page, int count, string type)
         {
@@ -51,7 +61,11 @@ namespace BrandClothesShopAPI.Controllers
 
             return Ok(result);
         }
-
+        /// <summary>
+        /// Returns current item by its ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Item</returns>
         [HttpGet("{id:int}")]
         public async Task<ActionResult> GetItemById(int id)
         {

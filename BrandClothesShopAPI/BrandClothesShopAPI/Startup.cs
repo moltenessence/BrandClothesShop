@@ -14,6 +14,9 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Http;
 using BrandClothesShopAPI.Services;
 using System;
+using System.Reflection;
+using System.IO;
+using BrandClothesShopAPI.Models;
 
 namespace BrandClothesShopAPI
 {
@@ -86,6 +89,20 @@ namespace BrandClothesShopAPI
 
             services.AddMvc();
             services.AddLogging();
+
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1",
+                    new Microsoft.OpenApi.Models.OpenApiInfo
+                    {
+                        Title = "Brand Clothes WebShop API"
+                    });
+
+                var fileName = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var filePath = Path.Combine(AppContext.BaseDirectory, fileName);
+
+                options.IncludeXmlComments(filePath);
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -108,9 +125,17 @@ namespace BrandClothesShopAPI
             app.UseAuthentication();
             app.UseAuthorization();
 
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(options=>
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "WebShop API");
+                options.RoutePrefix = String.Empty;
             });
         }
     }
