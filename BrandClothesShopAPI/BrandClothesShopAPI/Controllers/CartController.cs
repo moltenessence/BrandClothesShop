@@ -26,13 +26,15 @@ namespace BrandClothesShopAPI.Controllers
         /// The method is available only for authorized users. It adds the item into personal cart.
         /// </summary>
         /// <param name="cartRequest"></param>
+        /// <response code="400">Invalid request parameters</response>
+        ///<response code="404">Item or user doesn't exist</response>
         /// <returns></returns>
         [Authorize]
         [HttpPost("Add")]
         public async Task<ActionResult> AddItemIntoCart(CartRequest cartRequest)
         {
             if (cartRequest.ItemId <= 0 || cartRequest.UserId <= 0 || !ModelValidationParameters.Sizes.Contains(cartRequest.Size.ToLower()))
-                return BadRequest();
+                return BadRequest("The parameters are invalid!");
 
             var user = await _context.Users.FindAsync(cartRequest.UserId);
             var item = await _context.ClothesItems.FindAsync(cartRequest.ItemId);
@@ -57,25 +59,28 @@ namespace BrandClothesShopAPI.Controllers
 
             await _context.SaveChangesAsync();
 
-            return Ok("The item was successfully added into the cart!");
+            return Ok();
         }
 
         /// <summary>
         /// This method allows to GET all the items for a current user by his ID.
         /// It is available only for authorized users.
         /// </summary>
+        /// <response code="400">Invalid request parameters</response>
+        ///<response code="404">The user doesn't exist</response>
+        ///<response code="204">Cart is empty</response>
         /// <param name="userId"></param>
         /// <returns>User's Cart Items</returns>
         [Authorize]
         [HttpGet("{userId}")]
         public ActionResult GetItemsFromCart(int userId)
         {
-            if (userId <= 0) return BadRequest("Invalid Pearameters!");
+            if (userId <= 0) return BadRequest("Invalid Parameters!");
             if (_context.Users.Find(userId) == null) return NotFound("The user doesn't exist!");
 
             var userCartItems = _context.CartItems.Include("Photos").AsNoTracking().Where(i => i.UserId == userId).ToList();
 
-            if (userCartItems.Count() == 0) return Ok("Your Cart is empty!");
+            if (userCartItems.Count() == 0) return NoContent();
 
             return Ok(userCartItems);
         }
@@ -85,6 +90,8 @@ namespace BrandClothesShopAPI.Controllers
         /// The usage of IDs helps to define the user's cart and the definite
         /// item to drop.
         /// </summary>
+        /// <response code="400">Invalid request parameters</response>
+        /// <response code="404">The user doesn't exist or there is not such item in the cart</response>
         /// <param name="userId"></param>
         /// <param name="itemId"></param>
         /// <returns></returns>
@@ -101,12 +108,12 @@ namespace BrandClothesShopAPI.Controllers
             var userCartItems = _context.CartItems.Where(i => i.UserId == userId).ToList();
             var itemToRemove = userCartItems.Where(i => i.ItemId == itemId).SingleOrDefault();
 
-            if (itemToRemove==null) return BadRequest("There no such item in the Cart!");
+            if (itemToRemove==null) return NotFound("There no such item in the Cart!");
 
             _context.CartItems.Remove(itemToRemove);
             await _context.SaveChangesAsync();
 
-            return Ok("The item was deleted successfully!");
+            return Ok();
 
         }
     }

@@ -32,6 +32,8 @@ namespace BrandClothesShopAPI.Controllers
         /// This Method adds item into user's OrderList. It also loggs the information about the purchase.
         /// </summary>
         /// <param name="orderRequest"></param>
+        /// <response code="400">Invalid request parameters</response>
+        /// <response code="404">The user or item doesn't exist</response>
         /// <returns></returns>
         [Authorize]
         [HttpPost("Purchase")]
@@ -67,6 +69,8 @@ namespace BrandClothesShopAPI.Controllers
         /// GET Method which shows current user's Order List.
         /// </summary>
         /// <param name="userId"></param>
+        /// <response code="400">Invalid request parameters</response>
+        /// <response code="204">Order List is empty</response>
         /// <returns>The list of orders</returns>
         [Authorize]
         [HttpGet("{userId}")]
@@ -82,7 +86,7 @@ namespace BrandClothesShopAPI.Controllers
 
             var userOrders =  allOrders.Where(c => c.UserId == userId);
 
-            if (userOrders.Count() == 0) return new OkObjectResult("Your Order List is empty!");
+            if (userOrders.Count() == 0) return new NoContentResult();
 
             return new OkObjectResult(userOrders);
         }

@@ -55,6 +55,7 @@ namespace BrandClothesShopAPI.Controllers
         /// and Refresh Token. The method also loggs successfull cases of authentication.
         /// </summary>
         /// <param name="user"></param>
+        /// <response code="401">Invalid email or passwordt</response>
         /// <returns></returns>
         [HttpPost("Authenticate")]
         public async Task<IActionResult> Authenticate(AuthenticateRequest user)
@@ -62,7 +63,7 @@ namespace BrandClothesShopAPI.Controllers
             var authenticateResponse = await _userService.Authenticate(user);
 
             if (authenticateResponse == null)
-                return BadRequest("Invalid email or password!");
+                return Unauthorized("Invalid email or password!");
 
             _logger.LogInformation($"[{DateTime.Now}]:The user {user.Email} logged in.");
 
@@ -80,7 +81,7 @@ namespace BrandClothesShopAPI.Controllers
         {
             var result = await _tokenService.ValidateAndUpdateTokenAsync(tokenRequest);
 
-            return new ObjectResult(result);
+            return new OkObjectResult(result);
         }
 
         /// <summary>
@@ -94,7 +95,7 @@ namespace BrandClothesShopAPI.Controllers
         {
             var result = _tokenService.ValidateToken(tokenRequest);
 
-            return new ObjectResult(result);
+            return new OkObjectResult(result);
         }
         /// <summary>
         /// The GET Method which allows to see the list of all the accounts.

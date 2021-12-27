@@ -24,6 +24,7 @@
             and Refresh Token. The method also loggs successfull cases of authentication.
             </summary>
             <param name="user"></param>
+            <response code="401">Invalid email or passwordt</response>
             <returns></returns>
         </member>
         <member name="M:BrandClothesShopAPI.Controllers.AccountController.RefreshToken(Core.Models.UpdateTokenRequest)">
@@ -53,19 +54,24 @@
             <returns>HomePage URL</returns>
         </member>
         <member name="M:BrandClothesShopAPI.Controllers.CartController.AddItemIntoCart(Core.Models.CartRequest)">
-            <summary>
-            The method is available only for authorized users. It adds the item into personal cart.
-            </summary>
-            <param name="cartRequest"></param>
-            <returns></returns>
+             <summary>
+             The method is available only for authorized users. It adds the item into personal cart.
+             </summary>
+             <param name="cartRequest"></param>
+             <response code="400">Invalid request parameters</response>
+            <response code="404">Item or user doesn't exist</response>
+             <returns></returns>
         </member>
         <member name="M:BrandClothesShopAPI.Controllers.CartController.GetItemsFromCart(System.Int32)">
-            <summary>
-            This method allows to GET all the items for a current user by his ID.
-            It is available only for authorized users.
-            </summary>
-            <param name="userId"></param>
-            <returns>User's Cart Items</returns>
+             <summary>
+             This method allows to GET all the items for a current user by his ID.
+             It is available only for authorized users.
+             </summary>
+             <response code="400">Invalid request parameters</response>
+            <response code="404">The user doesn't exist</response>
+            <response code="204">Cart is empty</response>
+             <param name="userId"></param>
+             <returns>User's Cart Items</returns>
         </member>
         <member name="M:BrandClothesShopAPI.Controllers.CartController.DeleteItemsFromCart(System.Int32,System.Int32)">
             <summary>
@@ -73,6 +79,8 @@
             The usage of IDs helps to define the user's cart and the definite
             item to drop.
             </summary>
+            <response code="400">Invalid request parameters</response>
+            <response code="404">The user doesn't exist or there is not such item in the cart</response>
             <param name="userId"></param>
             <param name="itemId"></param>
             <returns></returns>
@@ -89,6 +97,7 @@
             <param name="page"></param>
             <param name="count"></param>
             <param name="type"></param>
+            <response code="400">Invalid request parameters</response>
             <returns>List of Items</returns>
         </member>
         <member name="M:BrandClothesShopAPI.Controllers.ItemsController.GetItemById(System.Int32)">
@@ -96,6 +105,8 @@
             Returns current item by its ID.
             </summary>
             <param name="id"></param>
+            <response code="400">Invalid request parameters</response>
+            <response code="404">The user with this id doesn't exist</response>
             <returns>Item</returns>
         </member>
         <member name="T:BrandClothesShopAPI.Controllers.OrdersController">
@@ -109,6 +120,8 @@
             This Method adds item into user's OrderList. It also loggs the information about the purchase.
             </summary>
             <param name="orderRequest"></param>
+            <response code="400">Invalid request parameters</response>
+            <response code="404">The user or item doesn't exist</response>
             <returns></returns>
         </member>
         <member name="M:BrandClothesShopAPI.Controllers.OrdersController.GetOrders(System.Int32)">
@@ -116,6 +129,8 @@
             GET Method which shows current user's Order List.
             </summary>
             <param name="userId"></param>
+            <response code="400">Invalid request parameters</response>
+            <response code="204">Order List is empty</response>
             <returns>The list of orders</returns>
         </member>
     </members>

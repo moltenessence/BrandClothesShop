@@ -32,6 +32,7 @@ namespace BrandClothesShopAPI.Controllers
         /// <param name="page"></param>
         /// <param name="count"></param>
         /// <param name="type"></param>
+        /// <response code="400">Invalid request parameters</response>
         /// <returns>List of Items</returns>
         [HttpGet("{type}")]
         public async Task<ActionResult> GetItems(int page, int count, string type)
@@ -65,6 +66,8 @@ namespace BrandClothesShopAPI.Controllers
         /// Returns current item by its ID.
         /// </summary>
         /// <param name="id"></param>
+        /// <response code="400">Invalid request parameters</response>
+        /// <response code="404">The user with this id doesn't exist</response>
         /// <returns>Item</returns>
         [HttpGet("{id:int}")]
         public async Task<ActionResult> GetItemById(int id)
