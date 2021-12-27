@@ -94,7 +94,7 @@ namespace BrandClothesShopAPI.Services
                 {
                     Success = false,
                     Errors = new List<string>() { $"Something went wrong: {ex.Message}" },
-                    StatusCode = HttpStatusCode.BadRequest
+                    StatusCode = HttpStatusCode.InternalServerError
                 };
             }
         }
@@ -153,7 +153,7 @@ namespace BrandClothesShopAPI.Services
                         Success = false,
                         Errors = new List<string>() { "The refresh token expired." },
                         Token = null,
-                        StatusCode = HttpStatusCode.NotFound
+                        StatusCode = HttpStatusCode.BadRequest
                     };
                 }
 

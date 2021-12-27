@@ -55,7 +55,7 @@ namespace BrandClothesShopAPI.Controllers
         /// and Refresh Token. The method also loggs successfull cases of authentication.
         /// </summary>
         /// <param name="user"></param>
-        /// <response code="401">Invalid email or passwordt</response>
+        /// <response code="401">Invalid email or password</response>
         /// <returns></returns>
         [HttpPost("Authenticate")]
         public async Task<IActionResult> Authenticate(AuthenticateRequest user)
@@ -73,6 +73,8 @@ namespace BrandClothesShopAPI.Controllers
         /// <summary>
         /// Generates new pair of tokens if the Access Token is expired and valid.
         /// </summary>
+        /// <response code="400">The token is invalid</response>
+        /// <response code="500">Internal server error</response>
         /// <param name="tokenRequest"></param>
         /// <returns>Access Token, Refresh Token</returns>
         [HttpPost]
@@ -87,6 +89,9 @@ namespace BrandClothesShopAPI.Controllers
         /// <summary>
         /// Validates the expiration time of current access token.
         /// </summary>
+        /// <response code="500">Internal server error</response>
+        /// <response code="400">The token is invalid</response>
+        ///  <response code="403">The token is expired</response>
         /// <param name="tokenRequest"></param>
         /// <returns></returns>
         [HttpPost]
