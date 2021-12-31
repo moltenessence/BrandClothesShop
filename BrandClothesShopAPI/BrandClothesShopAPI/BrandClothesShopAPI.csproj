@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+	  <GenerateDocumentationFile>True</GenerateDocumentationFile>
+	  <NoWarn>$(NoWarn);1591 </NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,12 +25,12 @@
     </PackageReference>
     <PackageReference Include="Microsoft.IdentityModel.Logging" Version="6.12.2" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\DataStore\DataStore.csproj" />
     <ProjectReference Include="..\Models.EF\Core.csproj" />
   </ItemGroup>
-
 
 </Project>

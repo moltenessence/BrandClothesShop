@@ -94,7 +94,7 @@ namespace BrandClothesShopAPI.Services
                 {
                     Success = false,
                     Errors = new List<string>() { $"Something went wrong: {ex.Message}" },
-                    StatusCode = HttpStatusCode.BadRequest
+                    StatusCode = HttpStatusCode.InternalServerError
                 };
             }
         }
@@ -153,7 +153,7 @@ namespace BrandClothesShopAPI.Services
                         Success = false,
                         Errors = new List<string>() { "The refresh token expired." },
                         Token = null,
-                        StatusCode = HttpStatusCode.NotFound
+                        StatusCode = HttpStatusCode.BadRequest
                     };
                 }
 
@@ -222,8 +222,7 @@ namespace BrandClothesShopAPI.Services
 
             var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
-            return new string(Enumerable.Repeat(characters, length)
-                .Select(x => x[random.Next(x.Length)]).ToArray());
+            return new string(Enumerable.Repeat(characters, length).Select(x => x[random.Next(x.Length)]).ToArray());
         }
 
         private DateTime UnixTimeStampToDateTime(long unixTimeStamp)
