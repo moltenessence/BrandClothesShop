@@ -34,17 +34,17 @@ namespace BrandClothesShopAPI.Controllers
         public async Task<ActionResult> AddItemIntoCart(CartRequest cartRequest)
         {
             if (cartRequest.ItemId <= 0 || cartRequest.UserId <= 0 || !ModelValidationParameters.Sizes.Contains(cartRequest.Size.ToLower()))
-                return BadRequest("The parameters are invalid!");
+                return new BadRequestObjectResult("The parameters are invalid!");
 
             var user = await _context.Users.FindAsync(cartRequest.UserId);
             var item = await _context.ClothesItems.FindAsync(cartRequest.ItemId);
 
             if (user == null || item == null)
-                return NotFound("There is no such user or item!");
+                return new NotFoundObjectResult("There is no such user or item!");
 
             var userCartItems = _context.CartItems.AsNoTracking().Where(i => i.UserId == cartRequest.UserId).ToList();
 
-            if (userCartItems.Where(i => i.ItemId == cartRequest.ItemId).Any()) return BadRequest("There is such item in the Cart!");
+            if (userCartItems.Where(i => i.ItemId == cartRequest.ItemId).Any()) return new BadRequestObjectResult("There is such item in the Cart!");
 
             _context.Photos.AsNoTracking().ToList();
 
@@ -75,8 +75,8 @@ namespace BrandClothesShopAPI.Controllers
         [HttpGet("{userId}")]
         public ActionResult GetItemsFromCart(int userId)
         {
-            if (userId <= 0) return BadRequest("Invalid Parameters!");
-            if (_context.Users.Find(userId) == null) return NotFound("The user doesn't exist!");
+            if (userId <= 0) return new BadRequestObjectResult("Invalid Parameters!");
+            if (_context.Users.Find(userId) == null) return new NotFoundObjectResult("The user doesn't exist!");
 
             var userCartItems = _context.CartItems.Include("Photos").AsNoTracking().Where(i => i.UserId == userId).ToList();
 
@@ -99,16 +99,16 @@ namespace BrandClothesShopAPI.Controllers
         [HttpDelete("Delete")]
         public async Task<ActionResult> DeleteItemsFromCart(int userId, int itemId)
         {
-            if (itemId <= 0 || userId <= 0) return BadRequest();
+            if (itemId <= 0 || userId <= 0) return new BadRequestObjectResult("The parameters are invalid!");
 
             var user = await _context.Users.FindAsync(userId);
 
-            if (user == null) return NotFound("There is no such user!");
+            if (user == null) return new NotFoundObjectResult("There is no such user!");
 
             var userCartItems = _context.CartItems.Where(i => i.UserId == userId).ToList();
             var itemToRemove = userCartItems.Where(i => i.ItemId == itemId).SingleOrDefault();
 
-            if (itemToRemove==null) return NotFound("There no such item in the Cart!");
+            if (itemToRemove==null) return new NotFoundObjectResult("There no such item in the Cart!");
 
             _context.CartItems.Remove(itemToRemove);
             await _context.SaveChangesAsync();
