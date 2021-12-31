@@ -26,15 +26,12 @@ function* getCartItemsWorker() {
             yield put(getCartItems.success({itemCollection: items}));
         }
     } catch (e: any) {
-        if (e.response.status === CommonCodes.invalidToken) {
-            const {token, refreshToken}: IRefreshTokenResponse = yield call(() => AuthMeService.refreshToken());
+        const {token, refreshToken}: IRefreshTokenResponse = yield call(() => AuthMeService.refreshToken());
 
-            localStorage.setItem('token', token);
-            localStorage.setItem('refreshToken', refreshToken);
+        localStorage.setItem('token', token);
+        localStorage.setItem('refreshToken', refreshToken);
 
-            yield put(getCartItems([]));
-        }
-        console.log(e);
+        yield put(getCartItems([]));
     }
 }
 
@@ -45,20 +42,15 @@ function* addItemToCartWorker(action: AddItemToCart) {
         if (!itemInfo.userId) throw new Error('Unauthorized');
 
         const status: number = yield call(() => CartService.addItemToCart(itemInfo));
-        if (status !== CommonCodes.Success) {
-            throw new Error('some error occurred!');
-        }
+        console.log(status)
     } catch (e: any) {
-        if (e.response.status === CommonCodes.invalidToken) {
-            const {token, refreshToken}: IRefreshTokenResponse = yield call(() => AuthMeService.refreshToken());
+        const {token, refreshToken}: IRefreshTokenResponse = yield call(() => AuthMeService.refreshToken());
 
-            localStorage.setItem('token', token);
-            localStorage.setItem('refreshToken', refreshToken);
+        localStorage.setItem('token', token);
+        localStorage.setItem('refreshToken', refreshToken);
 
-            console.log(action.payload)
-            yield put(addItemToCart(action.payload))
-        }
-        console.log(e);
+        console.log(action.payload)
+        yield put(addItemToCart(action.payload))
     }
 }
 
@@ -72,18 +64,14 @@ function* removeCartItemWorker(action: RemoveCartItem) {
         const status: number = yield call(() => CartService.removeCartItem(itemId, userId));
         if (status !== CommonCodes.Success) throw new Error('Some error occurred!');
 
-        // yield delay(300);
         yield put(removeCartItem.success({itemId}))
     } catch (e: any) {
-        if (e.response.status === CommonCodes.invalidToken) {
-            const {token, refreshToken}: IRefreshTokenResponse = yield call(() => AuthMeService.refreshToken());
+        const {token, refreshToken}: IRefreshTokenResponse = yield call(() => AuthMeService.refreshToken());
 
-            localStorage.setItem('token', token);
-            localStorage.setItem('refreshToken', refreshToken);
+        localStorage.setItem('token', token);
+        localStorage.setItem('refreshToken', refreshToken);
 
-            yield put(removeCartItem(action.payload));
-        }
-        console.log(e);
+        yield put(removeCartItem(action.payload));
     }
 }
 
