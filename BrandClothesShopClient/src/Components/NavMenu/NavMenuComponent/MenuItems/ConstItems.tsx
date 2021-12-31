@@ -20,9 +20,6 @@ export default () => {
             <Menu.Item key='shoes'>
                 <NavLink to='/shoes' className='navLink'>Shoes</NavLink>
             </Menu.Item>
-            <Menu.Item key='cart'>
-                <NavLink to='/cart' className='navLink'>Cart</NavLink>
-            </Menu.Item>
         </>
     );
 }

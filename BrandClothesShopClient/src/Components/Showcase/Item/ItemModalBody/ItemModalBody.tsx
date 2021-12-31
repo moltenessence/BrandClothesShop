@@ -16,6 +16,7 @@ interface IProps extends IItem, ConnectorProps {
     isAuth: boolean,
     orderError: boolean,
     orderSuccess: boolean,
+    size: string,
 }
 
 const {Title, Text, Paragraph} = Typography;
@@ -32,7 +33,7 @@ const ItemModalBody: FC<IProps> = ({
                                        clothesItemId,
                                        orderSuccess,
                                        orderError,
-                                       isAuth
+                                       isAuth,
                                    }) => {
 
     const [selectedSize, setSelectedSize] = useState('');
@@ -148,6 +149,8 @@ const ItemModalBody: FC<IProps> = ({
                 orderError={orderError}
                 orderSuccess={orderSuccess}
                 isAuth={isAuth}
+                itemId={clothesItemId}
+                size={selectedSize}
             />
         </>
     );

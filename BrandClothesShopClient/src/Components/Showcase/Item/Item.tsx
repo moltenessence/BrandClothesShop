@@ -46,7 +46,8 @@ const Item: FC<IProps> = ({
             >
                 <ItemModalBody userId={userId} orderError={orderError} orderSuccess={orderSuccess}
                                clothesItemId={clothesItemId} modelName={modelName} brand={brand}
-                               type={type} size={size} description={description} price={price} photos={photos}/>
+                               type={type} size={size} description={description} price={price} photos={photos}
+                />
             </Modal>
             <div
                 className={'itemCardWrapper'}

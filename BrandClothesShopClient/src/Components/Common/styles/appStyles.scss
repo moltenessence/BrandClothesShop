@@ -1,3 +1,7 @@
 @import "./variables/colorVariables.scss";
 @import "./variables/fonts.scss";
 @import "./forms/inputs/input.scss";
+
+img {
+  user-select: none;
+}

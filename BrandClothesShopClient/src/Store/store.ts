@@ -2,8 +2,9 @@ import homePage from "./Reducers/homePageReducer/homePageReducer";
 import showcase from "./Reducers/showcaseReducer/showcaseReducer";
 import authMe from "./Reducers/authMeReducer/authMeReducer";
 import createSagaMiddleware from "@redux-saga/core";
-import { configureStore } from "@reduxjs/toolkit";
+import {configureStore} from "@reduxjs/toolkit";
 import saga from "./sagas";
+import {cart} from "./Reducers/cartReducer/cartReducer";
 
 let sagaMiddleware = createSagaMiddleware();
 
@@ -15,6 +16,7 @@ const reducer = {
     homePage,
     showcase,
     authMe,
+    cart,
 };
 
 let store = configureStore({

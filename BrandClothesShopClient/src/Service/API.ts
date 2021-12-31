@@ -35,3 +35,13 @@ OrderAPI.interceptors.request.use(config => {
     config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`;
     return config;
 })
+
+//--------------
+//Cart API
+//--------------
+export const CartAPI = axios.create(baseInstanceObject);
+
+CartAPI.interceptors.request.use(config => {
+    config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`;
+    return config;
+})
