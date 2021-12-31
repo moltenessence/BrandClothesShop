@@ -13,6 +13,9 @@ using Core.ModelValidations;
 
 namespace BrandClothesShopAPI.Controllers
 {
+    /// <summary>
+    /// This controller is used for getting all the information about items in catalog for their view on the client side.
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class ItemsController : ControllerBase
@@ -23,6 +26,14 @@ namespace BrandClothesShopAPI.Controllers
             _context = context;
         }
 
+        /// <summary>
+        /// Returns all the items from the DataBase.
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="count"></param>
+        /// <param name="type"></param>
+        /// <response code="400">Invalid request parameters</response>
+        /// <returns>List of Items</returns>
         [HttpGet("{type}")]
         public async Task<ActionResult> GetItems(int page, int count, string type)
         {
@@ -34,7 +45,7 @@ namespace BrandClothesShopAPI.Controllers
             var amountToSkip = page == 1 ? 0 : (page - 1) * count;
 
             if (page*count - count > totalAmount)
-                return BadRequest($"The number of items to take is out of range! Total amount of items of type '{type}' = {totalAmount}");
+                return BadRequest($"The number of items to take is out of range! Total amount of items of type '{type}' = {totalAmount}.");
 
             var clothesItems = await _context.ClothesItems.AsNoTracking()
                                                           .Where(i => i.Type == type)
@@ -51,7 +62,13 @@ namespace BrandClothesShopAPI.Controllers
 
             return Ok(result);
         }
-
+        /// <summary>
+        /// Returns current item by its ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <response code="400">Invalid request parameters</response>
+        /// <response code="404">The user with this id doesn't exist</response>
+        /// <returns>Item</returns>
         [HttpGet("{id:int}")]
         public async Task<ActionResult> GetItemById(int id)
         {
