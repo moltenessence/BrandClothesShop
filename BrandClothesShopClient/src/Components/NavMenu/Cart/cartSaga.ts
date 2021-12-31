@@ -1,11 +1,14 @@
-import {call, delay, put, select, takeEvery} from "redux-saga/effects";
+import {call, delay, put, select, takeEvery, fork} from "redux-saga/effects";
 import {IGetCartItemsResponse} from "../../../Service/interfaces/ICartService";
 import CartService from "../../../Service/CartService";
 import {CommonCodes} from "../../../Service/statusCodes";
 import {addItemToCart, getCartItems, removeCartItem} from "../../../Store/Reducers/cartReducer/actionCreators";
 import {RootState} from "../../../Store/store";
 import {AddItemToCart, RemoveCartItem} from "../../../Store/Reducers/cartReducer/types/actionTypes";
-
+import {IRefreshTokenResponse} from "../../../Service/interfaces/IAuthMeService";
+import AuthMeService from "../../../Service/AuthMeService";
+import {Task} from "redux-saga";
+import {order} from "../../../Store/Reducers/showcaseReducer/actionCreators";
 
 
 const selectUserId = (state: RootState) => state.authMe.userId;
@@ -23,6 +26,14 @@ function* getCartItemsWorker() {
             yield put(getCartItems.success({itemCollection: items}));
         }
     } catch (e: any) {
+        if (e.response.status === CommonCodes.invalidToken) {
+            const {token, refreshToken}: IRefreshTokenResponse = yield call(() => AuthMeService.refreshToken());
+
+            localStorage.setItem('token', token);
+            localStorage.setItem('refreshToken', refreshToken);
+
+            yield put(getCartItems([]));
+        }
         console.log(e);
     }
 }
@@ -38,6 +49,15 @@ function* addItemToCartWorker(action: AddItemToCart) {
             throw new Error('some error occurred!');
         }
     } catch (e: any) {
+        if (e.response.status === CommonCodes.invalidToken) {
+            const {token, refreshToken}: IRefreshTokenResponse = yield call(() => AuthMeService.refreshToken());
+
+            localStorage.setItem('token', token);
+            localStorage.setItem('refreshToken', refreshToken);
+
+            console.log(action.payload)
+            yield put(addItemToCart(action.payload))
+        }
         console.log(e);
     }
 }
@@ -52,9 +72,17 @@ function* removeCartItemWorker(action: RemoveCartItem) {
         const status: number = yield call(() => CartService.removeCartItem(itemId, userId));
         if (status !== CommonCodes.Success) throw new Error('Some error occurred!');
 
-        yield delay(300);
+        // yield delay(300);
         yield put(removeCartItem.success({itemId}))
     } catch (e: any) {
+        if (e.response.status === CommonCodes.invalidToken) {
+            const {token, refreshToken}: IRefreshTokenResponse = yield call(() => AuthMeService.refreshToken());
+
+            localStorage.setItem('token', token);
+            localStorage.setItem('refreshToken', refreshToken);
+
+            yield put(removeCartItem(action.payload));
+        }
         console.log(e);
     }
 }
