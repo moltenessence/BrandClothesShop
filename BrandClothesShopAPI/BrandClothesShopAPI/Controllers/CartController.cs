@@ -1,11 +1,8 @@
-﻿using BrandClothesShopAPI.Models;
-using Core.Models;
+﻿using Core.Models;
 using Core.ModelValidations;
 using DataStore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -27,7 +24,8 @@ namespace BrandClothesShopAPI.Controllers
         /// </summary>
         /// <param name="cartRequest"></param>
         /// <response code="400">Invalid request parameters</response>
-        ///<response code="404">Item or user doesn't exist</response>
+        /// <response code="404">Item or user doesn't exist</response>
+        /// <response code="401">Unauthorized</response>
         /// <returns></returns>
         [Authorize]
         [HttpPost("Add")]
@@ -67,8 +65,9 @@ namespace BrandClothesShopAPI.Controllers
         /// It is available only for authorized users.
         /// </summary>
         /// <response code="400">Invalid request parameters</response>
-        ///<response code="404">The user doesn't exist</response>
-        ///<response code="204">Cart is empty</response>
+        /// <response code="404">The user doesn't exist</response>
+        /// <response code="204">Cart is empty</response>
+        /// <response code="401">Unauthorized</response>
         /// <param name="userId"></param>
         /// <returns>User's Cart Items</returns>
         [Authorize]
@@ -92,6 +91,7 @@ namespace BrandClothesShopAPI.Controllers
         /// </summary>
         /// <response code="400">Invalid request parameters</response>
         /// <response code="404">The user doesn't exist or there is not such item in the cart</response>
+        /// <response code="401">Unauthorized</response>
         /// <param name="userId"></param>
         /// <param name="itemId"></param>
         /// <returns></returns>

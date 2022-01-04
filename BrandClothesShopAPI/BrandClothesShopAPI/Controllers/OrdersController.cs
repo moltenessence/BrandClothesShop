@@ -34,13 +34,14 @@ namespace BrandClothesShopAPI.Controllers
         /// <param name="orderRequest"></param>
         /// <response code="400">Invalid request parameters</response>
         /// <response code="404">The user or item doesn't exist</response>
+        /// <response code="401">Unauthorized</response>
         /// <returns></returns>
         [Authorize]
         [HttpPost("Purchase")]
         public async Task<IActionResult> Order(OrderRequest orderRequest)
         {
             if (orderRequest.ItemId <= 0 || orderRequest.UserId <= 0 || !ModelValidationParameters.Sizes.Contains(orderRequest.Size.ToLower()))
-                return new BadRequestResult();
+                return new BadRequestObjectResult("The Parameters are invalid!");
 
             var user = await _context.Users.FindAsync(orderRequest.UserId);
             var item = await _context.ClothesItems.FindAsync(orderRequest.ItemId);
@@ -71,13 +72,14 @@ namespace BrandClothesShopAPI.Controllers
         /// <param name="userId"></param>
         /// <response code="400">Invalid request parameters</response>
         /// <response code="204">Order List is empty</response>
+        /// <response code="401">Unauthorized</response>
         /// <returns>The list of orders</returns>
         [Authorize]
         [HttpGet("{userId}")]
         public async Task<IActionResult> GetOrders(int userId)
         {
             if (userId <= 0)
-                return new BadRequestResult();
+                return new BadRequestObjectResult("The parameters are invalid!");
 
             var allOrders = await _context.Orders.AsNoTracking().ToListAsync();
 
