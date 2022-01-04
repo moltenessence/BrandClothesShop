@@ -1,18 +1,11 @@
 ﻿using BrandClothesShopAPI.Models;
 using Core.Models;
 using DataStore;
-using Microsoft.Extensions.Configuration;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
-using System.Security.Claims;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Cryptography;
-using Microsoft.IdentityModel.Tokens;
 
 namespace BrandClothesShopAPI.Services
 {

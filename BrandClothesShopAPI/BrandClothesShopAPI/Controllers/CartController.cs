@@ -1,11 +1,8 @@
-﻿using BrandClothesShopAPI.Models;
-using Core.Models;
+﻿using Core.Models;
 using Core.ModelValidations;
 using DataStore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
