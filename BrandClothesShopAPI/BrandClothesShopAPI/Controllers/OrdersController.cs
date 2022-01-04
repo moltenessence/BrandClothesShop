@@ -34,6 +34,7 @@ namespace BrandClothesShopAPI.Controllers
         /// <param name="orderRequest"></param>
         /// <response code="400">Invalid request parameters</response>
         /// <response code="404">The user or item doesn't exist</response>
+        /// <response code="401">Unauthorized</response>
         /// <returns></returns>
         [Authorize]
         [HttpPost("Purchase")]
@@ -71,6 +72,7 @@ namespace BrandClothesShopAPI.Controllers
         /// <param name="userId"></param>
         /// <response code="400">Invalid request parameters</response>
         /// <response code="204">Order List is empty</response>
+        /// <response code="401">Unauthorized</response>
         /// <returns>The list of orders</returns>
         [Authorize]
         [HttpGet("{userId}")]
