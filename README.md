@@ -37,3 +37,16 @@ If the e-mail and password are valid, the account is created and the user can lo
 When the access token is expired, the client needs to send the request with EXPIRED token and refresh token. Then, server regenerates a new pair of tokens. The Refresh Token limits:
 - lifetime = 2 months
 - it can be used only once
+
+### Application interface
+UI of web application implements most of all opportunities provided by backend API. The implementation of some features and the adjustment of existing ones to improve the user experience will be made in new versions of the application.
+
+##### Application client implements:
+- Authorization
+- Mock product ordering
+- Adding to cart
+- Viewing products added in cart
+- Viewing product showcase
+
+###### Application client:
+------IMAGE
