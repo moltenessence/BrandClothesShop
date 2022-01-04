@@ -13,49 +13,58 @@ import {order} from "../../../Store/Reducers/showcaseReducer/actionCreators";
 
 const selectUserId = (state: RootState) => state.authMe.userId;
 
-function* getCartItemsWorker() {
+function* getCartItemsWorker(): unknown {
     try {
         const userId: number = yield select(selectUserId);
-        if (!userId) throw new Error('No user id');
 
         const response: IGetCartItemsResponse = yield call(() => CartService.getCartItems(userId));
         const {items, status} = response
-        if (status === 204) throw new Error('Cart is empty!');
 
         if (status === CommonCodes.Success) {
             yield put(getCartItems.success({itemCollection: items}));
         }
     } catch (e: any) {
-        const {token, refreshToken}: IRefreshTokenResponse = yield call(() => AuthMeService.refreshToken());
+        if (e.response && e.response.status === CommonCodes.invalidToken) {
+            const {token, refreshToken}: IRefreshTokenResponse = yield call(() => AuthMeService.refreshToken());
 
-        localStorage.setItem('token', token);
-        localStorage.setItem('refreshToken', refreshToken);
+            localStorage.setItem('token', token);
+            localStorage.setItem('refreshToken', refreshToken);
 
-        yield put(getCartItems([]));
+            yield fork(getCartItemsWorker);
+        }else{
+            console.log(e)
+        }
     }
 }
 
-function* addItemToCartWorker(action: AddItemToCart) {
+function* addItemToCartWorker(action: AddItemToCart): unknown {
     const itemInfo = action.payload;
 
     try {
-        if (!itemInfo.userId) throw new Error('Unauthorized');
+        if (!itemInfo.userId) throw new Error('Unauthorized!');
+        if (itemInfo.size === '') throw new Error('Size is required!');
 
         const status: number = yield call(() => CartService.addItemToCart(itemInfo));
-        console.log(status)
+        console.log(status);
+
     } catch (e: any) {
-        const {token, refreshToken}: IRefreshTokenResponse = yield call(() => AuthMeService.refreshToken());
+        if (e.response && e.response.status === CommonCodes.invalidToken) {
+            const {token, refreshToken}: IRefreshTokenResponse = yield call(() => AuthMeService.refreshToken());
 
-        localStorage.setItem('token', token);
-        localStorage.setItem('refreshToken', refreshToken);
+            localStorage.setItem('token', token);
+            localStorage.setItem('refreshToken', refreshToken);
 
-        console.log(action.payload)
-        yield put(addItemToCart(action.payload))
+            console.log(action.payload)
+            // yield put(addItemToCart(action.payload))
+            yield fork(addItemToCartWorker, action);
+        }
+
+        console.log(e);
     }
 }
 
 
-function* removeCartItemWorker(action: RemoveCartItem) {
+function* removeCartItemWorker(action: RemoveCartItem): unknown {
     const {itemId} = action.payload;
     const userId: number = yield select((state: RootState) => state.authMe.userId);
     if (!userId) throw new Error('Unauthorized!');
@@ -66,12 +75,17 @@ function* removeCartItemWorker(action: RemoveCartItem) {
 
         yield put(removeCartItem.success({itemId}))
     } catch (e: any) {
-        const {token, refreshToken}: IRefreshTokenResponse = yield call(() => AuthMeService.refreshToken());
+        if (e.response && e.response.status === CommonCodes.invalidToken) {
+            const {token, refreshToken}: IRefreshTokenResponse = yield call(() => AuthMeService.refreshToken());
 
-        localStorage.setItem('token', token);
-        localStorage.setItem('refreshToken', refreshToken);
+            localStorage.setItem('token', token);
+            localStorage.setItem('refreshToken', refreshToken);
 
-        yield put(removeCartItem(action.payload));
+            // yield put(removeCartItem(action.payload));
+            yield fork(removeCartItemWorker, action);
+        }
+
+        console.log(e);
     }
 }
 
